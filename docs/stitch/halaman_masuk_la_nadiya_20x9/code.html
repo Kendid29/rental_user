@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Masuk - La Nadiya 20X9</title>
+<!-- Tailwind CSS CDN with Forms & Container Queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" class="">
+<style data-purpose="custom-typography">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+<style data-purpose="left-panel-gradient">
+    .hero-gradient-bg {
+      background: linear-gradient(180deg, #6c5a4d 0%, #4a3a30 55%, #38271e 100%);
+    }
+    .giant-watermark {
+      font-size: clamp(7.5rem, 15vw, 16.5rem);
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: rgba(14, 10, 8, 0.95);
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen text-slate-800 antialiased overflow-x-hidden selection:bg-amber-100 selection:text-amber-900">
+<!-- BEGIN: MainContainer -->
+<div class="min-h-screen w-full flex flex-col lg:flex-row">
+<!-- BEGIN: LeftBrandPanel -->
+<section class="hero-gradient-bg w-full lg:w-1/2 min-h-[520px] lg:min-h-screen flex flex-col justify-end p-8 sm:p-12 md:p-16 lg:p-20 relative select-none overflow-hidden" data-purpose="brand-showcase" style="background: linear-gradient(145deg, rgb(11, 25, 44) 0%, rgb(16, 36, 71) 50%, rgb(29, 53, 87) 100%) !important;">
+<!-- Top Decorative / Balance Space -->
+<div class="flex-1"></div>
+<!-- Center-to-Bottom Brand Elements -->
+<div class="relative z-10 w-full max-w-xl pb-2 lg:pb-6">
+
+<h1 class="giant-watermark font-extrabold tracking-tighter select-none -ml-1 mb-2 pointer-events-none" style="color: rgba(255, 255, 255, 0.08) !important;">
+  RENT
+</h1>
+
+<div class="mb-3 flex items-center gap-3">
+  <div class="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/30 ring-4 ring-white/10">
+    <span class="material-symbols-outlined text-2xl">directions_car</span>
+  </div>
+  <div>
+    <div class="text-white text-3xl sm:text-4xl font-extrabold tracking-tight flex items-center gap-1.5">
+      <span class="">Renta</span><span class="text-blue-400">Ku</span>
+    </div>
+    <p class="text-blue-200/80 text-xs sm:text-sm font-medium tracking-wide">
+      Kemana pun, lebih mudah • Sewa Mobil &amp; Motor Terpercaya
+    </p>
+  </div>
+</div>
+
+<p class="text-slate-300 text-sm sm:text-base font-normal leading-relaxed max-w-md antialiased opacity-95 mb-8">
+  Jelajahi kebebasan perjalanan ke berbagai destinasi di Indonesia dengan ribuan pilihan armada mobil dan motor terverifikasi serta jaminan harga transparan.
+</p>
+
+<div class="flex items-center gap-6 pt-4 border-t border-white/10 text-slate-300">
+  <div>
+    <div class="text-lg font-bold text-white">50.000+</div>
+    <div class="text-xs text-slate-400">Pengguna Aktif</div>
+  </div>
+  <div class="h-8 w-px bg-white/10"></div>
+  <div>
+    <div class="text-lg font-bold text-white">1.500+</div>
+    <div class="text-xs text-slate-400">Armada Siap Pakai</div>
+  </div>
+  <div class="h-8 w-px bg-white/10"></div>
+  <div>
+    <div class="text-lg font-bold text-white">30+</div>
+    <div class="text-xs text-slate-400">Kota Layanan</div>
+  </div>
+</div></div>
+</section>
+<!-- END: LeftBrandPanel -->
+<!-- BEGIN: RightAuthPanel -->
+<main class="w-full lg:w-1/2 min-h-full flex items-center justify-center p-6 sm:p-12 md:p-16 lg:p-20 bg-white" data-purpose="login-section">
+<!-- Form Wrapper Box -->
+<div class="w-full max-w-[440px] flex flex-col justify-center">
+<!-- Form Heading & Subheading -->
+<div class="mb-8">
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2.5">
+            Selamat Datang Kembali
+          </h2>
+<p class="text-sm text-slate-500 font-normal">
+            Silakan masukkan rincian akun Anda untuk masuk.
+          </p>
+</div>
+<!-- Login Form Element -->
+<form class="space-y-4" data-purpose="auth-form" onsubmit="event.preventDefault();">
+<!-- Input Group: Email -->
+<div>
+<label class="sr-only" for="email">Alamat Email</label>
+<input class="w-full px-3.5 py-3 text-sm text-slate-800 placeholder-slate-400 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-colors" id="email" name="email" placeholder="Alamat Email" required="" type="email">
+</div>
+<!-- Input Group: Password -->
+<div>
+<label class="sr-only" for="password">Kata Sandi</label>
+<div class="relative">
+<input class="w-full pl-3.5 pr-11 py-3 text-sm text-slate-800 placeholder-slate-400 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-colors" id="password" name="password" placeholder="Kata Sandi" required="" type="password">
+<!-- Password Visibility Toggle Button -->
+<button aria-label="Tampilkan atau sembunyikan kata sandi" class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-500 hover:text-slate-700 focus:outline-none" data-purpose="toggle-password-visibility" id="togglePasswordBtn" type="button">
+<!-- Eye Icon (Outline) -->
+<svg class="w-5 h-5" fill="none" id="eyeIcon" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<!-- Eye Slash Icon (Hidden by default) -->
+<svg class="w-5 h-5 hidden" fill="none" id="eyeSlashIcon" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end pt-0.5">
+<a class="text-xs text-blue-600 hover:text-blue-700 hover:underline font-medium transition-colors" href="#forgot-password">Lupa kata sandi?</a>
+</div>
+<!-- Submit Action Button -->
+<div class="pt-3">
+<button class="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2" type="submit"><span class="">Masuk ke Akun</span><span class="material-symbols-outlined text-base">arrow_forward</span></button>
+</div>
+<!-- Sign Up Registration Prompt -->
+<div class="text-center pt-5">
+<p class="text-xs text-slate-600">
+              Belum memiliki akun? 
+              <a class="font-semibold text-blue-600 hover:text-blue-700 hover:underline ml-0.5 transition-colors" href="#register">Daftar sekarang</a>
+</p>
+</div>
+</form>
+</div>
+</main>
+<!-- END: RightAuthPanel -->
+</div>
+<!-- END: MainContainer -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="password-toggle">
+    // Toggle show/hide password logic
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+    const eyeSlashIcon = document.getElementById('eyeSlashIcon');
+
+    if (toggleBtn && passwordInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        
+        if (eyeIcon && eyeSlashIcon) {
+          eyeIcon.classList.toggle('hidden', isPassword);
+          eyeSlashIcon.classList.toggle('hidden', !isPassword);
+        }
+      });
+    }
+  </script>
+<!-- END: InteractiveScripts -->
+
+
+
+
+</body></html>

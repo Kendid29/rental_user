@@ -1,26 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
+@theme {
+  /* Fonts */
+  --font-headline: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Colors from docs/design/DESIGN.md */
+  --color-primary: #102447;
+  --color-primary-dark: #000f2b;
+  --color-secondary: #0866F5;
+  --color-secondary-hover: #0052c7;
+  --color-secondary-active: #0040a1;
+  --color-tertiary: #00C48C;
+  --color-tertiary-dark: #00875A;
+  --color-rating: #FFB800;
+  --color-urgency: #FF4D4D;
+  --color-canvas: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-text-muted: #64748B;
+  --color-text-main: #191c1e;
+
+  /* Surfaces */
+  --color-surface: #F8FAFC;
+  --color-surface-dim: #D8DADC;
+  --color-surface-bright: #F8FAFC;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F2F4F6;
+  --color-surface-container: #ECEEF0;
+  --color-surface-container-high: #E6E8EA;
+
+  /* Elevation Shadows */
+  --shadow-level-1: 0 2px 8px -2px rgba(16, 36, 71, 0.04), 0 1px 4px -1px rgba(16, 36, 71, 0.02);
+  --shadow-level-2: 0 12px 24px -6px rgba(16, 36, 71, 0.08), 0 4px 12px -2px rgba(16, 36, 71, 0.04);
+  --shadow-level-3: 0 24px 48px -12px rgba(16, 36, 71, 0.16);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #F8FAFC;
+  --foreground: #191c1e;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-canvas);
+  color: var(--color-text-main);
+  min-height: 100vh;
+}
+
+/* Tabular figures for prices, countdowns, and ledgers */
+.tnum, .tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom elevation utilities */
+.elevation-1 {
+  box-shadow: 0 2px 8px -2px rgba(16, 36, 71, 0.04), 0 1px 4px -1px rgba(16, 36, 71, 0.02);
+}
+
+.elevation-2 {
+  box-shadow: 0 12px 24px -6px rgba(16, 36, 71, 0.08), 0 4px 12px -2px rgba(16, 36, 71, 0.04);
+}
+
+.elevation-3 {
+  box-shadow: 0 24px 48px -12px rgba(16, 36, 71, 0.16);
 }

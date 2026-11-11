@@ -1,0 +1,1022 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>RentaKu - Sewa Mobil &amp; Motor dari Mitra Terpercaya</title>
+<!-- Google Fonts: Plus Jakarta Sans & Caveat for Script accent -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            script: ['"Caveat"', 'cursive'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#1d77ff',
+              600: '#0062eb',
+              700: '#0052c7',
+              navy: '#0b1e3f',
+              dark: '#111e38',
+              cyan: '#0ea5e9'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Style tag for custom visual tweaks and layout styling -->
+<style data-purpose="custom-enhancements">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1e293b;
+      background-color: #f8fafc;
+      overflow-x: hidden;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .hero-bg {
+      background: linear-gradient(180deg, rgba(234, 244, 255, 0.4) 0%, rgba(248, 250, 252, 0) 100%);
+    }
+  </style>
+<meta content="web_standard" name="shell-type"></head>
+<body class="bg-[#f8fafd] antialiased text-slate-800">
+<!-- BEGIN: MainHeader -->
+<header class="w-full bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-sm shadow-blue-300">
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+</div>
+<div class="flex flex-col">
+<div class="text-2xl font-extrabold tracking-tight leading-none text-slate-900">
+            Renta<span class="text-blue-600">Ku</span>
+</div>
+<span class="text-[10px] text-slate-400 font-medium tracking-wide">Kemana pun, lebih mudah</span>
+</div>
+</a>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center space-x-8 text-[14px] font-semibold text-slate-600"><a class="hover:text-blue-600 transition-colors" href="#">Beranda</a>
+<a class="hover:text-blue-600 transition-colors" href="#">Sewa Mobil</a>
+<a class="hover:text-blue-600 transition-colors" href="#">Sewa Motor</a>
+
+
+<a class="hover:text-blue-600 transition-colors" href="#">Bantuan</a></nav>
+<!-- User & Partner CTAs -->
+<div class="flex items-center gap-3"><button class="relative p-2 text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-full transition-colors" type="button" aria-label="Notifikasi">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+  </svg>
+  <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white"></span>
+</button>
+<div class="flex items-center gap-2.5 pl-2 border-l border-slate-200 cursor-pointer group">
+  <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shadow-sm shadow-blue-500/20">
+    AP
+  </div>
+  <div class="hidden sm:flex flex-col text-left">
+    <span class="text-xs font-bold text-slate-800 group-hover:text-blue-600 transition-colors leading-none">Aditya Pratama</span>
+    
+  </div>
+  <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+  </svg>
+</div></div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main><div class="flex flex-col w-full">
+<!-- Subtle ambient top gradient glow -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+<!-- SECTION 1: Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="flex items-center text-xs font-medium text-slate-500">
+<ol class="inline-flex items-center space-x-1.5 md:space-x-2">
+<li class="inline-flex items-center">
+<a class="hover:text-blue-600 transition-colors flex items-center gap-1" href="#">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Beranda
+            </a>
+</li>
+<li class="flex items-center space-x-1.5 md:space-x-2 text-slate-300">
+<span class="">/</span>
+<a class="hover:text-blue-600 transition-colors" href="#">Sewa Mobil</a>
+</li>
+<li class="flex items-center space-x-1.5 md:space-x-2 text-slate-300">
+<span class="">/</span>
+<a class="hover:text-blue-600 transition-colors" href="#">Yogyakarta</a>
+</li>
+<li class="flex items-center space-x-1.5 md:space-x-2 text-slate-300">
+<span class="">/</span>
+<span class="text-slate-800 font-semibold truncate max-w-[200px] sm:max-w-none">Toyota Innova Zenix 2.0 V CVT</span>
+</li>
+</ol>
+</nav>
+<!-- SECTION 2: Header Summary with Badges & Action Buttons -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2">
+<div class="space-y-2.5">
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+<svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+              Mitra Terverifikasi
+            </span>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">
+              Lepas Kunci &amp; Dengan Sopir
+            </span>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold">
+              Bebas Reschedule
+            </span>
+</div>
+<h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Toyota Innova Zenix 2.0 V CVT
+          </h1>
+<div class="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-slate-600">
+<div class="flex items-center gap-1.5 text-amber-500 font-bold">
+<svg class="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+<span class="">4.9</span>
+<span class="text-slate-400 font-normal underline decoration-slate-300">(76 ulasan terverifikasi)</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1 text-slate-600">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Sleman, DI Yogyakarta</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1.5 text-slate-600">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-medium text-slate-700">Unit Siap Pakai Hari Ini</span>
+</div>
+</div>
+</div>
+<!-- Social / Wishlist actions -->
+<div class="flex items-center gap-2 self-start md:self-auto">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-sm transition-all active:scale-95" id="btn-share">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Bagikan
+          </button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-sm transition-all active:scale-95 group" id="btn-wishlist" onclick="toggleWishlist()">
+<svg class="w-4 h-4 text-slate-400 group-hover:text-red-500 transition-colors" fill="none" id="wishlist-icon" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="wishlist-text" class="">Simpan</span>
+</button>
+</div>
+</div>
+<!-- SECTION 3: Interactive Photo Gallery Grid -->
+<div class="relative rounded-2xl overflow-hidden shadow-md bg-slate-900 group">
+<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-2 p-2">
+<!-- Large Main Feature Image -->
+<div class="md:col-span-2 lg:col-span-7 h-72 sm:h-96 md:h-[430px] rounded-xl overflow-hidden relative group/hero">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover/hero:scale-105" data-alt="Modern 2024 Toyota Innova Zenix V CVT in immaculate pearl white finish, parked in front of contemporary minimalist architecture during soft golden morning light. Studio crispness, 50mm car photography angle highlighting elegant front grille, sleek LED headlamps, and polished rims with subtle reflection." id="main-preview-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiAR5ldUozlkzIfCL_g6bJ7wvZWtQEWkqD9NnWJg7VBWZ3ioLUNQNkBor7-LAsq2bKDvnsJ__cOQGq4i7g93atAkfBl6ahVmVdvMyoiVznffnKGE9N3w9I54P0QJP0-O0Kv3tLu5PqyaEP3UeKOZ9kZRiVp_LjbTkznPidq9ZXR6ppgK27gQ01mSPVWxNL2RxHJcEFMHGRBiNqpoQr5ng6uB25RnRCN38I7wPJ8FaCXmyC_ZRvASodPw">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-5">
+<div class="text-white space-y-1">
+<span class="inline-block px-2 py-0.5 rounded bg-blue-600 text-[10px] font-bold uppercase tracking-wider">Foto Utama</span>
+<p class="text-sm sm:text-base font-semibold drop-shadow-sm">Tampak Eksterior Depan Modern &amp; Gagah</p>
+</div>
+</div>
+</div>
+<!-- Secondary Thumbnails Grid -->
+<div class="md:col-span-2 lg:col-span-5 grid grid-cols-2 gap-2 h-72 sm:h-96 md:h-[430px]">
+<!-- Thumbnail 1: Dashboard Cockpit -->
+<div class="relative rounded-xl overflow-hidden cursor-pointer group/thumb" onclick="swapPhoto(this)">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-110" data-alt="Interior luxury cabin dashboard of 2024 Toyota Innova Zenix showing the 10-inch digital multimedia floating touchscreen, leather-wrapped steering wheel with cruise controls, digital instrument cluster, and dual-zone air conditioning panel with warm ambient illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1SPuuv21otPgoLWU24P0pCftvVo6R1tZvcTJPfNg_lsu2b_3bOyv7rVaA_lMoOQ0Ye_TzW45OuG4JFPeM2AAX670P7XkPXSwM7M2xI-5V-DF8U7ANlsfwaCTBziP_sRjxdlFvv3cSsWmbE06hID2C5ZBqae17B-uvmSgXKIIkwmnvDIO1Si52GB5rmVGPqSmXJ6XYFiQSXypyPrQyJaloqyaluC534g4UsH2OPjz0NwT5BPY3587r0g">
+<div class="absolute inset-0 bg-slate-900/20 group-hover/thumb:bg-slate-900/0 transition-colors"></div>
+<span class="absolute bottom-2 left-2 text-[10px] font-semibold text-white bg-slate-900/70 backdrop-blur-sm px-2 py-0.5 rounded">Dashboard</span>
+</div>
+<!-- Thumbnail 2: Second Row Captain Seats -->
+<div class="relative rounded-xl overflow-hidden cursor-pointer group/thumb" onclick="swapPhoto(this)">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-110" data-alt="Toyota Innova Zenix spacious passenger row seating featuring comfortable ultra-cushioned dual captain seats with ottoman leg rest, premium fabric upholstery, rear ceiling air conditioner vents, and pristine interior cleanliness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb10Vaw7PbZCsQGuljIdoaw86HKpwxCFOWkohOK63ZMq8Xv-LnOLLWx7NDx-EDB9ggC2VEBOaFTN-8ifzK7K4DWF3fmN_rrx3iU36Sx6wdFCc8ysvuFAuw06jkaDotrqDMQTcNYi6OlxUrF-9k8_cvKzq3gKJnrFvc8hhv6v4g4Y9yOtFX7_GIo5Vw1SLnJRoYkW9WWTvckudSmyWnq51lAh7MMniF9BcxXjIyYV78_SkYMHxucKh50Q">
+<div class="absolute inset-0 bg-slate-900/20 group-hover/thumb:bg-slate-900/0 transition-colors"></div>
+<span class="absolute bottom-2 left-2 text-[10px] font-semibold text-white bg-slate-900/70 backdrop-blur-sm px-2 py-0.5 rounded">Kabin Tengah</span>
+</div>
+<!-- Thumbnail 3: Rear Angle Exterior -->
+<div class="relative rounded-xl overflow-hidden cursor-pointer group/thumb" onclick="swapPhoto(this)">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-110" data-alt="Rear three-quarter perspective of white Toyota Innova Zenix hybrid crossover showing dynamic sharp LED taillights, chrome embellishments, subtle roof spoiler, and modern bumper design on a paved Yogyakarta scenic road." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkDNiXl0Y6rlrYftMgcO82nryBxT-h4iDr_KOqYT7_w9H_VB4EKsoiaP-Es2GboFapWXZj6O3LDCO4yCGuNETFRYB9aLB6ktbVxSBaeNC2Vl4rRtYPru2nm5HcZ0VxQpUDj999S9my3xbVxVCx1ZgAXHnykV99PCpIsv89wdCnXl8w-fi3iueOczjwhk_x7G0n-NQSUexKqw21gtR-rJ-ZqK3TOvZAw1FmvZU92B8hvVatjNbQtCsyuQ">
+<div class="absolute inset-0 bg-slate-900/20 group-hover/thumb:bg-slate-900/0 transition-colors"></div>
+<span class="absolute bottom-2 left-2 text-[10px] font-semibold text-white bg-slate-900/70 backdrop-blur-sm px-2 py-0.5 rounded">Tampak Belakang</span>
+</div>
+<!-- Thumbnail 4: Luggage Trunk Space -->
+<div class="relative rounded-xl overflow-hidden cursor-pointer group/thumb" onclick="swapPhoto(this)">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-110" data-alt="Open rear trunk of Toyota Innova Zenix loaded with three modern hard-shell traveler suitcases and two duffel bags demonstrating immense cargo capacity and flat folding rear row flexibility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaAd_szB4hr7_2O8fgmEjf8JYWlFB_pTwtGPaFsopobiiCTZUzIk801-917YRe8ld5Ij3BnFHXWoLluSNV5RqJBtnlTz9YpXKMXypSWcOcMP4tkcIS3u0241Y8JMDHOTqWGoGgpxVAbEJ7h57A3i6NRJcG8FjjaLa8cH04z1iSIwrK3ijlJZnjQQzkDdSmv0NM77VU8Xy0kCxobkMicdMxV2SjXo3fQhqg8Rku3JQ65x2k0QkpKooRjg">
+<div class="absolute inset-0 bg-slate-900/40 group-hover/thumb:bg-slate-900/20 transition-colors"></div>
+<span class="absolute bottom-2 left-2 text-[10px] font-semibold text-white bg-slate-900/70 backdrop-blur-sm px-2 py-0.5 rounded">Kapasitas Bagasi</span>
+</div>
+</div>
+</div>
+<!-- Float Badge: View All Photos -->
+<button class="absolute bottom-5 right-5 z-10 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md text-white text-xs font-semibold hover:bg-slate-900 transition-all shadow-lg active:scale-95">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Lihat Semua Foto (8)
+        </button>
+</div>
+<!-- SECTION 4: Two-Column Responsive Layout (Main 65% : Sticky Booking Card 35%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
+<!-- COLUMN LEFT: Specifications, Features, Partner & Policies (lg:col-span-8 / 65%) -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Block A: Quick Specs Bento Grid -->
+<div class="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-base sm:text-lg font-bold text-slate-900">Spesifikasi Kendaraan</h2>
+<span class="text-xs text-blue-600 font-semibold bg-blue-50 px-2.5 py-1 rounded-md">Reguler &amp; Wisata</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<!-- Spec 1: Kapasitas -->
+<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 hover:bg-blue-50/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="min-w-0">
+<p class="text-[11px] text-slate-400 font-medium">Kapasitas</p>
+<p class="text-sm font-bold text-slate-800 truncate">7 Penumpang</p>
+</div>
+</div>
+<!-- Spec 2: Transmisi -->
+<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 hover:bg-blue-50/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="min-w-0">
+<p class="text-[11px] text-slate-400 font-medium">Transmisi</p>
+<p class="text-sm font-bold text-slate-800 truncate">Otomatis (CVT)</p>
+</div>
+</div>
+<!-- Spec 3: Bahan Bakar -->
+<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 hover:bg-blue-50/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="min-w-0">
+<p class="text-[11px] text-slate-400 font-medium">Bahan Bakar</p>
+<p class="text-sm font-bold text-slate-800 truncate">Bensin (1:15 km/l)</p>
+</div>
+</div>
+<!-- Spec 4: Bagasi -->
+<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 hover:bg-blue-50/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="min-w-0">
+<p class="text-[11px] text-slate-400 font-medium">Bagasi</p>
+<p class="text-sm font-bold text-slate-800 truncate">3 Koper + 2 Tas</p>
+</div>
+</div>
+<!-- Spec 5: Tahun Model -->
+<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 hover:bg-blue-50/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="min-w-0">
+<p class="text-[11px] text-slate-400 font-medium">Tahun Rakit</p>
+<p class="text-sm font-bold text-slate-800 truncate">2023 / 2024</p>
+</div>
+</div>
+<!-- Spec 6: Sistem AC -->
+<div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 hover:bg-blue-50/50 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="min-w-0">
+<p class="text-[11px] text-slate-400 font-medium">Pendingin Udara</p>
+<p class="text-sm font-bold text-slate-800 truncate">Dual Zone Climate</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Block B: Full Feature List -->
+<div class="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+<h2 class="text-base sm:text-lg font-bold text-slate-900">Fasilitas &amp; Fitur Unggulan</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Apple CarPlay &amp; Android Auto (Wireless)</span>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Kamera Mundur + Sensor Parkir 4 Titik</span>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Audio Bluetooth 6-Speaker Jernih</span>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Fast USB Type-C Charging Ports Tiap Baris</span>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Dashcam Depan &amp; Belakang (Keamanan Rekaman)</span>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Kotak P3K Lengkap &amp; Hand Sanitizer Baru</span>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Asuransi All Risk Komprehensif Resmi</span>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</div>
+<span class="">Layanan Bantuan Darurat 24 Jam (Emergency Towing)</span>
+</div>
+</div>
+</div>
+<!-- Block C: Rental Partner Profile Card -->
+<div class="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-extrabold text-xl shadow-md shadow-blue-500/20">
+                    NR
+                  </div>
+<span class="absolute -bottom-1 -right-1 bg-amber-400 text-slate-900 rounded-full p-0.5" title="Super Partner">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-lg font-bold text-slate-900">Nusantara Rent</h3>
+<span class="text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      ★ Super Partner
+                    </span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">Sleman, Daerah Istimewa Yogyakarta • Mitra sejak 2021</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-xs sm:text-right border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100">
+<div>
+<p class="text-slate-400 font-medium">Rating Mitra</p>
+<p class="text-sm font-bold text-slate-800">4.9 / 5.0 (190 order)</p>
+</div>
+<div>
+<p class="text-slate-400 font-medium">Balas Chat</p>
+<p class="text-sm font-bold text-emerald-600">&lt; 10 menit</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 text-xs text-slate-600">
+<div class="flex items-start gap-2 p-3 bg-slate-50 rounded-xl">
+<svg class="w-4 h-4 text-blue-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<div>
+<p class="font-semibold text-slate-800">Jam Operasional</p>
+<p class="text-slate-500">Setiap Hari: 06.00 - 23.00 WIB</p>
+</div>
+</div>
+<div class="flex items-start gap-2 p-3 bg-slate-50 rounded-xl">
+<svg class="w-4 h-4 text-blue-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<div>
+<p class="font-semibold text-slate-800">Lokasi Antar / Ambil</p>
+<p class="text-slate-500">Garasi Sleman, Stasiun Tugu, YIA &amp; Hotel Kota</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Block D: Interactive Rental Policies & Terms (Tabs / Collapsible Accordion) -->
+<div class="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+<h2 class="text-base sm:text-lg font-bold text-slate-900">Ketentuan &amp; Kebijakan Sewa</h2>
+<div class="space-y-3">
+<!-- Item 1: Syarat Lepas Kunci -->
+<div class="border border-slate-100 rounded-xl overflow-hidden transition-colors">
+<button class="w-full flex items-center justify-between p-4 bg-slate-50/70 hover:bg-slate-50 text-left font-semibold text-slate-800 text-sm transition-colors" onclick="toggleAccordion('policy-1', 'arrow-1')">
+<span class="flex items-center gap-2">
+<svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                    Persyaratan Sewa Lepas Kunci (Self-Drive)
+                  </span>
+<svg class="w-4 h-4 text-slate-400 transition-transform duration-200" fill="none" id="arrow-1" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="p-4 text-xs leading-relaxed text-slate-600 space-y-2 bg-white" id="policy-1">
+<p class="">1. Wajib memiliki dan menunjukkan <strong>KTP Elektronik Asli</strong> pemesan saat penyerahan unit.</p>
+<p class="">2. <strong>SIM A aktif</strong> penyewa utama yang masih berlaku minimal 3 bulan ke depan.</p>
+<p class="">3. Dokumen pendukung sekunder (Pilih salah satu): Kartu BPJS / Kartu Keluarga / ID Karyawan / Akun Media Sosial aktif.</p>
+<p class="">4. Uang jaminan keamanan / deposit Rp 500.000 yang akan ditransfer kembali secara <strong>otomatis dalam 1x24 jam</strong> setelah mobil kembali dalam kondisi baik.</p>
+</div>
+</div>
+<!-- Item 2: Kebijakan Pembatalan -->
+<div class="border border-slate-100 rounded-xl overflow-hidden transition-colors">
+<button class="w-full flex items-center justify-between p-4 bg-slate-50/70 hover:bg-slate-50 text-left font-semibold text-slate-800 text-sm transition-colors" onclick="toggleAccordion('policy-2', 'arrow-2')">
+<span class="flex items-center gap-2">
+<svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                    Kebijakan Pembatalan &amp; Pengembalian Dana
+                  </span>
+<svg class="w-4 h-4 text-slate-400 transition-transform duration-200" fill="none" id="arrow-2" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 text-xs leading-relaxed text-slate-600 space-y-2 bg-white" id="policy-2">
+<p class="text-emerald-700 font-semibold">• Gratis Pembatalan Penuh (100% Refund): Hingga 24 jam sebelum jadwal mulai sewa.</p>
+<p class="">• Pembatalan dalam kurun waktu kurang dari 24 jam dikenakan biaya administrasi sewa 1 hari.</p>
+<p class="">• Reschedule jadwal tanggal sewa dapat dilakukan cuma-cuma jika konfirmasi H-1 sebelum pemakaian armada.</p>
+</div>
+</div>
+<!-- Item 3: Kebijakan Penggunaan Mobil -->
+<div class="border border-slate-100 rounded-xl overflow-hidden transition-colors">
+<button class="w-full flex items-center justify-between p-4 bg-slate-50/70 hover:bg-slate-50 text-left font-semibold text-slate-800 text-sm transition-colors" onclick="toggleAccordion('policy-3', 'arrow-3')">
+<span class="flex items-center gap-2">
+<svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                    Aturan Pemakaian &amp; Bahan Bakar
+                  </span>
+<svg class="w-4 h-4 text-slate-400 transition-transform duration-200" fill="none" id="arrow-3" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 text-xs leading-relaxed text-slate-600 space-y-2 bg-white" id="policy-3">
+<p class="">• Zona Jelajah: Berlaku untuk wilayah Daerah Istimewa Yogyakarta, Magelang (Candi Borobudur), Klaten, dan Solo.</p>
+<p class="">• <strong>Dilarang keras merokok / vape</strong> di dalam kabin demi higienitas penyewa selanjutnya (denda cleaning Rp 350.000 jika melanggar).</p>
+<p class="">• Bahan Bakar (BBM): Sistem <em>Bar-to-Bar</em> (Kembalikan armada dengan volume indikator bahan bakar yang sama saat serah terima awal).</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Block E: Customer Reviews & Rating Breakdown -->
+<div class="bg-white rounded-2xl p-6 shadow-sm space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-base sm:text-lg font-bold text-slate-900">Ulasan Penyewa</h2>
+<span class="text-xs text-slate-500 font-medium">Berdasarkan 76 perjalanan</span>
+</div>
+<!-- Score Visualizer Ring / Bar -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center bg-blue-50/40 p-4 rounded-xl">
+<div class="md:col-span-4 flex flex-col items-center justify-center text-center sm:border-r border-blue-100 pr-2">
+<span class="text-4xl font-extrabold text-slate-900 tracking-tight">4.9</span>
+<div class="flex items-center gap-1 text-amber-400 my-1">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+</div>
+<p class="text-xs text-slate-500 font-medium">98% penyewa puas</p>
+</div>
+<!-- Rating Sub-Bars -->
+<div class="md:col-span-8 space-y-2 text-xs">
+<div>
+<div class="flex justify-between mb-1">
+<span class="text-slate-600 font-medium">Kebersihan Kabin</span>
+<span class="font-bold text-slate-800">4.9 / 5.0</span>
+</div>
+<div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+<div class="bg-blue-600 h-2 rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="text-slate-600 font-medium">Ketepatan Waktu Antar Unit</span>
+<span class="font-bold text-slate-800">5.0 / 5.0</span>
+</div>
+<div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+<div class="bg-blue-600 h-2 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="text-slate-600 font-medium">Kondisi Mesin &amp; Kenyamanan</span>
+<span class="font-bold text-slate-800">4.9 / 5.0</span>
+</div>
+<div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+<div class="bg-blue-600 h-2 rounded-full" style="width: 96%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Individual Review Cards -->
+<div class="space-y-4 pt-2">
+<!-- Review 1 -->
+<div class="p-4 rounded-xl bg-slate-50 space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs">
+                      AP
+                    </div>
+<div>
+<p class="text-xs font-bold text-slate-900">Aditya Pratama</p>
+<p class="text-[10px] text-slate-400">Jakarta • Sewa Lepas Kunci 3 Hari</p>
+</div>
+</div>
+<span class="text-[10px] text-slate-400">2 hari lalu</span>
+</div>
+<div class="flex items-center gap-1 text-amber-400">
+<span class="text-xs font-bold text-slate-800 mr-1">5.0</span>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+                  "Mobil wangi banget, serah terima langsung di Stasiun Tugu tepat waktu. Zenix V CVT ini super empuk buat keliling Jogja sama keluarga 6 orang. Bensin juga irit parah. Rekomen banget Nusantara Rent!"
+                </p>
+</div>
+<!-- Review 2 -->
+<div class="p-4 rounded-xl bg-slate-50 space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
+                      SW
+                    </div>
+<div>
+<p class="text-xs font-bold text-slate-900">Siti Wulandari</p>
+<p class="text-[10px] text-slate-400">Surabaya • Sewa Dengan Sopir 2 Hari</p>
+</div>
+</div>
+<span class="text-[10px] text-slate-400">1 minggu lalu</span>
+</div>
+<div class="flex items-center gap-1 text-amber-400">
+<span class="text-xs font-bold text-slate-800 mr-1">5.0</span>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path></svg>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+                  "Pak Bambang sopirnya sangat ramah, paham rute kuliner tersembunyi di Jogja dan cara bawanya halus sekali. Anak-anak tidur nyenyak di perjalanan ke Kaliurang. Mantap RentaKu!"
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMN RIGHT: Sticky Booking Card (lg:col-span-4 / 35%) -->
+<div class="lg:col-span-4 sticky top-28 space-y-4">
+<div class="bg-white rounded-2xl p-5 sm:p-6 shadow-xl border border-blue-50 relative overflow-hidden">
+<!-- Promo banner tag -->
+<div class="absolute -right-12 top-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-extrabold uppercase py-1 px-12 rotate-45 shadow-sm">
+              Hemat 10%
+            </div>
+<!-- Price Display Header -->
+<div class="border-b border-slate-100 pb-4">
+<p class="text-xs text-slate-400 font-medium">Harga Sewa Mulai Dari</p>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="text-2xl sm:text-3xl font-extrabold text-blue-600" id="display-price-rate">Rp 700.000</span>
+<span class="text-xs font-semibold text-slate-500">/ hari</span>
+</div>
+<p class="text-[11px] text-emerald-600 font-medium mt-1">Diskon 10% otomatis jika sewa lebih dari 3 hari</p>
+</div>
+<!-- Booking Form -->
+<form class="pt-4 space-y-4" id="booking-form" onsubmit="event.preventDefault();">
+<!-- Service Type Switcher (Lepas Kunci vs Dengan Sopir) -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-2">Tipe Layanan Rental</label>
+<div class="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-xl">
+<button class="py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-blue-600" id="opt-self" onclick="selectService('self')" type="button">
+                    Lepas Kunci
+                  </button>
+<button class="py-2 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900" id="opt-driver" onclick="selectService('driver')" type="button">
+                    + Sopir (+150k)
+                  </button>
+</div>
+</div>
+<!-- Pickup Location -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Lokasi Pengambilan / Antar</label>
+<div class="relative">
+<select class="w-full text-xs font-medium text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none appearance-none pr-8" id="pickup-location">
+<option value="stasiun_tugu">Stasiun Tugu Yogyakarta (Gratis Antar)</option>
+<option value="bandara_yia">Bandara YIA Kulon Progo (Gratis Antar)</option>
+<option value="stasiun_lempuyangan">Stasiun Lempuyangan (Gratis Antar)</option>
+<option value="hotel_kota">Antar ke Hotel (Area Kota Yogyakarta)</option>
+<option value="garasi_mitra">Ambil di Garasi Mitra (Sleman)</option>
+</select>
+<svg class="w-4 h-4 text-slate-400 absolute right-3 top-3 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Schedule Grid (Date Pickers) -->
+<div class="grid grid-cols-2 gap-2.5">
+<div>
+<label class="block text-[11px] font-bold text-slate-700 mb-1">Mulai Sewa</label>
+<input class="w-full text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-blue-600 outline-none" id="start-date" onchange="recalculateTotal()" type="date" value="2024-11-20">
+<div class="mt-1">
+<select class="w-full text-[11px] text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 outline-none">
+<option>09:00 WIB</option>
+<option>10:00 WIB</option>
+<option>12:00 WIB</option>
+<option>14:00 WIB</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-[11px] font-bold text-slate-700 mb-1">Selesai Sewa</label>
+<input class="w-full text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-blue-600 outline-none" id="end-date" onchange="recalculateTotal()" type="date" value="2024-11-22">
+<div class="mt-1">
+<select class="w-full text-[11px] text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 outline-none">
+<option>09:00 WIB</option>
+<option>10:00 WIB</option>
+<option>12:00 WIB</option>
+<option>14:00 WIB</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Add-ons / Optional Checkboxes -->
+
+<!-- Real-time Cost Breakdown Calculation -->
+<div class="bg-slate-50 p-3.5 rounded-xl space-y-2 text-xs border border-slate-100">
+<div class="flex justify-between text-slate-600">
+<span id="label-calc-base" class="">Sewa Kendaraan (2 Hari x Rp 700.000)</span>
+<span class="font-semibold text-slate-800" id="val-calc-base">Rp 1.400.000</span>
+</div>
+<div class="flex justify-between text-slate-600">
+<span class="">Layanan Antar-Jemput</span>
+<span class="font-semibold text-emerald-600">GRATIS</span>
+</div>
+<div class="flex justify-between text-slate-600">
+<span class="">Biaya Layanan &amp; Pajak</span>
+<span class="font-semibold text-slate-800">Rp 15.000</span>
+</div>
+<div class="hidden justify-between text-slate-600" id="row-driver-fee">
+<span class="">Biaya Pengemudi (2 Hari)</span>
+<span class="font-semibold text-slate-800" id="val-driver-fee">Rp 300.000</span>
+</div>
+<div class="hidden justify-between text-slate-600" id="row-extra-insurance">
+<span class="">Proteksi Ekstra</span>
+<span class="font-semibold text-slate-800">Rp 50.000</span>
+</div>
+<div class="justify-between text-slate-600 flex" id="row-child-seat">
+<span class="">Child Car Seat</span>
+<span class="font-semibold text-slate-800">Rp 35.000</span>
+</div>
+<div class="border-t border-slate-200/80 pt-2 flex justify-between items-center text-sm font-extrabold text-slate-900">
+<span class="">Total Pembayaran</span>
+<span class="text-blue-600 text-lg" id="val-total-amount">Rp 1.450.000</span>
+</div>
+</div>
+<!-- Main Action CTA Buttons -->
+<div class="space-y-2 pt-1">
+<button class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-500/25 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2" onclick="triggerBookingAlert()" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                  Booking Sekarang
+                </button>
+<a class="w-full py-2.5 px-4 rounded-xl border border-emerald-500/30 hover:bg-emerald-50 text-emerald-700 font-semibold text-xs transition-colors flex items-center justify-center gap-2" href="https://wa.me/6281234567890?text=Halo%20Nusantara%20Rent,%20saya%20tertarik%20sewa%20Innova%20Zenix" rel="noopener" target="_blank">
+<svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"></path>
+</svg>
+                  Tanya Mitra (Chat WhatsApp)
+                </a>
+</div>
+<!-- Security & Guarantee Footnote -->
+<div class="pt-3 border-t border-slate-100 flex items-start gap-2.5 text-[11px] text-slate-500">
+<div class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<p class="leading-snug">
+<strong class="text-slate-700">Pembayaran Aman &amp; Bebas Penipuan.</strong> Uang disimpan di Escrow RentaKu dan baru diserahkan ke mitra setelah armada Anda terima dengan sesuai.
+                </p>
+</div>
+</form>
+</div>
+<!-- Fast Customer Assurance Card -->
+<div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-4 text-white shadow-md flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="text-xs font-bold">Butuh Sopir Luar Kota?</p>
+<p class="text-[11px] text-blue-100">Tersedia rute Dieng, Bromo, Semarang</p>
+</div>
+<button class="px-3 py-1.5 bg-white text-blue-700 font-bold rounded-lg text-xs hover:bg-blue-50 transition-colors shrink-0">
+              Konsultasi
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Client-side Scripting -->
+<script>
+  let currentServiceType = 'self'; // 'self' or 'driver'
+  const BASE_PRICE_SELF = 700000;
+  const DRIVER_PRICE_PER_DAY = 150000;
+  const SERVICE_FEE = 15000;
+  let isWishlisted = false;
+
+  function toggleWishlist() {
+    isWishlisted = !isWishlisted;
+    const icon = document.getElementById('wishlist-icon');
+    const text = document.getElementById('wishlist-text');
+    if (isWishlisted) {
+      icon.classList.remove('text-slate-400');
+      icon.classList.add('text-red-500', 'fill-red-500');
+      text.textContent = 'Tersimpan';
+    } else {
+      icon.classList.remove('text-red-500', 'fill-red-500');
+      icon.classList.add('text-slate-400');
+      text.textContent = 'Simpan';
+    }
+  }
+
+  function swapPhoto(element) {
+    const mainImg = document.getElementById('main-preview-img');
+    const clickedImg = element.querySelector('img');
+    if (mainImg && clickedImg) {
+      const tempSrc = mainImg.src;
+      const tempAlt = mainImg.getAttribute('data-alt');
+      mainImg.src = clickedImg.src;
+      mainImg.setAttribute('data-alt', clickedImg.getAttribute('data-alt') || '');
+      clickedImg.src = tempSrc;
+      clickedImg.setAttribute('data-alt', tempAlt || '');
+    }
+  }
+
+  function selectService(type) {
+    currentServiceType = type;
+    const btnSelf = document.getElementById('opt-self');
+    const btnDriver = document.getElementById('opt-driver');
+    const displayRate = document.getElementById('display-price-rate');
+
+    if (type === 'self') {
+      btnSelf.className = "py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-blue-600";
+      btnDriver.className = "py-2 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900";
+      displayRate.textContent = "Rp 700.000";
+    } else {
+      btnDriver.className = "py-2 text-xs font-bold rounded-lg transition-all shadow-sm bg-white text-blue-600";
+      btnSelf.className = "py-2 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900";
+      displayRate.textContent = "Rp 850.000";
+    }
+    recalculateTotal();
+  }
+
+  function toggleAccordion(contentId, arrowId) {
+    const content = document.getElementById(contentId);
+    const arrow = document.getElementById(arrowId);
+    if (!content || !arrow) return;
+
+    if (content.classList.contains('hidden')) {
+      content.classList.remove('hidden');
+      arrow.classList.add('rotate-180');
+    } else {
+      content.classList.add('hidden');
+      arrow.classList.remove('rotate-180');
+    }
+  }
+
+  function recalculateTotal() {
+    const startDateInput = document.getElementById('start-date');
+    const endDateInput = document.getElementById('end-date');
+    const chkInsurance = document.getElementById('chk-insurance');
+    const chkSeat = document.getElementById('chk-seat');
+
+    const d1 = new Date(startDateInput.value || '2024-11-20');
+    const d2 = new Date(endDateInput.value || '2024-11-22');
+    
+    // Calculate difference in days (min 1 day)
+    let timeDiff = d2.getTime() - d1.getTime();
+    let days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    if (isNaN(days) || days < 1) days = 1;
+
+    let baseRate = BASE_PRICE_SELF;
+    let baseTotal = baseRate * days;
+
+    // 10% promo discount if rental > 3 days
+    if (days >= 4) {
+      baseTotal = baseTotal * 0.9;
+    }
+
+    let driverTotal = 0;
+    const rowDriver = document.getElementById('row-driver-fee');
+    if (currentServiceType === 'driver') {
+      driverTotal = DRIVER_PRICE_PER_DAY * days;
+      rowDriver.classList.remove('hidden');
+      rowDriver.classList.add('flex');
+      document.getElementById('val-driver-fee').textContent = "Rp " + driverTotal.toLocaleString('id-ID');
+    } else {
+      rowDriver.classList.add('hidden');
+      rowDriver.classList.remove('flex');
+    }
+
+    let extraInsurance = 0;
+    const rowInsurance = document.getElementById('row-extra-insurance');
+    if (chkInsurance && chkInsurance.checked) {
+      extraInsurance = 50000;
+      rowInsurance.classList.remove('hidden');
+      rowInsurance.classList.add('flex');
+    } else {
+      rowInsurance.classList.add('hidden');
+      rowInsurance.classList.remove('flex');
+    }
+
+    let extraSeat = 0;
+    const rowSeat = document.getElementById('row-child-seat');
+    if (chkSeat && chkSeat.checked) {
+      extraSeat = 35000;
+      rowSeat.classList.remove('hidden');
+      rowSeat.classList.add('flex');
+    } else {
+      rowSeat.classList.add('hidden');
+      rowSeat.classList.remove('flex');
+    }
+
+    const grandTotal = baseTotal + driverTotal + SERVICE_FEE + extraInsurance + extraSeat;
+
+    // Update labels
+    document.getElementById('label-calc-base').textContent = `Sewa Kendaraan (${days} Hari x Rp ${baseRate.toLocaleString('id-ID')})`;
+    document.getElementById('val-calc-base').textContent = "Rp " + baseTotal.toLocaleString('id-ID');
+    document.getElementById('val-total-amount').textContent = "Rp " + grandTotal.toLocaleString('id-ID');
+  }
+
+  function triggerBookingAlert() {
+    alert("Pesanan Innova Zenix Anda diproses! Menuju ke sistem pembayaran aman RentaKu.");
+  }
+</script></main>
+<!-- BEGIN: MainFooter -->
+<footer class="w-full bg-white border-t border-slate-200 pt-12 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Top 5 Columns -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-slate-100">
+<!-- Column 1: Brand & Slogan (4 cols) -->
+<div class="lg:col-span-4 space-y-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-sm">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+</div>
+<span class="text-xl font-extrabold text-slate-900">Renta<span class="text-blue-600">Ku</span></span>
+</div>
+<p class="text-xs text-slate-500 leading-relaxed max-w-sm">
+            Marketplace penyewaan mobil dan motor dari mitra terpercaya di seluruh Indonesia. Solusi perjalanan praktis dan transparan.
+          </p>
+</div>
+<!-- Column 2: Menu (2 cols) -->
+<div class="lg:col-span-2 space-y-3">
+<h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Menu</h5>
+<ul class="space-y-2 text-xs text-slate-500">
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Beranda</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Sewa Mobil</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Sewa Motor</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Mitra Rental</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Tentang Kami</a></li>
+</ul>
+</div>
+<!-- Column 3: Bantuan (2 cols) -->
+<div class="lg:col-span-2 space-y-3">
+<h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Bantuan</h5>
+<ul class="space-y-2 text-xs text-slate-500">
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Pusat Bantuan</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Syarat &amp; Ketentuan</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Kebijakan Privasi</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">Hubungi Kami</a></li>
+<li class=""><a class="hover:text-blue-600 transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<!-- Column 4: Hubungi Kami (2 cols) -->
+<div class="lg:col-span-2 space-y-3">
+<h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Hubungi Kami</h5>
+<ul class="space-y-2 text-xs text-slate-500">
+<li class="flex items-center gap-2">
+<svg class="w-3.5 h-3.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">cs@rentaku.id</span>
+</li>
+<li class="flex items-center gap-2">
+<svg class="w-3.5 h-3.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">+62 812-3456-7890</span>
+</li>
+<li class="flex items-start gap-2">
+<svg class="w-3.5 h-3.5 text-blue-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Jl. Sudirman No. 123, Jakarta Pusat</span>
+</li>
+</ul>
+</div>
+<!-- Column 5: Ikuti Kami & Download Aplikasi (2 cols) -->
+<div class="lg:col-span-2 space-y-4">
+<div>
+<h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Ikuti Kami</h5>
+<div class="flex items-center gap-2 text-slate-500">
+<!-- IG -->
+<a class="w-7 h-7 rounded-full bg-slate-100 hover:bg-pink-50 hover:text-pink-600 flex items-center justify-center transition-colors" href="#">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<!-- FB -->
+<a class="w-7 h-7 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition-colors" href="#">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"></path></svg>
+</a>
+<!-- YT -->
+<a class="w-7 h-7 rounded-full bg-slate-100 hover:bg-red-50 hover:text-red-600 flex items-center justify-center transition-colors" href="#">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+</a>
+<!-- LinkedIn -->
+<a class="w-7 h-7 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-sky-600 flex items-center justify-center transition-colors" href="#">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Download Aplikasi</h5>
+<div class="flex flex-col gap-1.5">
+<a class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186c-.198-.198-.31-.476-.31-.786V2.6c0-.31.112-.588.309-.786zm11.238 11.238l2.67-2.67-12.84-7.414 10.17 10.084zm0 1.896L4.677 25.032l12.84-7.414-2.67-2.67zm1.848-1.054l3.18-1.837c.654-.378.654-.994 0-1.372l-3.18-1.837-1.53 1.53 1.53 1.516z"></path></svg>
+<div class="text-left">
+<span class="block text-[8px] leading-tight text-slate-400">GET IT ON</span>
+<span class="block text-[10px] font-bold leading-tight">Google Play</span>
+</div>
+</a>
+<a class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.77 1.06-1.85.94-2.92-.93.04-2.07.62-2.73 1.39-.58.67-1.1 1.77-.96 2.82 1.04.08 2.12-.52 2.75-1.29z"></path></svg>
+<div class="text-left">
+<span class="block text-[8px] leading-tight text-slate-400">Download on the</span>
+<span class="block text-[10px] font-bold leading-tight">App Store</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Copyright & Legal Links -->
+<div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
+<p class="">© 2024 RentaKu. Semua hak dilindungi.</p>
+<div class="flex items-center gap-4">
+<a class="hover:text-slate-600 transition-colors" href="#">Privasi</a>
+<span class="">•</span>
+<a class="hover:text-slate-600 transition-colors" href="#">Syarat &amp; Ketentuan</a>
+<span class="">•</span>
+<a class="hover:text-slate-600 transition-colors" href="#">Peta Situs</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+
+
+
+
+
+
+
+
+</body></html>

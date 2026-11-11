@@ -1,0 +1,659 @@
+<!DOCTYPE html><html lang="id" style="width: 1280px; height: 2076px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>RentaKu - Marketplace Rental Kendaraan</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Outfit:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary": "#0053cd",
+          "tertiary-fixed": "#63fcc0",
+          "tertiary-container": "#002b1c",
+          "on-secondary-container": "#fefcff",
+          "on-tertiary": "#ffffff",
+          "on-surface-variant": "#44474e",
+          "primary-fixed-dim": "#b4c6f2",
+          "surface": "#f7f9fb",
+          "primary": "#000f2b",
+          "outline": "#75777f",
+          "on-error-container": "#93000a",
+          "surface-tint": "#4c5e84",
+          "background": "#f7f9fb",
+          "surface-container": "#eceef0",
+          "on-primary-fixed": "#051a3d",
+          "surface-variant": "#e0e3e5",
+          "surface-container-low": "#f2f4f6",
+          "on-tertiary-fixed-variant": "#005138",
+          "on-error": "#ffffff",
+          "error": "#ba1a1a",
+          "on-secondary": "#ffffff",
+          "on-secondary-fixed": "#001848",
+          "on-primary-container": "#7a8cb5",
+          "error-container": "#ffdad6",
+          "on-primary-fixed-variant": "#34466b",
+          "secondary-container": "#186bfa",
+          "outline-variant": "#c5c6cf",
+          "surface-container-high": "#e6e8ea",
+          "inverse-primary": "#b4c6f2",
+          "tertiary-fixed-dim": "#3fdfa5",
+          "secondary-fixed-dim": "#b2c5ff",
+          "on-primary": "#ffffff",
+          "on-tertiary-container": "#009f71",
+          "inverse-on-surface": "#eff1f3",
+          "primary-container": "#102447",
+          "on-surface": "#191c1e",
+          "surface-dim": "#d8dadc",
+          "surface-bright": "#f7f9fb",
+          "surface-container-lowest": "#ffffff",
+          "on-background": "#191c1e",
+          "on-tertiary-fixed": "#002114",
+          "tertiary": "#00130a",
+          "secondary-fixed": "#dae2ff",
+          "surface-container-highest": "#e0e3e5",
+          "on-secondary-fixed-variant": "#0040a1",
+          "inverse-surface": "#2d3133",
+          "primary-fixed": "#d8e2ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "space-xs": "0.25rem",
+          "space-lg": "1.5rem",
+          "gutter-mobile": "1rem",
+          "space-xl": "2rem",
+          "margin": "2rem",
+          "space-2xl": "3rem",
+          "margin-mobile": "1rem",
+          "space-sm": "0.5rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "label-sm": ["Hanken Grotesk"],
+          "body-sm": ["Hanken Grotesk"],
+          "body-lg-bold": ["Hanken Grotesk"],
+          "headline-lg": ["Outfit"],
+          "label-md": ["Hanken Grotesk"],
+          "headline-xl": ["Outfit"],
+          "headline-xl-mobile": ["Outfit"],
+          "body-md": ["Hanken Grotesk"],
+          "headline-md": ["Outfit"],
+          "body-md-medium": ["Hanken Grotesk"],
+          "headline-lg-mobile": ["Outfit"],
+          "headline-sm": ["Outfit"],
+          "body-lg": ["Hanken Grotesk"]
+        },
+        "fontSize": {
+          "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+          "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}],
+          "body-lg-bold": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+          "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-xl-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+          "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+          "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "body-md-medium": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "500"}],
+          "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "headline-sm": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @layer base {
+    html {
+      font-family: 'Hanken Grotesk', sans-serif;
+      background-color: #f7f9fb;
+      color: #191c1e;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      min-height: 100vh;
+      margin: 0;
+    }
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+<meta content="web_standard" name="shell-type">
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- BEGIN: TopNavigationBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_2px_8px_-2px_rgba(16,36,71,0.06)]">
+<div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2.5 focus:outline-none" href="#">
+<div class="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-on-secondary shadow-md shadow-secondary/20">
+<span class="material-symbols-outlined text-2xl">directions_car</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-tight">Renta<span class="text-secondary">Ku</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sewa Terpercaya</span>
+</div>
+</a>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-secondary font-body-md-medium border-b-2 border-secondary pb-1">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" data-path="beranda" href="#">Beranda</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" data-path="sewa-mobil" href="#">Sewa Mobil</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" data-path="sewa-motor" href="#">Sewa Motor</a>
+
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" data-path="bantuan-mitra" href="#">Mitra Rental</a>
+</nav>
+<!-- User Profile Right Action -->
+<div class="flex items-center gap-space-md">
+<a class="p-2 text-on-surface-variant hover:text-secondary transition-colors rounded-full relative" href="#">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</a>
+<div class="h-8 w-[1px] bg-outline-variant hidden sm:block"></div>
+<a class="flex items-center gap-2.5 p-1.5 pl-2 rounded-full hover:bg-surface-container-low transition-colors" href="#">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-body-lg-bold text-label-md overflow-hidden">
+<span class="material-symbols-outlined text-xl">person</span>
+</div>
+<div class="hidden sm:flex flex-col text-left pr-1.5">
+<span class="font-body-md-medium text-body-md-medium text-primary leading-tight">Budi Santoso</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Penyewa Terverifikasi</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg hidden sm:block">expand_more</span>
+</a>
+</div>
+</div>
+</header>
+<!-- END: TopNavigationBar -->
+<main class="pt-20">
+<div class="flex flex-col w-full">
+<div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter py-space-lg w-full">
+<!-- Top Breadcrumb -->
+
+<!-- Header & Summary Highlights -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div class="space-y-space-xs max-w-2xl">
+
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Pesanan Saya</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Pantau status pemesanan, tiket digital, jadwal serah terima kendaraan, dan riwayat rental Anda secara transparan.
+        </p>
+</div>
+<!-- 3 Summary Mini Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm w-full lg:w-auto shrink-0">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_2px_8px_-2px_rgba(16,36,71,0.06)] flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-lg bg-secondary-fixed text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">commute</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Total Rental</span>
+<span class="font-headline-sm text-headline-sm text-primary">4 Pesanan</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_2px_8px_-2px_rgba(16,36,71,0.06)] flex items-center gap-space-md bg-gradient-to-br from-surface-container-lowest to-error-container/20">
+<div class="w-11 h-11 rounded-lg bg-error-container text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">pending_actions</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-error font-body-md-medium block uppercase tracking-wider">Menunggu Bayar</span>
+<span class="font-headline-sm text-headline-sm text-primary">1 Tagihan</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_2px_8px_-2px_rgba(16,36,71,0.06)] flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Garansi Unit</span>
+<span class="font-headline-sm text-headline-sm text-primary">100% Terverifikasi</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_2px_8px_-2px_rgba(16,36,71,0.04)] mb-space-lg space-y-space-md">
+
+<!-- Status Filter Pill Tabs -->
+
+</div>
+<!-- Main 2-Column Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- LEFT COLUMN: Bookings List (Approx 70%) -->
+<div class="lg:col-span-8 space-y-space-lg">
+<!-- CARD 1: MENUNGGU PEMBAYARAN -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_2px_12px_-2px_rgba(16,36,71,0.06)] overflow-hidden transition-all hover:shadow-[0_8px_24px_-4px_rgba(16,36,71,0.1)]">
+<!-- Countdown Warning Banner -->
+<div class="bg-error-container text-on-error-container px-space-md py-2.5 flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl text-error animate-pulse">timer</span>
+<span class="font-body-md-medium text-body-md text-error leading-tight">Selesaikan pembayaran sebelum batas waktu berakhir</span>
+</div>
+<div class="flex items-center gap-1 font-label-md text-label-md bg-surface-container-lowest/80 text-error px-2.5 py-1 rounded-md shadow-xs">
+<span class="">Sisa Waktu:</span>
+<span class="font-body-lg-bold" id="countdown-timer">00:00</span>
+</div>
+</div>
+<div class="p-space-lg space-y-space-md">
+<!-- Card Header Meta -->
+<div class="flex flex-wrap items-center justify-between gap-2 pb-space-sm bg-surface-container-lowest">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase tracking-wide">Sewa Mobil Lepas Kunci</span>
+<span class="font-body-md-medium text-body-md text-primary font-mono font-bold">#RNK-20241120-0089</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">• Dipesan 20 Nov 2024, 08:30 WIB</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+                Menunggu Pembayaran
+              </span>
+</div>
+<!-- Partner Info Strip -->
+<div class="flex items-center justify-between py-2 px-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">store</span>
+<span class="font-body-md-medium text-body-md text-primary">Nusantara Rent (Yogyakarta)</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span> Super Partner
+                </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-primary font-bold">4.9</span>
+<span class="text-outline text-xs">(320+ Ulasan)</span>
+</div>
+</div>
+<!-- Vehicle & Schedule Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<div class="md:col-span-4 rounded-xl overflow-hidden aspect-[16/10] bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Modern dark gray Toyota Innova Zenix 2.0 MPV parked on a sleek clean urban studio platform with elegant soft reflections, professional cinematic lighting in navy and cool silver tones, crisp commercial vehicle automotive photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDddcvUJkyDfPVn8ySKO_mlZWKae7KpBR_QYcTOjv2Fr-pj9GQ1Bat1YY-M78f4OavWuhS_RBnJJCK4IzDb8cW7vMHwuO22TFc5EZKOYVEwjz-IQmQL97Ckz5YHGee7LKpgAT41ufHaphZKuMU6RNKNEUH7t4rq6E3kzR64cYMNKSuZea1UGJeshV9PCnyimuodr4g3rOM01WecvI0A9YS50FeZYwyMC1HVSiR-MJJWjC38eRimoFkgXA">
+<span class="absolute top-2 left-2 bg-primary/80 backdrop-blur-sm text-on-primary px-2 py-0.5 rounded text-label-sm font-label-sm">2023 - 2024</span>
+</div>
+<div class="md:col-span-8 space-y-2.5">
+<h3 class="font-headline-md text-headline-md text-primary">Toyota Innova Zenix 2.0 V CVT</h3>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Matic CVT</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">7 Kursi</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Bensin (Irit)</span>
+<span class="px-2.5 py-1 rounded bg-tertiary-fixed/30 text-on-tertiary-fixed-variant font-body-sm text-body-sm font-medium">Bebas Antar Stasiun/Bandara</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 font-body-sm text-body-sm">
+<div class="flex items-start gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">calendar_month</span>
+<div>
+<span class="text-outline block text-xs">Jadwal Sewa (2 Hari)</span>
+<span class="text-primary font-body-md-medium">20 Nov (09:00) – 22 Nov (09:00)</span>
+</div>
+</div>
+<div class="flex items-start gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">pin_drop</span>
+<div>
+<span class="text-outline block text-xs">Titik Serah Terima</span>
+<span class="text-primary font-body-md-medium">Stasiun Tugu (Pintu Selatan)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Footer Pricing & Actions -->
+<div class="pt-space-md mt-space-sm bg-surface-container-low -mx-space-lg -mb-space-lg px-space-lg py-space-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div>
+<span class="text-on-surface-variant font-body-sm text-body-sm block">Total Tagihan (Termasuk Asuransi &amp; Pajak):</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md text-primary font-bold">Rp 1.465.000</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/60 px-2 py-0.5 rounded">BCA Virtual Account</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+<button class="px-3.5 py-2.5 rounded-lg font-label-md text-label-md text-outline hover:text-error transition-colors">
+                  Batalkan
+                </button>
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-highest text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+                  Detail Tagihan
+                </button>
+<button class="px-6 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-md shadow-secondary/20 hover:bg-secondary-container transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">payment</span>
+<span class="">Bayar Sekarang</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 2: TERKONFIRMASI & SIAP DIGUNAKAN -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_2px_12px_-2px_rgba(16,36,71,0.06)] overflow-hidden transition-all hover:shadow-[0_8px_24px_-4px_rgba(16,36,71,0.1)]">
+<div class="p-space-lg space-y-space-md">
+<!-- Header Meta -->
+<div class="flex flex-wrap items-center justify-between gap-2 pb-space-sm">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase tracking-wide">Sewa Motor Matic</span>
+<span class="font-body-md-medium text-body-md text-primary font-mono font-bold">#RNK-20241118-0042</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">• Dipesan 18 Nov 2024</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-md text-label-md">
+<span class="material-symbols-outlined text-base">check_circle</span>
+                Terkonfirmasi &amp; Siap
+              </span>
+</div>
+<!-- Partner Strip -->
+<div class="flex items-center justify-between py-2 px-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">two_wheeler</span>
+<span class="font-body-md-medium text-body-md text-primary">Sahabat Motor Bali</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span> Super Partner
+                </span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container-lowest text-secondary font-label-sm text-label-sm hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">chat</span>
+<span class="">Chat WhatsApp Mitra</span>
+</button>
+</div>
+<!-- Vehicle & Schedule Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<div class="md:col-span-4 rounded-xl overflow-hidden aspect-[16/10] bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Matte black Yamaha NMAX 155 Connected motorcycle positioned on modern clean asphalt next to Bali tropical greenery and palm trees at golden hour, sharp high-resolution vehicle details, deep blue and emerald color tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqYZIy5dCoRraQDbsCxnranhn5ClXEghG3dS6cOa76EkU6XdugzD0yc_Nul7aLtgpsRxQMQa0BpZmqF0GcI3C5eeUSneb4VF_V6P_DOsIAz_8lldyK-wpcZP6-Rjm3AuZsdQK8Jc5DmoLDmPk_Cq5CwQ128qn7iOuqHmxImZNCRkdFtomb6f_En1ZzJ01_Ruxaxg-IAIGThzoFIy3n1zNct8Mj1JAnLknYGQHFwDckBIiveT-ZlZUyrg">
+<span class="absolute bottom-2 left-2 bg-emerald-700/90 backdrop-blur-sm text-on-tertiary px-2 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">task_alt</span> Siap Jemput
+                </span>
+</div>
+<div class="md:col-span-8 space-y-2.5">
+<h3 class="font-headline-md text-headline-md text-primary">Yamaha NMAX 155 Connected</h3>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">155cc VVA</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Free 2 Helm SNI</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Jas Hujan Dobel</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Phone Holder</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 font-body-sm text-body-sm">
+<div class="flex items-start gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">date_range</span>
+<div>
+<span class="text-outline block text-xs">Durasi Rental (3 Hari)</span>
+<span class="text-primary font-body-md-medium">24 Nov (10:00) – 27 Nov (10:00)</span>
+</div>
+</div>
+<div class="flex items-start gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">flight_land</span>
+<div>
+<span class="text-outline block text-xs">Lokasi Penyerahan Unit</span>
+<span class="text-primary font-body-md-medium">Bandara Ngurah Rai Bali (Domestik)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="pt-space-md mt-space-sm bg-surface-container-low -mx-space-lg -mb-space-lg px-space-lg py-space-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600">check_circle</span>
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status Pembayaran:</span>
+<span class="font-body-lg-bold text-primary block leading-tight">Lunas via QRIS (Rp 360.000)</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-highest text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">near_me</span>
+<span class="">Petunjuk Penjemputan</span>
+</button>
+<button class="px-5 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-md shadow-secondary/20 hover:bg-secondary-container transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">qr_code_2</span>
+<span class="">Tampilkan E-Voucher / QR</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 3: STATUS SELESAI -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_2px_12px_-2px_rgba(16,36,71,0.06)] overflow-hidden transition-all opacity-95 hover:opacity-100">
+<div class="p-space-lg space-y-space-md">
+<!-- Header Meta -->
+<div class="flex flex-wrap items-center justify-between gap-2 pb-space-sm">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wide">Sewa Mobil + Sopir</span>
+<span class="font-body-md-medium text-body-md text-primary font-mono font-bold">#RNK-20241012-0015</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">• Selesai 14 Okt 2024</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-base text-outline">done_all</span>
+                Perjalanan Selesai
+              </span>
+</div>
+<!-- Partner Strip -->
+<div class="flex items-center justify-between py-2 px-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">drive_eta</span>
+<span class="font-body-md-medium text-body-md text-primary">Maju Jaya Rent (Bandung)</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary text-base">verified</span>
+<span class="">Mitra Terverifikasi</span>
+</div>
+</div>
+<!-- Vehicle & Schedule Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<div class="md:col-span-4 rounded-xl overflow-hidden aspect-[16/10] bg-surface-container relative">
+<img class="w-full h-full object-cover grayscale-[20%]" data-alt="White Honda BR-V Prestige compact crossover driving along a scenic modern suburban road in Bandung, dynamic three-quarter view, high contrast daylight with crisp navy shadows and clear sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwOYqGrbwjPoQX6Q_MpjqQ0TytCAyuawC4jLnG7b15lM74AGdiZRyY3u25tGJxuzWECqpVXdcKjPpYeO7ndIdYwwj1PMy4Dt3_Vez3HUYiNtfJpWSw5aTVIdBWn91XjQJA4p8OkGVPzhWNxRWzUVm-jtQwptistjdBKgw-z1Wq1U_YpDsKM4ZlI8PN8HxnD4WTzNQCGIsyZb2RKgUaPnBwtSK_g1cGQdeTutufGPTi-8zCk8QfBuhDzQ">
+</div>
+<div class="md:col-span-8 space-y-2.5">
+<h3 class="font-headline-md text-headline-md text-primary">Honda BR-V Prestige</h3>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Termasuk Driver Berpengalaman</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">BBM Dalam Kota</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">Kapasitas 6 Penumpang</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 font-body-sm text-body-sm">
+<div class="flex items-start gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-outline text-base shrink-0 mt-0.5">history</span>
+<div>
+<span class="text-outline block text-xs">Jadwal Selesai</span>
+<span class="text-primary font-body-md-medium">12 Okt – 14 Okt 2024</span>
+</div>
+</div>
+<div class="flex items-start gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-outline text-base shrink-0 mt-0.5">payments</span>
+<div>
+<span class="text-outline block text-xs">Total Pembayaran</span>
+<span class="text-primary font-body-md-medium">Rp 800.000 (Lunas)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="pt-space-md mt-space-sm bg-surface-container-low -mx-space-lg -mb-space-lg px-space-lg py-space-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-secondary">security</span>
+<span class="">Garansi deposit telah dikembalikan penuh (15 Okt 2024)</span>
+</div>
+<div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto justify-end">
+<button class="px-3.5 py-2.5 rounded-lg bg-surface-container-highest text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">download</span>
+<span class="">Unduh Invoice PDF</span>
+</button>
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-highest text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">replay</span>
+<span class="">Sewa Lagi</span>
+</button>
+<button class="px-4 py-2.5 rounded-lg bg-amber-500 text-on-primary font-label-md text-label-md hover:bg-amber-600 transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="">Beri Ulasan Mitra</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- RIGHT COLUMN: Sidebar Assistance & Trust (Approx 30%) -->
+<aside class="lg:col-span-4 space-y-space-md">
+<!-- CARD 1: Support & 24h Replacement -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(16,36,71,0.06)] space-y-space-md">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Pusat Bantuan &amp; Garansi 24 Jam</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Tim operasional RentaKu siaga 24/7. Jika unit mengalami kendala teknis atau mogok di perjalanan, kami menjamin penyediaan armada pengganti setara tanpa biaya tambahan.
+            </p>
+</div>
+<div class="space-y-2 pt-space-xs">
+<a class="w-full py-3 px-4 rounded-lg bg-emerald-600 text-on-primary font-label-md text-label-md hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">chat</span>
+<span class="">WhatsApp Concierge 24 Jam</span>
+</a>
+<a class="w-full py-2.5 px-4 rounded-lg bg-surface-container-low text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg text-secondary">phone_in_talk</span>
+<span class="">Hotline Darurat Bebas Pulsa</span>
+</a>
+</div>
+</div>
+<!-- CARD 2: Handover Guide -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_8px_-2px_rgba(16,36,71,0.06)] space-y-space-md">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">fact_check</span>
+</div>
+<h3 class="font-headline-sm text-body-lg-bold text-primary">Panduan Serah Terima</h3>
+</div>
+<ol class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-2.5">
+<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
+<span class="">Tunjukkan <strong>QR E-Voucher</strong> di aplikasi dan kartu identitas <strong>KTP fisik</strong> Anda kepada perwakilan mitra saat serah kunci.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
+<span class="">Lakukan dokumentasi foto/video 360° bodi kendaraan serta posisi indikator BBM &amp; odometer bersama mitra sebelum berangkat.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
+<span class="">Gunakan nomor darurat mekanik resmi mitra yang tertera pada E-Voucher jika membutuhkan panduan fitur saat di jalan.</span>
+</li>
+</ol>
+</div>
+<!-- CARD 3: Escrow / Guarantee Trust -->
+<div class="bg-primary-container text-on-primary rounded-xl p-space-lg shadow-[0_4px_16px_-4px_rgba(16,36,71,0.12)] space-y-3 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-secondary/20 pointer-events-none"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl">shield</span>
+<span class="font-label-md text-label-md text-tertiary-fixed uppercase tracking-wider">Garansi Rekber RentaKu</span>
+</div>
+<h4 class="font-headline-sm text-body-lg-bold text-on-primary">Pembayaran 100% Terproteksi</h4>
+<p class="font-body-sm text-body-sm text-on-primary-container leading-relaxed">
+            Dana sewa Anda tersimpan aman dalam escrow resmi RentaKu. Pembayaran baru diteruskan ke mitra setelah serah terima unit berhasil dilakukan sesuai kondisi pesanan.
+          </p>
+<div class="pt-2 flex items-center gap-2 text-label-sm font-label-sm text-primary-fixed-dim">
+<span class="material-symbols-outlined text-base">lock</span>
+<span class="">Enkripsi 256-bit standar PCI-DSS</span>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+<script>
+  // Countdown simulation micro-interaction
+  (function() {
+    let duration = 11 * 60 + 45;
+    const timerElement = document.getElementById('countdown-timer');
+    if (!timerElement) return;
+
+    setInterval(function() {
+      if (duration <= 0) return;
+      duration--;
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+      timerElement.textContent = 
+        (minutes < 10 ? '0' : '') + minutes + ':' + 
+        (seconds < 10 ? '0' : '') + seconds;
+    }, 1000);
+  })();
+</script>
+</main>
+<!-- BEGIN: MainFooter (4 Kolom Standar) -->
+<footer class="w-full bg-surface-container-lowest shadow-[0_-2px_12px_rgba(16,36,71,0.03)] mt-space-2xl">
+<div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter py-space-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl pb-space-xl border-b border-surface-container">
+<!-- Kolom 1: Profil Brand & Deskripsi -->
+<div class="space-y-space-md">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-xl">directions_car</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">Renta<span class="text-secondary">Ku</span></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Platform marketplace sewa mobil dan motor nomor 1 di Indonesia. Hubungkan perjalanan Anda dengan mitra penyedia rental terverifikasi di puluhan kota besar.
+        </p>
+<div class="flex items-center gap-space-sm text-on-surface-variant pt-space-xs">
+<span class="material-symbols-outlined text-lg text-secondary">verified_user</span>
+<span class="font-label-sm text-label-sm">100% Transaksi Terproteksi &amp; Aman</span>
+</div>
+</div>
+<!-- Kolom 2: Layanan Rental -->
+<div class="space-y-space-md">
+<h4 class="font-headline-sm text-body-lg-bold text-primary">Layanan Rental</h4>
+<ul class="space-y-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Sewa Mobil Lepas Kunci</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Sewa Mobil dengan Sopir</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Sewa Motor Harian &amp; Mingguan</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Rental Korporat &amp; Bisnis</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Antar Jemput Bandara</a></li>
+</ul>
+</div>
+<!-- Kolom 3: Bantuan & Mitra -->
+<div class="space-y-space-md">
+<h4 class="font-headline-sm text-body-lg-bold text-primary">Bantuan &amp; Mitra</h4>
+<ul class="space-y-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Daftar Jadi Mitra Rental</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Pusat Bantuan &amp; FAQ</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Kebijakan Jaminan &amp; Klaim</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Syarat &amp; Ketentuan</a></li>
+<li class=""><a class="hover:text-secondary transition-colors" href="#">Kebijakan Privasi</a></li>
+</ul>
+</div>
+<!-- Kolom 4: Kontak & Kantor Operasional -->
+<div class="space-y-space-md">
+<h4 class="font-headline-sm text-body-lg-bold text-primary">Hubungi Kami</h4>
+<div class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">mail</span>
+<span class="">support@rentaku.id</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">call</span>
+<span class="">+62 21 5088 9200 / 0812-9900-8800</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">location_on</span>
+<span class="">Gedung Menara Mandiri Lt. 18, Jl. Jend. Sudirman, Jakarta Selatan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Copyright & Legal Sub-footer -->
+<div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-outline">
+<p class="">© 2025 RentaKu Indonesia. Seluruh hak cipta dilindungi undang-undang.</p>
+<div class="flex items-center gap-space-md">
+<a class="hover:text-secondary transition-colors" href="#">Keamanan</a>
+<span class="">•</span>
+<a class="hover:text-secondary transition-colors" href="#">Ketentuan Layanan</a>
+<span class="">•</span>
+<a class="hover:text-secondary transition-colors" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+
+
+</body></html>
