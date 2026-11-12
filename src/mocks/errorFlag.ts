@@ -1,6 +1,6 @@
 import { ApiClientError } from '@/api/client';
 
-export const MOCK_ERROR_STORAGE_KEY = 'rentaku:mock:force_error';
+export const MOCK_ERROR_STORAGE_KEY = 'RentalinAja:mock:force_error';
 
 let inMemoryError: string | null = null;
 

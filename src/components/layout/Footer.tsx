@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <Link href="/tentang-kami" className="hover:text-white transition-colors">
-                  Tentang Rentaku
+                  Tentang RentalinAja
                 </Link>
               </li>
               <li>
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 mt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© 2026 Rentaku. Seluruh hak cipta dilindungi.</p>
+          <p>© 2026 RentalinAja. Seluruh hak cipta dilindungi.</p>
           <p className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
             Sistem Terverifikasi & Aman

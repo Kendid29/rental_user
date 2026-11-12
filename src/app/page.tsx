@@ -287,12 +287,12 @@ function HomePageContent() {
         )}
       </section>
 
-      {/* Keunggulan Rentaku Section */}
+      {/* Keunggulan RentalinAja Section */}
       <section className="bg-white border-y border-border py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h3 className="font-[family-name:var(--font-headline)] text-2xl font-bold text-primary">
-              Mengapa Memilih RentaKu?
+              Mengapa Memilih RentalinAja?
             </h3>
             <p className="text-xs sm:text-sm text-text-muted mt-1.5">
               Standar keunggulan transaksi sewa kendaraan tanpa rasa cemas

@@ -99,7 +99,7 @@ function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
             <span>Menunggu Konfirmasi Admin</span>
           </div>
           <p className="text-xs leading-relaxed text-amber-800/90">
-            Pesanan Anda telah dicatat di sistem. Admin RentaKu sedang memverifikasi rincian pesanan dan pembayaran. Anda dapat menghubungi admin secara langsung melalui tombol WhatsApp di bawah.
+            Pesanan Anda telah dicatat di sistem. Admin RentalinAja sedang memverifikasi rincian pesanan dan pembayaran. Anda dapat menghubungi admin secara langsung melalui tombol WhatsApp di bawah.
           </p>
         </div>
       )}

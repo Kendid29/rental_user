@@ -1,4 +1,4 @@
-# Audit Proyek Frontend Rentaku
+# Audit Proyek Frontend RentalinAja
 
 **Tanggal Audit:** 8 November 2026  
 **Status Proyek:** Inisialisasi Baru (Fresh Next.js App Router)
@@ -37,7 +37,7 @@
 | `/pesanan/[id]` | Detail pesanan & status verifikasi admin (F6) | Belum | Route belum dibuat |
 | `/profil` | Pengelolaan data profil pengguna (F7) | Belum | Route belum dibuat |
 | `/profil/ubah-sandi` | Ubah kata sandi pengguna (F7) | Belum | Route belum dibuat |
-| `/tentang-kami` | Profil perusahaan & informasi Rentaku (F8) | Belum | Route belum dibuat |
+| `/tentang-kami` | Profil perusahaan & informasi RentalinAja (F8) | Belum | Route belum dibuat |
 
 ---
 

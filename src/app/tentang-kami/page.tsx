@@ -36,7 +36,7 @@ export default function TentangKamiPage() {
         <div className="relative w-full rounded-3xl overflow-hidden border border-white/20 shadow-2xl aspect-[21/9] sm:aspect-[24/9] bg-primary">
           <Image
             src={hero.bannerImage}
-            alt="Armada Rental Rentaku"
+            alt="Armada Rental RentalinAja"
             fill
             sizes="100vw"
             className="object-cover opacity-60"
@@ -137,7 +137,7 @@ export default function TentangKamiPage() {
             Pertanyaan yang Sering Diajukan
           </h2>
           <p className="text-xs sm:text-sm text-text-muted">
-            Semua yang perlu Anda ketahui mengenai proses sewa di RentaKu
+            Semua yang perlu Anda ketahui mengenai proses sewa di RentalinAja
           </p>
         </div>
 

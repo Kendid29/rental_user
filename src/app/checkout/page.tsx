@@ -124,9 +124,9 @@ function CheckoutForm() {
         pesanUntukOrangLain,
         pemesanLain: pesanUntukOrangLain
           ? {
-              nama: namaPenerima,
-              nomorWA: normalizedWAPenerima,
-            }
+            nama: namaPenerima,
+            nomorWA: normalizedWAPenerima,
+          }
           : undefined,
         metodePembayaran,
       });
@@ -285,7 +285,7 @@ function CheckoutForm() {
               Alur Transaksi & Konfirmasi
             </p>
             <p className="leading-relaxed">
-              Setelah menekan tombol pembayaran, pesanan akan tercatat di sistem dengan status <strong>Menunggu Konfirmasi</strong>. Anda akan diarahkan otomatis ke WhatsApp resmi Admin RentaKu untuk mengirimkan ringkasan pesanan dan menerima instruksi nomor pembayaran.
+              Setelah menekan tombol pembayaran, pesanan akan tercatat di sistem dengan status <strong>Menunggu Konfirmasi</strong>. Anda akan diarahkan otomatis ke WhatsApp resmi Admin RentalinAja untuk mengirimkan ringkasan pesanan dan menerima instruksi nomor pembayaran.
             </p>
           </div>
         </div>

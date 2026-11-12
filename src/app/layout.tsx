@@ -6,7 +6,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Rentaku - Marketplace Rental Mobil & Motor Terpadu',
+  title: 'RentalinAja - Marketplace Rental Mobil & Motor Terpadu',
   description: 'Satu aplikasi yang menyatukan seluruh rental kendaraan di setiap kota',
 };
 

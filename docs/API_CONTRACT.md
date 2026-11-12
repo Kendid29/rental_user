@@ -1,6 +1,6 @@
-# Rentaku API Contract & Specification
+# RentalinAja API Contract & Specification
 
-Dokumen spesifikasi antarmuka API tunggal antara Frontend Rentaku dan Backend Service (atau Mock Store).
+Dokumen spesifikasi antarmuka API tunggal antara Frontend RentalinAja dan Backend Service (atau Mock Store).
 Frontend dibangun dengan prinsip **Satu Pintu Data** (`src/api`) sehingga format request, response, dan kode error pada tahap Mock maupun Production API adalah identik.
 
 ---
@@ -86,7 +86,7 @@ Setiap error non-2xx mengembalikan format JSON seragam:
 ### 3.1 Daftar Kota Layanan
 - **Method:** `GET`
 - **Path:** `/kota`
-- **Deskripsi:** Mengambil seluruh daftar kota yang aktif dilayani oleh Rentaku (digunakan pada dropdown filter Hero pencarian).
+- **Deskripsi:** Mengambil seluruh daftar kota yang aktif dilayani oleh RentalinAja (digunakan pada dropdown filter Hero pencarian).
 - **Query Params:** Tidak ada.
 - **Response (200 OK):**
 ```json

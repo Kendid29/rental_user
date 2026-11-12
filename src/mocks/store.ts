@@ -1,7 +1,7 @@
 import { Mitra, Pesanan, Unit, User } from '@/types';
 import { SEED_KOTA, SEED_MITRA, SEED_PESANAN, SEED_UNITS, SEED_USERS } from './seed';
 
-const PREFIX = 'rentaku:mock:v3:';
+const PREFIX = 'RentalinAja:mock:v3:';
 const KEY_USERS = `${PREFIX}users`;
 const KEY_MITRA = `${PREFIX}mitra`;
 const KEY_UNITS = `${PREFIX}units`;

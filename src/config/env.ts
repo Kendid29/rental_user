@@ -1,5 +1,5 @@
 /**
- * Konfigurasi Environment Rentaku
+ * Konfigurasi Environment RentalinAja
  * Mengatur switch antara implementasi mock dan API nyata
  */
 
@@ -15,7 +15,7 @@ export const nomorWaAdmin: string =
 // Validasi di development
 if (!useMock && !apiBaseUrl) {
   const errorMessage =
-    '[Rentaku Config Error]: NEXT_PUBLIC_USE_MOCK disetel false, tetapi NEXT_PUBLIC_API_BASE_URL belum diisi! ' +
+    '[RentalinAja Config Error]: NEXT_PUBLIC_USE_MOCK disetel false, tetapi NEXT_PUBLIC_API_BASE_URL belum diisi! ' +
     'Silakan isi NEXT_PUBLIC_API_BASE_URL di file .env.local atau setel NEXT_PUBLIC_USE_MOCK=true.';
 
   if (process.env.NODE_ENV !== 'production') {

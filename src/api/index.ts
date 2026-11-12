@@ -3,7 +3,7 @@ import { realApi, ApiInterface } from './endpoints';
 import { mockApi } from '@/mocks/endpoints';
 
 /**
- * Lapisan API Tunggal Rentaku
+ * Lapisan API Tunggal RentalinAja
  * Mengatur switch antara implementasi mock stateful dan API backend nyata
  * berdasarkan NEXT_PUBLIC_USE_MOCK.
  */

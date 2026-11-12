@@ -62,7 +62,7 @@ function MasukForm() {
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
           <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-extrabold text-primary">
-            Masuk ke RentaKu
+            Masuk ke RentalinAja
           </h1>
           <p className="text-sm text-text-muted">
             Lanjutkan pemesanan rental kendaraan Anda dengan mudah
@@ -128,7 +128,7 @@ function MasukForm() {
 
           <div className="mt-6 pt-6 border-t border-border text-center">
             <p className="text-xs text-text-muted">
-              Belum punya akun RentaKu?{' '}
+              Belum punya akun RentalinAja?{' '}
               <Link
                 href={`/daftar${rawRedirect ? `?redirect=${encodeURIComponent(rawRedirect)}` : ''}`}
                 className="font-bold text-secondary hover:underline"
@@ -161,11 +161,11 @@ function MasukForm() {
               Lupa Kata Sandi?
             </h3>
             <p className="text-xs text-text-muted leading-relaxed">
-              Untuk keamanan akun Anda pada tahap ini, silakan hubungi tim Admin RentaKu melalui WhatsApp untuk verifikasi dan pemulihan akses akun Anda.
+              Untuk keamanan akun Anda pada tahap ini, silakan hubungi tim Admin RentalinAja melalui WhatsApp untuk verifikasi dan pemulihan akses akun Anda.
             </p>
             <div className="pt-2 flex flex-col gap-2">
               <a
-                href="https://wa.me/6281234567890?text=Halo%20Admin%20Rentaku,%20saya%20butuh%20bantuan%20reset%20kata%20sandi%20akun%20saya"
+                href="https://wa.me/6281234567890?text=Halo%20Admin%20RentalinAja,%20saya%20butuh%20bantuan%20reset%20kata%20sandi%20akun%20saya"
                 target="_blank"
                 rel="noopener noreferrer"
               >

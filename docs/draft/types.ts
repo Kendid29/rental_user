@@ -1,5 +1,5 @@
-// Draft Types untuk Rentaku FE
-// Acuan: PRD_Rentaku_User.md Bagian 9
+// Draft Types untuk RentalinAja FE
+// Acuan: PRD_RentalinAja_User.md Bagian 9
 
 export type JenisKendaraan = 'mobil' | 'motor';
 

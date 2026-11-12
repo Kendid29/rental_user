@@ -1,4 +1,4 @@
-# PRD: Rentaku, Sisi User (Mock-First)
+# PRD: RentalinAja, Sisi User (Mock-First)
 
 Versi: 0.1 (draft)
 Tanggal: 8 November 2026
@@ -9,7 +9,7 @@ Stack acuan: Next.js (App Router), TypeScript, desain dari Google Stitch (`execu
 
 ## 1. Ringkasan
 
-Rentaku adalah platform rental kendaraan terpadu per kota. User dapat mencari unit dari berbagai mitra rental di satu kota, melihat detail, memesan, lalu menyelesaikan pembayaran lewat WhatsApp admin. Admin mengonfirmasi pembayaran, dan status pesanan di sisi user ikut berubah.
+RentalinAja adalah platform rental kendaraan terpadu per kota. User dapat mencari unit dari berbagai mitra rental di satu kota, melihat detail, memesan, lalu menyelesaikan pembayaran lewat WhatsApp admin. Admin mengonfirmasi pembayaran, dan status pesanan di sisi user ikut berubah.
 
 Tahap ini membangun seluruh sisi user dengan data mock yang stateful. Backend belum tersedia, sehingga seluruh alur harus bisa diuji dari awal sampai akhir tanpa server. Saat backend siap, perpindahan ke API asli cukup dilakukan lewat variabel environment.
 

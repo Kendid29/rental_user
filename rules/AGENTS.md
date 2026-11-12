@@ -1,6 +1,6 @@
-# Aturan Permanen Frontend Rentaku (AGENTS.md)
+# Aturan Permanen Frontend RentalinAja (AGENTS.md)
 
-Dokumen ini merupakan panduan dan aturan permanen untuk pengembangan frontend Rentaku. Semua agent dan pengembang wajib mematuhi aturan ini sebelum menulis kode.
+Dokumen ini merupakan panduan dan aturan permanen untuk pengembangan frontend RentalinAja. Semua agent dan pengembang wajib mematuhi aturan ini sebelum menulis kode.
 
 ---
 

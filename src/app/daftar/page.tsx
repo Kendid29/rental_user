@@ -82,7 +82,7 @@ function DaftarForm() {
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
           <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-extrabold text-primary">
-            Daftar Akun RentaKu
+            Daftar Akun RentalinAja
           </h1>
           <p className="text-sm text-text-muted">
             Buat akun untuk memesan rental mobil dan motor di berbagai kota

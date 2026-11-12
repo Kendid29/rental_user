@@ -6,7 +6,7 @@ Dokumen ini memandu tim pengembang ketika backend nyata telah siap digunakan, un
 
 ## Prinsip Desain: Zero Component Modification
 
-Arsitektur Frontend Rentaku dirancang dengan **Satu Pintu Data** (`src/api`). Seluruh halaman dan komponen UI hanya memanggil `api.*` tanpa mengetahui apakah data bersumber dari Mock atau API backend riil. Oleh karena itu, perpindahan ke backend riil **TIDAK MEMERLUKAN PERUBAHAN APAPUN pada folder `src/app` maupun `src/components`**.
+Arsitektur Frontend RentalinAja dirancang dengan **Satu Pintu Data** (`src/api`). Seluruh halaman dan komponen UI hanya memanggil `api.*` tanpa mengetahui apakah data bersumber dari Mock atau API backend riil. Oleh karena itu, perpindahan ke backend riil **TIDAK MEMERLUKAN PERUBAHAN APAPUN pada folder `src/app` maupun `src/components`**.
 
 ---
 
@@ -19,7 +19,7 @@ Di server staging/produksi atau di file `.env.local` lokal Anda, ubah variabel b
 NEXT_PUBLIC_USE_MOCK=false
 
 # 2. Masukkan alamat URL dasar backend nyata
-NEXT_PUBLIC_API_BASE_URL=https://api.rentaku.id/v1
+NEXT_PUBLIC_API_BASE_URL=https://api.RentalinAja.id/v1
 
 # 3. Pastikan nomor WhatsApp resmi admin sudah sesuai
 NEXT_PUBLIC_NOMOR_WA_ADMIN=6281234567890

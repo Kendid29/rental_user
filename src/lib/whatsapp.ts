@@ -13,7 +13,7 @@ export function buildWaAdminMessage(pesanan: Pesanan): string {
   const totalStr = formatRupiah(pesanan.rincianBiaya.total);
 
   return (
-    `*KONFIRMASI PESANAN RENTAKU*\n` +
+    `*KONFIRMASI PESANAN RentalinAja*\n` +
     `--------------------------------\n` +
     `*ID Pesanan:* ${pesanan.id}\n` +
     `*Penyewa:* ${pesanan.namaPenyewa} (${pesanan.nomorWAPenyewa})\n` +
@@ -26,12 +26,12 @@ export function buildWaAdminMessage(pesanan: Pesanan): string {
     `*Metode Bayar:* ${pesanan.metodePembayaran.toUpperCase()}\n` +
     `*Total Bayar:* ${totalStr}\n` +
     `--------------------------------\n` +
-    `Halo Admin Rentaku, saya ingin melakukan konfirmasi pembayaran untuk pesanan di atas. Mohon instruksi nomor rekening / detail pembayaran. Terima kasih!`
+    `Halo Admin RentalinAja, saya ingin melakukan konfirmasi pembayaran untuk pesanan di atas. Mohon instruksi nomor rekening / detail pembayaran. Terima kasih!`
   );
 }
 
 /**
- * Membuat tautan resmi WhatsApp admin Rentaku
+ * Membuat tautan resmi WhatsApp admin RentalinAja
  */
 export function buildWaAdminLink(pesanan: Pesanan): string {
   const message = buildWaAdminMessage(pesanan);
@@ -45,6 +45,6 @@ export function buildWaAdminLink(pesanan: Pesanan): string {
 export function buildWaTanyaUnitLink(unitNama: string, mitraNama: string, kota: string): string {
   const cleanPhone = nomorWaAdmin.replace(/\D/g, '');
   const message =
-    `Halo Admin Rentaku, saya ingin bertanya tentang ketersediaan unit *${unitNama}* di *${mitraNama} (${kota})*. Apakah unit ini tersedia untuk jadwal sewa dalam waktu dekat?`;
+    `Halo Admin RentalinAja, saya ingin bertanya tentang ketersediaan unit *${unitNama}* di *${mitraNama} (${kota})*. Apakah unit ini tersedia untuk jadwal sewa dalam waktu dekat?`;
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 }

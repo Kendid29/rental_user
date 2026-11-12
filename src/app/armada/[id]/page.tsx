@@ -195,11 +195,10 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
                   key={idx}
                   type="button"
                   onClick={() => setSelectedImage(img)}
-                  className={`relative w-20 h-16 sm:w-24 sm:h-18 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
-                    selectedImage === img
+                  className={`relative w-20 h-16 sm:w-24 sm:h-18 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${selectedImage === img
                       ? 'border-secondary ring-2 ring-secondary/20 scale-102'
                       : 'border-border hover:border-slate-400'
-                  }`}
+                    }`}
                 >
                   <Image
                     src={img}
@@ -256,9 +255,8 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
               <div className="bg-slate-50 p-3 rounded-xl border border-border">
                 <span className="text-[11px] text-text-muted block">Ketersediaan</span>
                 <span
-                  className={`text-xs font-bold ${
-                    unit.stok > 0 ? 'text-emerald-700' : 'text-urgency'
-                  }`}
+                  className={`text-xs font-bold ${unit.stok > 0 ? 'text-emerald-700' : 'text-urgency'
+                    }`}
                 >
                   {unit.stok > 0 ? `Tersedia (${unit.stok} Unit)` : 'Habis'}
                 </span>
@@ -429,7 +427,7 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
             {/* Guarantee note */}
             <div className="p-3.5 rounded-xl bg-slate-50 border border-border text-xs text-text-muted space-y-1">
               <p className="font-bold text-primary flex items-center gap-1.5">
-                <span className="text-tertiary-dark">✓</span> Garansi RentaKu
+                <span className="text-tertiary-dark">✓</span> Garansi RentalinAja
               </p>
               <p className="text-[11px] leading-relaxed">
                 Unit dijamin bersih, BBM awal sesuai kesepakatan, dan serah terima tepat waktu di lokasi mitra.

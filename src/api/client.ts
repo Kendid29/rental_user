@@ -13,7 +13,7 @@ export class ApiClientError extends Error {
   }
 }
 
-export const AUTH_TOKEN_KEY = 'rentaku:auth_token';
+export const AUTH_TOKEN_KEY = 'RentalinAja:auth_token';
 
 export async function request<T>(
   path: string,

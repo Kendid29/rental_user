@@ -1,5 +1,5 @@
-// Draft Seed Data untuk Rentaku FE
-// Acuan: PRD_Rentaku_User.md Bagian 10 dan Export Stitch
+// Draft Seed Data untuk RentalinAja FE
+// Acuan: PRD_RentalinAja_User.md Bagian 10 dan Export Stitch
 
 import { Mitra, Unit, User, Pesanan } from './types';
 
