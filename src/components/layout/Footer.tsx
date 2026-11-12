@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
                 R
               </div>
               <span className="font-[family-name:var(--font-headline)] text-xl font-bold tracking-tight text-white">
-                Renta<span className="text-secondary">Ku</span>
+                Rentalin<span className="text-secondary">Aja</span>
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">

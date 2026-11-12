@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <span className="font-[family-name:var(--font-headline)] text-xl font-extrabold tracking-tight text-primary">
-                Renta<span className="text-secondary">Ku</span>
+                Rentalin<span className="text-secondary">Aja</span>
               </span>
               <span className="text-[10px] text-text-muted -mt-1 font-medium">
                 Rental Terpadu Kota
@@ -48,11 +48,10 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  isActive(link.href)
+                className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive(link.href)
                     ? 'text-secondary bg-blue-50/80'
                     : 'text-text-main hover:text-secondary hover:bg-slate-50'
-                }`}
+                  }`}
               >
                 {link.label}
               </Link>
@@ -65,11 +64,10 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center gap-3">
                 <Link
                   href="/pesanan"
-                  className={`text-sm font-semibold px-3 py-1.5 rounded-lg transition-colors ${
-                    pathname.startsWith('/pesanan')
+                  className={`text-sm font-semibold px-3 py-1.5 rounded-lg transition-colors ${pathname.startsWith('/pesanan')
                       ? 'text-secondary bg-blue-50'
                       : 'text-text-main hover:text-secondary'
-                  }`}
+                    }`}
                 >
                   Pesanan Saya
                 </Link>
@@ -139,11 +137,10 @@ export const Navbar: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2 rounded-lg text-base font-semibold ${
-                  isActive(link.href)
+                className={`block px-3 py-2 rounded-lg text-base font-semibold ${isActive(link.href)
                     ? 'text-secondary bg-blue-50'
                     : 'text-text-main hover:bg-slate-50'
-                }`}
+                  }`}
               >
                 {link.label}
               </Link>
