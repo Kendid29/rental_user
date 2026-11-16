@@ -15,6 +15,7 @@ export const Navbar: React.FC = () => {
     { href: '/', label: 'Beranda' },
     { href: '/katalog/mobil', label: 'Sewa Mobil' },
     { href: '/katalog/motor', label: 'Sewa Motor' },
+    { href: '/testimoni', label: 'Testimoni' },
     { href: '/tentang-kami', label: 'Tentang Kami' },
   ];
 
