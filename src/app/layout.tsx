@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="h-full antialiased">
+    <html lang="id" className="h-full antialiased scroll-smooth">
       <body className="min-h-full flex flex-col bg-canvas text-text-main">
         <SesiProvider>
           <Suspense fallback={<div className="h-16 sm:h-20 bg-white border-b border-border" />}>

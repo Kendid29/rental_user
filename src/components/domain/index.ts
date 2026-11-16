@@ -4,3 +4,6 @@ export * from './CardMitra';
 export * from './ProgressCheckout';
 export * from './RingkasanPesanan';
 export * from './PilihanMetodeBayar';
+export * from './CardTestimoni';
+export * from './SectionTestimoni';
+export * from './HighlightTestimoni';

@@ -3,3 +3,4 @@ export * from './user';
 export * from './mitra';
 export * from './unit';
 export * from './pesanan';
+export * from './testimoni';

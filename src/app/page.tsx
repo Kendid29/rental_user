@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { api } from '@/api';
 import { JenisKendaraan, Unit } from '@/types';
 import { CardUnit } from '@/components/domain/CardUnit';
+import { HighlightTestimoni } from '@/components/domain/HighlightTestimoni';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
@@ -332,6 +333,9 @@ function HomePageContent() {
           </div>
         </div>
       </section>
+
+      {/* Highlight Testimoni Section */}
+      <HighlightTestimoni />
     </div>
   );
 }
