@@ -29,13 +29,18 @@ function HomePageContent() {
   const searchParams = useSearchParams();
 
   // Active filters derived from URL searchParams
-  const activeKota = searchParams.get('kota') || 'Yogyakarta';
-  const activeJenis = (searchParams.get('jenis') as JenisKendaraan | 'semua') || 'semua';
+  const urlKota = searchParams.get('kota') || 'Yogyakarta';
+  const urlJenis = (searchParams.get('jenis') as JenisKendaraan | 'semua') || 'semua';
   const urlTanggal = searchParams.get('mulai') || '';
 
-  // Form input states
-  const [formKota, setFormKota] = useState<string>(activeKota);
-  const [formJenis, setFormJenis] = useState<JenisKendaraan | 'semua'>(activeJenis);
+  // Local active state to allow in-place reactive filtering without router navigation scroll jumps
+  const [activeKota, setActiveKota] = useState<string>(urlKota);
+  const [activeJenis, setActiveJenis] = useState<JenisKendaraan | 'semua'>(urlJenis);
+  const [activeTanggal, setActiveTanggal] = useState<string>(urlTanggal);
+
+  // Form input states (for Hero search)
+  const [formKota, setFormKota] = useState<string>(urlKota);
+  const [formJenis, setFormJenis] = useState<JenisKendaraan | 'semua'>(urlJenis);
   const [formTanggal, setFormTanggal] = useState<string>('');
 
   // Data states
@@ -50,14 +55,21 @@ function HomePageContent() {
     setFormTanggal((prev) => (prev ? prev : (urlTanggal || today)));
   }, [urlTanggal]);
 
-  // Sync state if URL changes
+  // Sync state if URL searchParams changes externally (e.g. browser back/forward or navigation)
   useEffect(() => {
-    setFormKota(activeKota);
-    setFormJenis(activeJenis);
-    if (urlTanggal) {
-      setFormTanggal(urlTanggal);
+    const qKota = searchParams.get('kota') || 'Yogyakarta';
+    const qJenis = (searchParams.get('jenis') as JenisKendaraan | 'semua') || 'semua';
+    const qTanggal = searchParams.get('mulai') || '';
+
+    setActiveKota(qKota);
+    setActiveJenis(qJenis);
+    setActiveTanggal(qTanggal);
+    setFormKota(qKota);
+    setFormJenis(qJenis);
+    if (qTanggal) {
+      setFormTanggal(qTanggal);
     }
-  }, [activeKota, activeJenis, urlTanggal]);
+  }, [searchParams]);
 
   // Fetch available cities
   useEffect(() => {
@@ -86,7 +98,7 @@ function HomePageContent() {
       const res = await api.unit.list({
         kota: activeKota,
         jenis: activeJenis !== 'semua' ? activeJenis : undefined,
-        tanggalMulai: urlTanggal || getTodayIsoString(),
+        tanggalMulai: activeTanggal || urlTanggal || getTodayIsoString(),
         limit: 50,
       });
       setUnits(res.items);
@@ -96,27 +108,76 @@ function HomePageContent() {
     } finally {
       setIsLoading(false);
     }
-  }, [activeKota, activeJenis, urlTanggal]);
+  }, [activeKota, activeJenis, activeTanggal, urlTanggal]);
 
   useEffect(() => {
     fetchUnits();
   }, [fetchUnits]);
 
-  // Handle hero search
+  // Handle changing city from hero dropdown or popular city shortcuts
+  const handleKotaChange = (kota: string) => {
+    setFormKota(kota);
+    setActiveKota(kota);
+
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      params.set('kota', kota);
+      const newQuery = `?${params.toString()}`;
+      window.history.replaceState(null, '', newQuery);
+    }
+  };
+
+  // Handle changing vehicle category from hero tabs or fleet section tabs
+  const handleJenisChange = (jenis: JenisKendaraan | 'semua') => {
+    setFormJenis(jenis);
+    setActiveJenis(jenis);
+
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (jenis === 'semua') {
+        params.delete('jenis');
+      } else {
+        params.set('jenis', jenis);
+      }
+      const newQuery = params.toString() ? `?${params.toString()}` : window.location.pathname;
+      window.history.replaceState(null, '', newQuery);
+    }
+  };
+
+  // Handle changing date
+  const handleTanggalChange = (tgl: string) => {
+    setFormTanggal(tgl);
+    setActiveTanggal(tgl);
+
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (tgl) {
+        params.set('mulai', tgl);
+      } else {
+        params.delete('mulai');
+      }
+      const newQuery = params.toString() ? `?${params.toString()}` : window.location.pathname;
+      window.history.replaceState(null, '', newQuery);
+    }
+  };
+
+  // Handle hero search button click
   const handleHeroSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    const params = new URLSearchParams();
-    if (formKota) params.set('kota', formKota);
-    if (formJenis && formJenis !== 'semua') params.set('jenis', formJenis);
-    if (formTanggal) params.set('mulai', formTanggal);
+    handleKotaChange(formKota);
+    handleJenisChange(formJenis);
+    handleTanggalChange(formTanggal);
 
-    router.push(`/?${params.toString()}`);
+    // Smooth scroll down to the armada section
+    const armadaEl = document.getElementById('armada');
+    if (armadaEl) {
+      armadaEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const handleResetKota = () => {
-    setFormKota('Yogyakarta');
-    setFormJenis('semua');
-    router.push('/?kota=Yogyakarta&jenis=semua');
+    handleKotaChange('Yogyakarta');
+    handleJenisChange('semua');
   };
 
   return (
@@ -124,11 +185,11 @@ function HomePageContent() {
       {/* 1. Hero & Search Widget */}
       <HomeHero
         formKota={formKota}
-        setFormKota={setFormKota}
+        setFormKota={handleKotaChange}
         formJenis={formJenis}
-        setFormJenis={setFormJenis}
+        setFormJenis={handleJenisChange}
         formTanggal={formTanggal}
-        setFormTanggal={setFormTanggal}
+        setFormTanggal={handleTanggalChange}
         cityOptions={cityOptions}
         onSearch={handleHeroSearch}
       />
@@ -145,6 +206,7 @@ function HomePageContent() {
         error={error}
         onRetry={fetchUnits}
         onResetKota={handleResetKota}
+        onJenisChange={handleJenisChange}
       />
 
       {/* 4. Why Choose Us / Service Value Pillars */}
