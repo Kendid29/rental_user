@@ -5,3 +5,4 @@ export * from './checkout';
 export * from './orders';
 export * from './reviews';
 export * from './auth';
+export * from './profile';

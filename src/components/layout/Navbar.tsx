@@ -140,44 +140,23 @@ export const Navbar: React.FC = () => {
           {/* User Auth Section */}
           <div className="hidden md:flex items-center gap-3">
             {user ? (
-              <div className="flex items-center gap-2.5">
-                <Link
-                  href="/orders"
-                  className={cn(
-                    'flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3.5 py-2 rounded-xl transition-all',
-                    pathname.startsWith('/orders')
-                      ? 'text-secondary bg-blue-50/80 border border-blue-200/50'
-                      : 'text-text-main hover:text-secondary hover:bg-slate-50'
-                  )}
-                >
-                  <FileText className="w-4 h-4 text-secondary" />
-                  <span>Pesanan Saya</span>
-                </Link>
-
-                <div className="h-5 w-px bg-border/80" />
-
-                <Link
-                  href="/profile"
-                  className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-border/60 transition-colors"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-blue-100 text-secondary font-extrabold text-xs flex items-center justify-center border border-blue-200">
-                    {user.nama.charAt(0).toUpperCase()}
-                  </div>
-                  <span className="text-xs font-bold text-primary max-w-[110px] truncate">
-                    {user.nama}
-                  </span>
-                </Link>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => logout()}
-                  className="text-xs text-text-muted hover:text-urgency hover:bg-rose-50"
-                  leftIcon={<LogOut className="w-3.5 h-3.5" />}
-                >
-                  Keluar
-                </Button>
-              </div>
+              <Link
+                href="/profile"
+                className={cn(
+                  'flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-full border transition-all duration-150 cursor-pointer',
+                  pathname.startsWith('/profile') || pathname.startsWith('/orders')
+                    ? 'bg-blue-50 text-secondary border-blue-200/80 shadow-2xs font-bold'
+                    : 'bg-white hover:bg-slate-50 text-primary border-border/80 shadow-2xs hover:shadow-xs'
+                )}
+                title="Buka Pengaturan Akun & Pesanan"
+              >
+                <div className="w-7 h-7 rounded-full bg-secondary text-white font-black text-xs flex items-center justify-center shadow-xs">
+                  {user.nama.charAt(0).toUpperCase()}
+                </div>
+                <span className="text-xs font-bold truncate max-w-[120px]">
+                  {user.nama}
+                </span>
+              </Link>
             ) : (
               <div className="flex items-center gap-2">
                 <Link href="/login">
