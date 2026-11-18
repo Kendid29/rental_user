@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { motion } from 'motion/react';
 import {
   User,
   Mail,
@@ -11,13 +12,12 @@ import {
   Eye,
   EyeOff,
   AlertCircle,
-  UserPlus,
+  ArrowRight,
 } from 'lucide-react';
 import { useSesi, getSafeRedirectUrl } from '@/hooks/useSesi';
 import { normalisasiNomorWA } from '@/lib/pricing';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
 
 export function RegisterForm() {
   const router = useRouter();
@@ -33,11 +33,10 @@ export function RegisterForm() {
   const [kataSandi, setKataSandi] = useState('');
   const [konfirmasiSandi, setKonfirmasiSandi] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [validationErrors, setValidationErrors] = useState<
-    Record<string, string>
-  >({});
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
   const validate = (): boolean => {
     const errors: Record<string, string> = {};
@@ -49,15 +48,16 @@ export function RegisterForm() {
     }
 
     if (!email.trim()) {
-      errors.email = 'Email wajib diisi';
+      errors.email = 'Alamat email wajib diisi';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       errors.email = 'Format email tidak valid';
     }
 
+    const cleanWA = nomorWA.replace(/\D/g, '');
     if (!nomorWA.trim()) {
       errors.nomorWA = 'Nomor WhatsApp wajib diisi';
-    } else if (nomorWA.replace(/\D/g, '').length < 10) {
-      errors.nomorWA = 'Nomor WhatsApp minimal 10 digit angka';
+    } else if (cleanWA.length < 9) {
+      errors.nomorWA = 'Nomor WhatsApp minimal 9 digit angka';
     }
 
     if (!kataSandi) {
@@ -67,9 +67,13 @@ export function RegisterForm() {
     }
 
     if (!konfirmasiSandi) {
-      errors.konfirmasiSandi = 'Konfirmasi kata sandi wajib diisi';
+      errors.konfirmasiSandi = 'Ulangi kata sandi Anda';
     } else if (kataSandi !== konfirmasiSandi) {
       errors.konfirmasiSandi = 'Konfirmasi kata sandi tidak cocok';
+    }
+
+    if (!agreeTerms) {
+      errors.agreeTerms = 'Anda harus menyetujui syarat & ketentuan layanan';
     }
 
     setValidationErrors(errors);
@@ -104,36 +108,44 @@ export function RegisterForm() {
   };
 
   return (
-    <div className="w-full max-w-md px-4 space-y-6">
-      {/* Title Header */}
-      <div className="text-center space-y-2">
-        <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-black text-primary tracking-tight">
-          Daftar Akun Baru
-        </h1>
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.25 }}
+      className="w-full max-w-[440px] mx-auto"
+    >
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-7 sm:p-9 space-y-6">
+        {/* Title Header */}
+        <div className="space-y-1">
+          <h1 className="font-[family-name:var(--font-headline)] text-2xl font-black text-primary tracking-tight">
+            Daftar Akun Baru
+          </h1>
+          <p className="text-xs text-text-muted leading-relaxed">
+            Lengkapi data di bawah untuk mulai menyewa armada mobil & motor.
+          </p>
+        </div>
 
-        <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
-          Bergabung dengan ribuan penyewa armada terpercaya di kota Anda.
-        </p>
-      </div>
+        {/* Error Alert Box */}
+        {errorMessage && (
+          <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-600 font-semibold flex items-center gap-2.5">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>{errorMessage}</span>
+          </div>
+        )}
 
-      <Card level={2} padding="lg" className="rounded-3xl shadow-lg border-border/80">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {errorMessage && (
-            <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-600 font-medium flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0" />
-              <span>{errorMessage}</span>
-            </div>
-          )}
-
+        {/* Form Inputs */}
+        <form onSubmit={handleSubmit} className="space-y-3.5">
           <Input
             label="Nama Lengkap"
+            cue="(Sesuai KTP)"
             type="text"
             value={nama}
             onChange={(e) => setNama(e.target.value)}
             placeholder="Contoh: Budi Santoso"
             error={validationErrors.nama}
-            leftIcon={<User className="w-4 h-4" />}
+            leftIcon={<User className="w-4 h-4 text-slate-400" />}
             autoComplete="name"
+            disabled={isLoading}
           />
 
           <Input
@@ -143,71 +155,123 @@ export function RegisterForm() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="nama@email.com"
             error={validationErrors.email}
-            leftIcon={<Mail className="w-4 h-4" />}
+            leftIcon={<Mail className="w-4 h-4 text-slate-400" />}
             autoComplete="email"
+            disabled={isLoading}
           />
 
           <Input
-            label="Nomor WhatsApp"
+            label="Nomor WhatsApp Aktif"
+            cue="(Format 08...)"
             type="tel"
             value={nomorWA}
             onChange={(e) => setNomorWA(e.target.value)}
             placeholder="Contoh: 08123456789"
             error={validationErrors.nomorWA}
-            leftIcon={<Phone className="w-4 h-4" />}
+            leftIcon={<Phone className="w-4 h-4 text-slate-400" />}
             autoComplete="tel"
+            disabled={isLoading}
           />
 
-          <Input
-            label="Kata Sandi"
-            type={showPassword ? 'text' : 'password'}
-            value={kataSandi}
-            onChange={(e) => setKataSandi(e.target.value)}
-            placeholder="Minimal 6 karakter"
-            error={validationErrors.kataSandi}
-            leftIcon={<Lock className="w-4 h-4" />}
-            rightIcon={
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="text-text-muted hover:text-primary transition-colors focus:outline-none"
-                tabIndex={-1}
-              >
-                {showPassword ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
-              </button>
-            }
-            autoComplete="new-password"
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Input
+              label="Kata Sandi"
+              type={showPassword ? 'text' : 'password'}
+              value={kataSandi}
+              onChange={(e) => setKataSandi(e.target.value)}
+              placeholder="Min. 6 digit"
+              error={validationErrors.kataSandi}
+              leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
+              autoComplete="new-password"
+              disabled={isLoading}
+            />
 
-          <Input
-            label="Ulangi Kata Sandi"
-            type={showPassword ? 'text' : 'password'}
-            value={konfirmasiSandi}
-            onChange={(e) => setKonfirmasiSandi(e.target.value)}
-            placeholder="Masukkan kembali sandi"
-            error={validationErrors.konfirmasiSandi}
-            leftIcon={<Lock className="w-4 h-4" />}
-            autoComplete="new-password"
-          />
+            <Input
+              label="Ulangi Sandi"
+              type={showPassword ? 'text' : 'password'}
+              value={konfirmasiSandi}
+              onChange={(e) => setKonfirmasiSandi(e.target.value)}
+              placeholder="Ketik ulang sandi"
+              error={validationErrors.konfirmasiSandi}
+              leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
+              autoComplete="new-password"
+              disabled={isLoading}
+            />
+          </div>
 
-          <Button
-            type="submit"
-            variant="primary"
-            size="lg"
-            fullWidth
-            isLoading={isLoading}
-            className="shadow-lg shadow-blue-500/25 mt-2"
-            rightIcon={<UserPlus className="w-4 h-4" />}
-          >
-            Daftar Sekarang
-          </Button>
+          <div className="pt-0.5 flex items-center justify-between text-xs">
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-text-muted hover:text-primary transition-colors flex items-center gap-1.5 cursor-pointer font-medium"
+            >
+              {showPassword ? (
+                <>
+                  <EyeOff className="w-3.5 h-3.5" />
+                  <span>Sembunyikan kata sandi</span>
+                </>
+              ) : (
+                <>
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>Lihat kata sandi</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* Terms Agreement Checkbox */}
+          <div className="pt-1">
+            <label className="flex items-start gap-2.5 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={agreeTerms}
+                onChange={(e) => setAgreeTerms(e.target.checked)}
+                className="w-4 h-4 mt-0.5 rounded text-secondary border-slate-300 focus:ring-secondary/20 cursor-pointer"
+              />
+              <span className="text-[11px] text-text-muted leading-tight">
+                Saya menyetujui{' '}
+                <span className="text-primary font-bold">Syarat & Ketentuan Layanan</span>{' '}
+                serta{' '}
+                <span className="text-primary font-bold">Kebijakan Privasi</span> RentalinAja.
+              </span>
+            </label>
+            {validationErrors.agreeTerms && (
+              <p className="text-xs text-rose-600 mt-1 font-medium">
+                {validationErrors.agreeTerms}
+              </p>
+            )}
+          </div>
+
+          {/* Submit Button */}
+          <div className="pt-2">
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              fullWidth
+              isLoading={isLoading}
+              className="h-12 rounded-xl text-sm font-bold shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 transition-all"
+              rightIcon={<ArrowRight className="w-4 h-4" />}
+            >
+              Daftar Sekarang
+            </Button>
+          </div>
         </form>
 
-        <div className="mt-6 pt-5 border-t border-border/80 text-center text-xs text-text-muted">
+        {/* Divider */}
+        <div className="relative my-4">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-slate-200/80" />
+          </div>
+          <div className="relative flex justify-center text-xs">
+            <span className="bg-white px-3 text-text-muted font-medium">
+              atau
+            </span>
+          </div>
+        </div>
+
+        {/* Back to Login */}
+        <div className="text-center text-xs text-text-muted">
           Sudah memiliki akun?{' '}
           <Link
             href={`/login${rawRedirect ? `?redirect=${encodeURIComponent(rawRedirect)}` : ''}`}
@@ -216,7 +280,7 @@ export function RegisterForm() {
             Masuk ke Akun
           </Link>
         </div>
-      </Card>
-    </div>
+      </div>
+    </motion.div>
   );
 }
