@@ -6,7 +6,7 @@ import {
   Clock,
   CheckCircle2,
   CheckCheck,
-  ChevronRight,
+  Check,
 } from 'lucide-react';
 import { Pesanan, StatusPesanan } from '@/types';
 import { cn } from '@/lib/utils';
@@ -42,7 +42,8 @@ export function OrderStatsHeader({
       icon: <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />,
       colorClass: 'text-secondary',
       bgClass: 'bg-blue-50/80',
-      activeRing: 'ring-2 ring-secondary/80 bg-blue-50/30 shadow-sm',
+      activeRing: 'ring-2 ring-secondary/80 bg-blue-50/20 shadow-xs',
+      indicatorColor: 'bg-secondary',
     },
     {
       id: 'menunggu_pembayaran' as const,
@@ -52,7 +53,8 @@ export function OrderStatsHeader({
       icon: <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />,
       colorClass: 'text-amber-600',
       bgClass: 'bg-amber-50/80',
-      activeRing: 'ring-2 ring-amber-500 bg-amber-50/30 shadow-sm',
+      activeRing: 'ring-2 ring-amber-500 bg-amber-50/20 shadow-xs',
+      indicatorColor: 'bg-amber-500',
     },
     {
       id: 'terkonfirmasi' as const,
@@ -62,7 +64,8 @@ export function OrderStatsHeader({
       icon: <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />,
       colorClass: 'text-emerald-600',
       bgClass: 'bg-emerald-50/80',
-      activeRing: 'ring-2 ring-emerald-500 bg-emerald-50/30 shadow-sm',
+      activeRing: 'ring-2 ring-emerald-500 bg-emerald-50/20 shadow-xs',
+      indicatorColor: 'bg-emerald-500',
     },
     {
       id: 'selesai' as const,
@@ -72,7 +75,8 @@ export function OrderStatsHeader({
       icon: <CheckCheck className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600" />,
       colorClass: 'text-indigo-600',
       bgClass: 'bg-indigo-50/80',
-      activeRing: 'ring-2 ring-indigo-500 bg-indigo-50/30 shadow-sm',
+      activeRing: 'ring-2 ring-indigo-500 bg-indigo-50/20 shadow-xs',
+      indicatorColor: 'bg-indigo-500',
     },
   ];
 
@@ -86,7 +90,7 @@ export function OrderStatsHeader({
             type="button"
             onClick={() => onSelectStatus(stat.id)}
             className={cn(
-              'group relative text-left p-3 sm:p-5 rounded-2xl sm:rounded-3xl border transition-all duration-200 cursor-pointer overflow-hidden min-w-0 w-full',
+              'group relative text-left p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border transition-all duration-200 cursor-pointer overflow-hidden min-w-0 w-full',
               isSelected
                 ? `${stat.activeRing} border-transparent`
                 : 'bg-white border-border/80 hover:border-slate-300 hover:shadow-xs'
@@ -102,17 +106,16 @@ export function OrderStatsHeader({
                 {stat.icon}
               </div>
 
-              <span
-                className={cn(
-                  'text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full border transition-opacity flex items-center gap-0.5 shrink-0',
-                  isSelected
-                    ? 'opacity-100 bg-white border-slate-200 text-slate-700'
-                    : 'opacity-0 sm:group-hover:opacity-100 bg-slate-50 border-slate-200 text-slate-500'
-                )}
-              >
-                <span className="hidden sm:inline">Filter</span>
-                <ChevronRight className="w-3 h-3 text-slate-400" />
-              </span>
+              {isSelected && (
+                <div className="w-5 h-5 rounded-full bg-white shadow-2xs border border-border/80 flex items-center justify-center">
+                  <div
+                    className={cn(
+                      'w-2 h-2 rounded-full',
+                      stat.indicatorColor
+                    )}
+                  />
+                </div>
+              )}
             </div>
 
             <div className="space-y-0.5 min-w-0">
