@@ -11,6 +11,8 @@ import {
   CheckCircle2,
   AlertCircle,
   Save,
+  ArrowLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { api } from '@/api';
 import { RouteGuard } from '@/hooks/useSesi';
@@ -90,11 +92,34 @@ function SecurityContent() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
-      {/* 2-Column Dashboard Layout */}
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-6">
+      {/* Mobile Back Button (< lg) */}
+      <div className="block lg:hidden">
+        <Link
+          href="/profile"
+          className="inline-flex items-center gap-2 text-xs font-bold text-secondary bg-blue-50/80 hover:bg-blue-100/70 px-3.5 py-2 rounded-2xl border border-blue-200/60 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Kembali ke Menu Akun</span>
+        </Link>
+      </div>
+
+      {/* Desktop Breadcrumbs (>= lg) */}
+      <div className="hidden lg:flex items-center gap-1.5 text-xs text-text-muted">
+        <Link
+          href="/profile"
+          className="hover:text-secondary font-semibold transition-colors"
+        >
+          Pengaturan Akun
+        </Link>
+        <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+        <span className="font-bold text-primary">Ubah Kata Sandi</span>
+      </div>
+
+      {/* Responsive Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Sidebar: Navigation & Logout */}
-        <div className="lg:col-span-4">
+        {/* Left Sidebar: Navigation & Logout (Desktop Only) */}
+        <div className="hidden lg:block lg:col-span-4">
           <AccountSidebar />
         </div>
 
@@ -162,23 +187,18 @@ function SecurityContent() {
                 leftIcon={<KeyRound className="w-4 h-4 text-slate-400" />}
               />
 
-              <div className="flex items-center gap-2 pt-1">
+              <div className="flex items-center justify-between pt-1 text-xs">
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-xs font-semibold text-secondary hover:underline inline-flex items-center gap-1.5 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-text-muted hover:text-primary transition-colors cursor-pointer select-none"
                 >
                   {showPassword ? (
-                    <>
-                      <EyeOff className="w-4 h-4" />
-                      <span>Sembunyikan karakter sandi</span>
-                    </>
+                    <EyeOff className="w-4 h-4 text-slate-400" />
                   ) : (
-                    <>
-                      <Eye className="w-4 h-4" />
-                      <span>Tampilkan karakter sandi</span>
-                    </>
+                    <Eye className="w-4 h-4 text-slate-400" />
                   )}
+                  <span>{showPassword ? 'Sembunyikan' : 'Tampilkan'} Kata Sandi</span>
                 </button>
               </div>
 

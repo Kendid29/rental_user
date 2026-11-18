@@ -9,7 +9,6 @@ import {
   KeyRound,
   LogOut,
   ChevronRight,
-  ShieldCheck,
 } from 'lucide-react';
 import { useSesi } from '@/hooks/useSesi';
 import { cn } from '@/lib/utils';
@@ -24,12 +23,14 @@ export function AccountSidebar({ className }: AccountSidebarProps) {
   const router = useRouter();
   const { logout } = useSesi();
 
+  const isProfileActive = pathname === '/profile' || pathname === '/profile/edit';
+
   const navItems = [
     {
       label: 'Data Diri & Profil',
-      href: '/profile',
+      href: '/profile/edit',
       icon: <User className="w-4 h-4" />,
-      active: pathname === '/profile',
+      active: isProfileActive,
       tag: null,
     },
     {
