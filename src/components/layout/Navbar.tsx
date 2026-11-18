@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { useSesi } from '@/hooks/useSesi';
 import { Button } from '../ui/Button';
+import { LogoutModal } from '@/components/features/auth/LogoutModal';
 import { cn } from '@/lib/utils';
 
 export const Navbar: React.FC = () => {
@@ -27,6 +28,19 @@ export const Navbar: React.FC = () => {
   const { user, logout } = useSesi();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleConfirmLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      await logout();
+      setIsLogoutModalOpen(false);
+      setMobileMenuOpen(false);
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -259,7 +273,7 @@ export const Navbar: React.FC = () => {
                     variant="outline"
                     size="md"
                     fullWidth
-                    onClick={() => logout()}
+                    onClick={() => setIsLogoutModalOpen(true)}
                     className="mt-3 text-urgency border-rose-200 hover:bg-rose-50"
                     leftIcon={<LogOut className="w-4 h-4" />}
                   >
@@ -284,6 +298,14 @@ export const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Confirmation Modal */}
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleConfirmLogout}
+        isLoading={isLoggingOut}
+      />
     </header>
   );
 };
