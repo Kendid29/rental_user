@@ -4,6 +4,12 @@ export type { OrderStatusBadgeProps } from './OrderStatusBadge';
 export { OrderStatusTabs, ORDER_STATUS_TABS } from './OrderStatusTabs';
 export type { OrderStatusTabsProps, OrderStatusTabItem } from './OrderStatusTabs';
 
+export { OrderStatsHeader } from './OrderStatsHeader';
+export type { OrderStatsHeaderProps } from './OrderStatsHeader';
+
+export { OrderTimeline } from './OrderTimeline';
+export type { OrderTimelineProps } from './OrderTimeline';
+
 export { OrderCard } from './OrderCard';
 export type { OrderCardProps } from './OrderCard';
 
