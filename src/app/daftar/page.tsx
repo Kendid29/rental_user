@@ -3,6 +3,18 @@
 import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import {
+  User,
+  Mail,
+  Phone,
+  Lock,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  UserPlus,
+  ArrowRight,
+  ShieldCheck,
+} from 'lucide-react';
 import { useSesi, getSafeRedirectUrl } from '@/hooks/useSesi';
 import { normalisasiNomorWA } from '@/lib/pricing';
 import { Input } from '@/components/ui/Input';
@@ -21,9 +33,12 @@ function DaftarForm() {
   const [email, setEmail] = useState('');
   const [nomorWA, setNomorWA] = useState('');
   const [kataSandi, setKataSandi] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
 
   const validate = (): boolean => {
     const errors: Record<string, string> = {};
@@ -70,7 +85,10 @@ function DaftarForm() {
       });
       router.push(redirectUrl);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Pendaftaran gagal. Silakan coba kembali.';
+      const msg =
+        err instanceof Error
+          ? err.message
+          : 'Gagal melakukan pendaftaran. Silakan coba lagi.';
       setErrorMessage(msg);
     } finally {
       setIsLoading(false);
@@ -78,28 +96,27 @@ function DaftarForm() {
   };
 
   return (
-    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12 sm:py-16">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
-          <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-extrabold text-primary">
-            Daftar Akun RentalinAja
+          <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center mx-auto mb-3 border border-secondary/20 shadow-xs">
+            <UserPlus className="w-6 h-6 text-secondary" />
+          </div>
+
+          <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-black text-primary tracking-tight">
+            Daftar Akun Baru
           </h1>
-          <p className="text-sm text-text-muted">
-            Buat akun untuk memesan rental mobil dan motor di berbagai kota
+
+          <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
+            Bergabung dengan ribuan penyewa armada terpercaya di kota Anda.
           </p>
         </div>
 
-        <Card level={2} padding="lg">
+        <Card level={2} padding="lg" className="rounded-3xl shadow-lg border-border/80">
           <form onSubmit={handleSubmit} className="space-y-4">
             {errorMessage && (
-              <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-urgency font-medium flex items-center gap-2">
-                <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-600 font-medium flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{errorMessage}</span>
               </div>
             )}
@@ -112,6 +129,7 @@ function DaftarForm() {
               onChange={(e) => setNama(e.target.value)}
               error={validationErrors.nama}
               disabled={isLoading}
+              leftIcon={<User className="w-4 h-4" />}
             />
 
             <Input
@@ -122,45 +140,67 @@ function DaftarForm() {
               onChange={(e) => setEmail(e.target.value)}
               error={validationErrors.email}
               disabled={isLoading}
+              leftIcon={<Mail className="w-4 h-4" />}
             />
 
             <Input
-              label="Nomor WhatsApp Aktif"
-              cue="(Format 08... atau 62...)"
+              label="Nomor WhatsApp"
+              cue="(Format 08...)"
               placeholder="081234567890"
               value={nomorWA}
               onChange={(e) => setNomorWA(e.target.value)}
               error={validationErrors.nomorWA}
-              helperText="Digunakan untuk konfirmasi pesanan via WhatsApp resmi"
               disabled={isLoading}
+              leftIcon={<Phone className="w-4 h-4" />}
             />
 
             <Input
               label="Kata Sandi"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Minimal 6 karakter"
               value={kataSandi}
               onChange={(e) => setKataSandi(e.target.value)}
               error={validationErrors.kataSandi}
               disabled={isLoading}
+              leftIcon={<Lock className="w-4 h-4" />}
+              rightIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="p-1 text-text-muted hover:text-primary transition-colors focus:outline-none"
+                  aria-label={showPassword ? 'Sembunyikan sandi' : 'Tampilkan sandi'}
+                >
+                  {showPassword ? (
+                    <EyeOff className="w-4 h-4" />
+                  ) : (
+                    <Eye className="w-4 h-4" />
+                  )}
+                </button>
+              }
             />
 
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              fullWidth
-              isLoading={isLoading}
-            >
-              Daftar Sekarang
-            </Button>
+            <div className="pt-2">
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                fullWidth
+                isLoading={isLoading}
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+                className="shadow-md shadow-blue-500/20"
+              >
+                Daftar Sekarang
+              </Button>
+            </div>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-border text-center">
+          <div className="mt-6 pt-6 border-t border-border/80 text-center">
             <p className="text-xs text-text-muted">
-              Sudah memiliki akun?{' '}
+              Sudah punya akun?{' '}
               <Link
-                href={`/masuk${rawRedirect ? `?redirect=${encodeURIComponent(rawRedirect)}` : ''}`}
+                href={`/masuk${
+                  rawRedirect ? `?redirect=${encodeURIComponent(rawRedirect)}` : ''
+                }`}
                 className="font-bold text-secondary hover:underline"
               >
                 Masuk di Sini
@@ -168,6 +208,14 @@ function DaftarForm() {
             </p>
           </div>
         </Card>
+
+        {/* Security Pledge Box */}
+        <div className="p-3.5 rounded-2xl bg-slate-50 border border-border/80 text-xs text-text-muted flex items-center gap-2.5">
+          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+          <span className="text-[11px] leading-relaxed">
+            Data pribadi Anda dilindungi enkripsi standar industri dan tidak disalahgunakan.
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -175,7 +223,13 @@ function DaftarForm() {
 
 export default function DaftarPage() {
   return (
-    <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center">Memuat...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-[50vh] flex items-center justify-center text-sm font-semibold text-text-muted">
+          Memuat halaman pendaftaran...
+        </div>
+      }
+    >
       <DaftarForm />
     </Suspense>
   );

@@ -1,5 +1,7 @@
 import React from 'react';
+import { SearchX } from 'lucide-react';
 import { Button } from './Button';
+import { cn } from '@/lib/utils';
 
 export interface EmptyStateProps {
   title: string;
@@ -16,23 +18,28 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   actionText,
   onAction,
   icon,
-  className = '',
+  className,
 }) => {
   return (
     <div
-      className={`flex flex-col items-center justify-center text-center p-8 sm:p-12 bg-white rounded-2xl border border-dashed border-border ${className}`}
+      className={cn(
+        'flex flex-col items-center justify-center text-center p-8 sm:p-14 bg-white/70 backdrop-blur-xs',
+        'rounded-3xl border border-dashed border-border/80 shadow-2xs',
+        className
+      )}
     >
-      <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-text-muted mb-4">
-        {icon || (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-          </svg>
-        )}
+      <div className="w-16 h-16 rounded-2xl bg-blue-50/80 border border-blue-100 flex items-center justify-center text-secondary mb-4 shadow-xs">
+        {icon || <SearchX className="w-8 h-8 stroke-[1.75]" />}
       </div>
-      <h3 className="font-[family-name:var(--font-headline)] text-lg font-bold text-primary mb-1">
+
+      <h3 className="font-[family-name:var(--font-headline)] text-lg sm:text-xl font-bold text-primary mb-1.5 tracking-tight">
         {title}
       </h3>
-      <p className="text-sm text-text-muted max-w-md mb-6">{description}</p>
+
+      <p className="text-sm text-text-muted max-w-md mb-6 leading-relaxed">
+        {description}
+      </p>
+
       {actionText && onAction && (
         <Button variant="primary" size="md" onClick={onAction}>
           {actionText}

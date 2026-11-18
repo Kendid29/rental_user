@@ -2,6 +2,15 @@
 
 import React, { useState, useEffect, Suspense, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import {
+  User,
+  Phone,
+  ShieldCheck,
+  AlertCircle,
+  Info,
+  CheckCircle2,
+  Users,
+} from 'lucide-react';
 import { api } from '@/api';
 import { MetodePembayaran, Unit } from '@/types';
 import { useSesi, RouteGuard } from '@/hooks/useSesi';
@@ -33,9 +42,12 @@ function CheckoutForm() {
   const [pesanUntukOrangLain, setPesanUntukOrangLain] = useState(false);
   const [namaPenerima, setNamaPenerima] = useState('');
   const [nomorWAPenerima, setNomorWAPenerima] = useState('');
-  const [metodePembayaran, setMetodePembayaran] = useState<MetodePembayaran>('qris');
+  const [metodePembayaran, setMetodePembayaran] =
+    useState<MetodePembayaran>('qris');
 
-  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -47,7 +59,7 @@ function CheckoutForm() {
     }
   }, [user, namaPenyewa, nomorWAPenyewa]);
 
-  // Fetch Unit
+  // Fetch Unit Details
   const loadUnit = useCallback(async () => {
     if (!unitId || !tanggalMulai || !tanggalSelesai) {
       router.replace('/');
@@ -60,7 +72,10 @@ function CheckoutForm() {
       const data = await api.unit.getById(unitId);
       setUnit(data);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Gagal memuat detail unit checkout';
+      const msg =
+        err instanceof Error
+          ? err.message
+          : 'Gagal memuat detail unit checkout';
       setUnitError(msg);
     } finally {
       setIsLoadingUnit(false);
@@ -81,14 +96,14 @@ function CheckoutForm() {
 
     const cleanWA = nomorWAPenyewa.replace(/\D/g, '');
     if (!nomorWAPenyewa.trim()) {
-      errors.nomorWAPenyewa = 'Nomor WhatsApp wajib diisi';
+      errors.nomorWAPenyewa = 'Nomor WhatsApp aktif wajib diisi';
     } else if (cleanWA.length < 9) {
       errors.nomorWAPenyewa = 'Nomor WhatsApp minimal 9 digit';
     }
 
     if (pesanUntukOrangLain) {
       if (!namaPenerima.trim()) {
-        errors.namaPenerima = 'Nama penerima unit wajib diisi';
+        errors.namaPenerima = 'Nama penerima / pengemudi wajib diisi';
       }
       const cleanReceiverWA = nomorWAPenerima.replace(/\D/g, '');
       if (!nomorWAPenerima.trim()) {
@@ -124,24 +139,27 @@ function CheckoutForm() {
         pesanUntukOrangLain,
         pemesanLain: pesanUntukOrangLain
           ? {
-            nama: namaPenerima,
-            nomorWA: normalizedWAPenerima,
-          }
+              nama: namaPenerima,
+              nomorWA: normalizedWAPenerima,
+            }
           : undefined,
         metodePembayaran,
       });
 
-      // Buka tautan WhatsApp Admin di tab baru
+      // Buka tautan WhatsApp Admin resmi
       if (typeof window !== 'undefined' && res.waAdminLink) {
         window.open(res.waAdminLink, '_blank');
       }
 
-      // Arahkan user ke halaman detail pesanan
+      // Redirect ke riwayat detail pesanan
       router.push(`/pesanan/${res.pesanan.id}`);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Gagal membuat pesanan. Silakan periksa formulir dan coba lagi.';
+      const msg =
+        err instanceof Error
+          ? err.message
+          : 'Gagal membuat pesanan. Silakan periksa formulir dan coba lagi.';
       setSubmitError(msg);
-      setIsSubmitting(false); // Kembalikan tombol agar bisa coba lagi
+      setIsSubmitting(false);
     }
   };
 
@@ -151,11 +169,11 @@ function CheckoutForm() {
         <Skeleton className="h-10 w-72 mx-auto" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-4">
-            <Skeleton className="h-64 rounded-2xl w-full" />
-            <Skeleton className="h-48 rounded-2xl w-full" />
+            <Skeleton className="h-64 rounded-3xl w-full" />
+            <Skeleton className="h-48 rounded-3xl w-full" />
           </div>
           <div className="lg:col-span-4">
-            <Skeleton className="h-96 rounded-2xl w-full" />
+            <Skeleton className="h-96 rounded-3xl w-full" />
           </div>
         </div>
       </div>
@@ -167,7 +185,10 @@ function CheckoutForm() {
       <div className="max-w-4xl mx-auto px-4 py-16">
         <ErrorState
           title="Data Checkout Tidak Lengkap"
-          message={unitError || 'Parameter kendaraan atau tanggal sewa belum dipilih secara lengkap.'}
+          message={
+            unitError ||
+            'Parameter kendaraan atau tanggal sewa belum dipilih secara lengkap.'
+          }
           onRetry={() => router.push('/')}
         />
       </div>
@@ -176,33 +197,28 @@ function CheckoutForm() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
-      {/* 3-Step Progress Bar */}
+      {/* 3-Step Progress */}
       <ProgressCheckout currentStep={2} />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Interaction Area: 8 Columns Desktop */}
+        {/* Left Column: Form & Payment Choice */}
         <div className="lg:col-span-8 space-y-6">
           {submitError && (
-            <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-xs sm:text-sm text-urgency font-semibold flex items-center gap-2.5">
-              <svg className="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                  clipRule="evenodd"
-                />
-              </svg>
+            <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-600 font-semibold flex items-center gap-2.5">
+              <AlertCircle className="w-5 h-5 shrink-0" />
               <span>{submitError}</span>
             </div>
           )}
 
-          {/* Form Penyewa */}
-          <Card level={1} padding="lg" className="space-y-5">
-            <div className="border-b border-border pb-3">
-              <h2 className="font-[family-name:var(--font-headline)] text-lg font-bold text-primary">
-                Data Pemesan / Penyewa
+          {/* Form Penyewa Card */}
+          <Card level={1} padding="lg" className="space-y-5 rounded-3xl shadow-sm">
+            <div className="border-b border-border/80 pb-4">
+              <h2 className="font-[family-name:var(--font-headline)] text-lg sm:text-xl font-bold text-primary flex items-center gap-2">
+                <User className="w-5 h-5 text-secondary" />
+                <span>Data Pemesan & Penyewa</span>
               </h2>
-              <p className="text-xs text-text-muted mt-0.5">
-                Pastikan nama dan nomor WhatsApp aktif untuk verifikasi serah terima kunci
+              <p className="text-xs text-text-muted mt-1 leading-relaxed">
+                Pastikan nama dan nomor WhatsApp aktif untuk verifikasi identitas serta koordinasi serah terima unit.
               </p>
             </div>
 
@@ -215,44 +231,48 @@ function CheckoutForm() {
                 onChange={(e) => setNamaPenyewa(e.target.value)}
                 error={validationErrors.namaPenyewa}
                 disabled={isSubmitting}
+                leftIcon={<User className="w-4 h-4" />}
               />
 
               <Input
-                label="Nomor WhatsApp"
+                label="Nomor WhatsApp Aktif"
                 cue="(Format 08... atau 62...)"
                 placeholder="081234567890"
                 value={nomorWAPenyewa}
                 onChange={(e) => setNomorWAPenyewa(e.target.value)}
                 error={validationErrors.nomorWAPenyewa}
                 disabled={isSubmitting}
+                leftIcon={<Phone className="w-4 h-4" />}
               />
             </div>
 
             {/* Checkbox: Pesan untuk orang lain */}
             <div className="pt-2">
-              <label className="flex items-center gap-2.5 cursor-pointer select-none">
+              <label className="flex items-center gap-3 cursor-pointer select-none bg-slate-50 p-3.5 rounded-2xl border border-border/70 hover:bg-slate-100/60 transition-colors">
                 <input
                   type="checkbox"
                   checked={pesanUntukOrangLain}
                   onChange={(e) => setPesanUntukOrangLain(e.target.checked)}
                   disabled={isSubmitting}
-                  className="w-4 h-4 text-secondary rounded border-slate-300 focus:ring-secondary/20"
+                  className="w-4 h-4 text-secondary rounded border-slate-300 focus:ring-secondary/20 cursor-pointer"
                 />
-                <span className="text-xs font-semibold text-primary">
-                  Saya memesan untuk orang lain (Pengemudi / Penerima berbeda)
+                <span className="text-xs font-bold text-primary flex items-center gap-1.5">
+                  <Users className="w-4 h-4 text-secondary" />
+                  <span>Saya memesan untuk orang lain (Penerima / Pengemudi berbeda)</span>
                 </span>
               </label>
 
               {pesanUntukOrangLain && (
-                <div className="mt-4 p-4 rounded-xl bg-slate-50 border border-border grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mt-4 p-4.5 rounded-2xl bg-slate-50/90 border border-border/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
-                    label="Nama Lengkap Penerima Unit"
+                    label="Nama Lengkap Penerima"
                     cue="(Sesuai KTP)"
                     placeholder="Nama teman / keluarga"
                     value={namaPenerima}
                     onChange={(e) => setNamaPenerima(e.target.value)}
                     error={validationErrors.namaPenerima}
                     disabled={isSubmitting}
+                    leftIcon={<User className="w-4 h-4" />}
                   />
 
                   <Input
@@ -262,35 +282,34 @@ function CheckoutForm() {
                     onChange={(e) => setNomorWAPenerima(e.target.value)}
                     error={validationErrors.nomorWAPenerima}
                     disabled={isSubmitting}
+                    leftIcon={<Phone className="w-4 h-4" />}
                   />
                 </div>
               )}
             </div>
           </Card>
 
-          {/* Payment Method Selector */}
-          <Card level={1} padding="lg">
+          {/* Payment Method Selector Card */}
+          <Card level={1} padding="lg" className="rounded-3xl shadow-sm">
             <PilihanMetodeBayar
               selectedMetode={metodePembayaran}
               onSelect={(metode) => setMetodePembayaran(metode)}
             />
           </Card>
 
-          {/* Ketentuan Sewa */}
-          <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-200/60 text-xs text-text-muted space-y-1.5">
-            <p className="font-bold text-primary flex items-center gap-1.5 text-secondary">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-              </svg>
-              Alur Transaksi & Konfirmasi
+          {/* Info Banner */}
+          <div className="p-4.5 rounded-2xl bg-blue-50/70 border border-blue-200/80 text-xs text-text-muted space-y-1.5">
+            <p className="font-bold text-primary flex items-center gap-2 text-secondary">
+              <Info className="w-4 h-4" />
+              <span>Alur Konfirmasi Transaksi</span>
             </p>
-            <p className="leading-relaxed">
-              Setelah menekan tombol pembayaran, pesanan akan tercatat di sistem dengan status <strong>Menunggu Konfirmasi</strong>. Anda akan diarahkan otomatis ke WhatsApp resmi Admin RentalinAja untuk mengirimkan ringkasan pesanan dan menerima instruksi nomor pembayaran.
+            <p className="leading-relaxed text-slate-600">
+              Setelah menekan tombol pemesanan, data akan dicatat dan Anda otomatis diarahkan ke WhatsApp resmi Admin RentalinAja untuk konfirmasi ketersediaan unit fisik dan petunjuk pembayaran.
             </p>
           </div>
         </div>
 
-        {/* Right Sticky Summary: 4 Columns Desktop */}
+        {/* Right Sticky Order Summary */}
         <div className="lg:col-span-4 sticky top-24">
           <RingkasanPesanan
             unit={unit}
@@ -309,7 +328,13 @@ function CheckoutForm() {
 export default function CheckoutPage() {
   return (
     <RouteGuard>
-      <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center">Memuat checkout...</div>}>
+      <Suspense
+        fallback={
+          <div className="min-h-[50vh] flex items-center justify-center text-sm font-semibold text-text-muted">
+            Memuat checkout...
+          </div>
+        }
+      >
         <CheckoutForm />
       </Suspense>
     </RouteGuard>

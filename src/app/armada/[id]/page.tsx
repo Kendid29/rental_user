@@ -4,6 +4,23 @@ import React, { useState, useEffect, use, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import {
+  Car,
+  Calendar,
+  Clock,
+  ShieldCheck,
+  Star,
+  Users,
+  Settings2,
+  CheckCircle2,
+  ChevronRight,
+  PhoneCall,
+  Building2,
+  MapPin,
+  ArrowRight,
+  ArrowLeft,
+  AlertCircle,
+} from 'lucide-react';
 import { api } from '@/api';
 import { Unit } from '@/types';
 import { formatRupiah, hitungRincianBiaya } from '@/lib/pricing';
@@ -14,6 +31,7 @@ import { Card } from '@/components/ui/Card';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { cn } from '@/lib/utils';
 
 function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -48,7 +66,8 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
         setUnit(data);
         setSelectedImage(data.gambar);
       } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : 'Gagal memuat detail armada';
+        const msg =
+          err instanceof Error ? err.message : 'Gagal memuat detail armada';
         setError(msg);
       } finally {
         setIsLoading(false);
@@ -82,12 +101,12 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
         <Skeleton className="h-6 w-48" />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-4">
-            <Skeleton className="aspect-[16/10] rounded-2xl w-full" />
+            <Skeleton className="aspect-[16/10] rounded-3xl w-full" />
             <Skeleton className="h-8 w-64" />
-            <Skeleton className="h-24 w-full rounded-2xl" />
+            <Skeleton className="h-28 w-full rounded-2xl" />
           </div>
           <div className="lg:col-span-1">
-            <Skeleton className="h-96 rounded-2xl w-full" />
+            <Skeleton className="h-96 rounded-3xl w-full" />
           </div>
         </div>
       </div>
@@ -106,7 +125,7 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
         ) : (
           <EmptyState
             title="Kendaraan Tidak Ditemukan"
-            description="Armada yang Anda cari tidak tersedia atau tautan salah."
+            description="Armada yang Anda cari tidak tersedia atau tautan sudah usang."
             actionText="Kembali ke Beranda"
             onAction={() => router.push('/')}
           />
@@ -128,7 +147,9 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
   const handlePesanSekarang = () => {
     if (isPesanDisabled) return;
     router.push(
-      `/checkout?unitId=${unit.id}&mulai=${encodeURIComponent(tanggalMulai)}&selesai=${encodeURIComponent(tanggalSelesai)}`
+      `/checkout?unitId=${unit.id}&mulai=${encodeURIComponent(
+        tanggalMulai
+      )}&selesai=${encodeURIComponent(tanggalSelesai)}`
     );
   };
 
@@ -145,60 +166,68 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-xs text-text-muted">
+      {/* Breadcrumbs Navigation */}
+      <nav
+        className="flex items-center gap-2 text-xs text-text-muted"
+        aria-label="Breadcrumb"
+      >
         <Link href="/" className="hover:text-primary transition-colors">
           Beranda
         </Link>
-        <span>/</span>
+        <ChevronRight className="w-3.5 h-3.5" />
         <Link
           href={`/katalog/${unit.jenis}`}
-          className="hover:text-primary transition-colors capitalize"
+          className="hover:text-primary transition-colors capitalize font-semibold"
         >
           Sewa {unit.jenis}
         </Link>
-        <span>/</span>
-        <span className="text-primary font-semibold truncate">{unit.nama}</span>
+        <ChevronRight className="w-3.5 h-3.5" />
+        <span className="text-primary font-bold truncate">{unit.nama}</span>
       </nav>
 
+      {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column: Visuals & Specifications */}
+        {/* Left Column: Media & Specifications */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Main Image Viewport */}
-          <div className="relative bg-white rounded-3xl overflow-hidden border border-border elevation-1 aspect-[16/10]">
+          {/* Main Hero Gallery Viewport */}
+          <div className="relative bg-white rounded-3xl overflow-hidden border border-border/80 shadow-md aspect-[16/10]">
             <Image
               src={selectedImage || unit.gambar}
               alt={unit.nama}
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 66vw"
-              className="object-cover"
+              className="object-cover transition-all duration-300"
               unoptimized
             />
+
             {unit.label && (
-              <span className="absolute top-4 left-4 bg-slate-900/85 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
+              <span className="absolute top-4 left-4 bg-primary-dark/85 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-sm tracking-wide">
                 {unit.label}
               </span>
             )}
+
             {isOutOfStock && (
-              <span className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px] flex items-center justify-center text-white text-base font-bold uppercase tracking-wider">
+              <div className="absolute inset-0 bg-primary-dark/75 backdrop-blur-xs flex items-center justify-center text-white text-base font-black uppercase tracking-widest z-20">
                 Stok Tidak Tersedia
-              </span>
+              </div>
             )}
           </div>
 
           {/* Gallery Thumbnails */}
           {galleryImages.length > 1 && (
-            <div className="flex gap-3 overflow-x-auto pb-1">
+            <div className="flex gap-3 overflow-x-auto pb-1.5">
               {galleryImages.map((img, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setSelectedImage(img)}
-                  className={`relative w-20 h-16 sm:w-24 sm:h-18 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${selectedImage === img
-                      ? 'border-secondary ring-2 ring-secondary/20 scale-102'
-                      : 'border-border hover:border-slate-400'
-                    }`}
+                  className={cn(
+                    'relative w-20 h-16 sm:w-24 sm:h-18 rounded-2xl overflow-hidden border-2 transition-all cursor-pointer shrink-0',
+                    selectedImage === img
+                      ? 'border-secondary ring-2 ring-secondary/20 scale-102 shadow-xs'
+                      : 'border-border/80 hover:border-slate-400 opacity-75 hover:opacity-100'
+                  )}
                 >
                   <Image
                     src={img}
@@ -213,119 +242,166 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
             </div>
           )}
 
-          {/* Unit Title & Mitra Anchor */}
-          <div className="bg-white rounded-2xl border border-border p-6 elevation-1 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
+          {/* Unit Details Card */}
+          <div className="bg-white rounded-3xl border border-border/80 p-6 sm:p-8 shadow-xs space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/80 pb-6">
               <div>
-                <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-extrabold text-primary">
+                <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">
                   {unit.nama}
                 </h1>
-                <p className="text-xs sm:text-sm text-text-muted mt-1 flex items-center gap-2">
-                  <span>Mitra Penyedia:</span>
-                  <span className="font-bold text-primary">{unit.mitra?.nama}</span>
+
+                <div className="text-xs sm:text-sm text-text-muted mt-1.5 flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-secondary shrink-0" />
+                  <span>Mitra:</span>
+                  <strong className="text-primary font-bold">
+                    {unit.mitra?.nama}
+                  </strong>
                   <span>•</span>
-                  <span>{unit.mitra?.kota}</span>
-                </p>
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                    {unit.mitra?.kota}
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 px-3 py-1 rounded-xl self-start sm:self-auto">
-                <svg className="w-4 h-4 fill-[#FFB800]" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                <span className="text-xs font-bold text-amber-800">
-                  {unit.rating} ({unit.jumlahUlasan} Ulasan)
+              <div className="flex items-center gap-1.5 bg-amber-50 border border-amber-200/90 px-3 py-1.5 rounded-xl self-start sm:self-auto shrink-0">
+                <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                <span className="text-xs font-black text-amber-800">
+                  {unit.rating.toFixed(1)} ({unit.jumlahUlasan} Ulasan)
                 </span>
               </div>
             </div>
 
             {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="bg-slate-50 p-3 rounded-xl border border-border">
-                <span className="text-[11px] text-text-muted block">Jenis</span>
-                <span className="text-xs font-bold text-primary capitalize">{unit.jenis}</span>
-              </div>
-              <div className="bg-slate-50 p-3 rounded-xl border border-border">
-                <span className="text-[11px] text-text-muted block">Transmisi</span>
-                <span className="text-xs font-bold text-primary">{unit.transmisi}</span>
-              </div>
-              <div className="bg-slate-50 p-3 rounded-xl border border-border">
-                <span className="text-[11px] text-text-muted block">Kapasitas</span>
-                <span className="text-xs font-bold text-primary">{unit.kapasitas} Orang</span>
-              </div>
-              <div className="bg-slate-50 p-3 rounded-xl border border-border">
-                <span className="text-[11px] text-text-muted block">Ketersediaan</span>
-                <span
-                  className={`text-xs font-bold ${unit.stok > 0 ? 'text-emerald-700' : 'text-urgency'
-                    }`}
-                >
-                  {unit.stok > 0 ? `Tersedia (${unit.stok} Unit)` : 'Habis'}
-                </span>
+            <div>
+              <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider mb-3">
+                Spesifikasi Utama
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                <div className="bg-slate-50 p-3.5 rounded-2xl border border-border/70 space-y-1">
+                  <span className="text-[10px] text-text-muted font-semibold block uppercase">
+                    Kategori
+                  </span>
+                  <span className="text-sm font-bold text-primary capitalize flex items-center gap-1.5">
+                    <Car className="w-4 h-4 text-secondary" />
+                    {unit.jenis}
+                  </span>
+                </div>
+
+                <div className="bg-slate-50 p-3.5 rounded-2xl border border-border/70 space-y-1">
+                  <span className="text-[10px] text-text-muted font-semibold block uppercase">
+                    Transmisi
+                  </span>
+                  <span className="text-sm font-bold text-primary flex items-center gap-1.5">
+                    <Settings2 className="w-4 h-4 text-secondary" />
+                    {unit.transmisi}
+                  </span>
+                </div>
+
+                <div className="bg-slate-50 p-3.5 rounded-2xl border border-border/70 space-y-1">
+                  <span className="text-[10px] text-text-muted font-semibold block uppercase">
+                    Kapasitas
+                  </span>
+                  <span className="text-sm font-bold text-primary flex items-center gap-1.5">
+                    <Users className="w-4 h-4 text-secondary" />
+                    {unit.kapasitas} Kursi
+                  </span>
+                </div>
+
+                <div className="bg-slate-50 p-3.5 rounded-2xl border border-border/70 space-y-1">
+                  <span className="text-[10px] text-text-muted font-semibold block uppercase">
+                    Status Stok
+                  </span>
+                  <span
+                    className={cn(
+                      'text-sm font-bold flex items-center gap-1.5',
+                      unit.stok > 0 ? 'text-emerald-700' : 'text-rose-600'
+                    )}
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    {unit.stok > 0 ? `Tersedia (${unit.stok})` : 'Habis'}
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Features List */}
-            <div>
-              <h3 className="text-xs font-bold text-primary uppercase tracking-wider mb-2.5">
-                Fitur & Fasilitas Unit
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {unit.fitur.map((f, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs text-text-main">
-                    <svg className="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                    <span>{f}</span>
-                  </div>
-                ))}
+            {/* Features & Amenities List */}
+            {unit.fitur && unit.fitur.length > 0 && (
+              <div className="pt-2 border-t border-border/80">
+                <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider mb-3">
+                  Kelengkapan & Fasilitas Unit
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {unit.fitur.map((f, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2.5 text-xs text-text-main bg-slate-50/70 p-2.5 rounded-xl border border-border/60"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span className="font-semibold">{f}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Mitra Details Card */}
             {unit.mitra && (
-              <div className="pt-4 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-blue-50/40 p-4 rounded-xl border border-blue-100">
-                <div>
+              <div className="pt-4 border-t border-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-blue-50/50 p-4.5 rounded-2xl border border-blue-100">
+                <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-primary">{unit.mitra.nama}</span>
+                    <span className="text-xs font-bold text-primary">
+                      {unit.mitra.nama}
+                    </span>
                     {unit.mitra.isSuperPartner && (
                       <Badge variant="superPartner" size="sm">
                         Super Partner
                       </Badge>
                     )}
                   </div>
-                  <p className="text-[11px] text-text-muted mt-0.5">
+                  <p className="text-[11px] text-text-muted">
                     {unit.mitra.layanan.join(' • ')}
                   </p>
                 </div>
+
                 <Link
-                  href={`/katalog/${unit.jenis}?kota=${encodeURIComponent(unit.mitra.kota)}`}
-                  className="text-xs font-bold text-secondary hover:underline shrink-0"
+                  href={`/katalog/${unit.jenis}?kota=${encodeURIComponent(
+                    unit.mitra.kota
+                  )}`}
+                  className="text-xs font-bold text-secondary hover:text-secondary-hover inline-flex items-center gap-1 shrink-0"
                 >
-                  Lihat Profil Mitra →
+                  <span>Lihat Unit Lain dari Mitra Ini</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             )}
           </div>
         </div>
 
-        {/* Right Column: Reservation & Pricing Card */}
+        {/* Right Column: Sticky Reservation Box */}
         <div className="lg:col-span-1">
           <div className="sticky top-24 space-y-4">
-            <Card level={2} padding="md" className="space-y-4">
+            <Card level={2} padding="md" className="space-y-5 rounded-3xl shadow-lg border-border/80">
               <div>
-                <span className="text-[11px] text-text-muted block">Tarif Sewa Harian</span>
-                <div className="flex items-baseline gap-1 mt-0.5">
-                  <span className="tnum font-[family-name:var(--font-headline)] text-2xl font-extrabold text-secondary">
+                <span className="text-[11px] font-semibold text-text-muted uppercase tracking-wider block">
+                  Tarif Sewa Harian
+                </span>
+                <div className="flex items-baseline gap-1 mt-1">
+                  <span className="tnum font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-black text-secondary">
                     {formatRupiah(unit.hargaPerHari)}
                   </span>
-                  <span className="text-xs text-text-muted">/ hari</span>
+                  <span className="text-xs text-text-muted font-medium">/ hari</span>
                 </div>
               </div>
 
               {/* Schedule Input Form */}
-              <div className="pt-3 border-t border-border space-y-3">
-                <h4 className="text-xs font-bold text-primary">Jadwal Penggunaan</h4>
+              <div className="pt-4 border-t border-border/80 space-y-3.5">
+                <h4 className="text-xs font-bold text-primary flex items-center gap-1.5">
+                  <Calendar className="w-4 h-4 text-secondary" />
+                  <span>Jadwal Penggunaan</span>
+                </h4>
 
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <div>
                     <label className="text-[11px] font-semibold text-text-muted block mb-1">
                       Tanggal Mulai Sewa
@@ -334,7 +410,7 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
                       type="date"
                       value={tanggalMulai}
                       onChange={(e) => handleTanggalMulaiChange(e.target.value)}
-                      className="w-full h-10 bg-slate-50 border border-border rounded-xl px-3 text-xs font-semibold text-text-main focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary"
+                      className="w-full h-11 bg-slate-50 border border-border rounded-xl px-3.5 text-xs font-bold text-text-main focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
                     />
                   </div>
 
@@ -346,60 +422,74 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
                       type="date"
                       value={tanggalSelesai}
                       onChange={(e) => handleTanggalSelesaiChange(e.target.value)}
-                      className="w-full h-10 bg-slate-50 border border-border rounded-xl px-3 text-xs font-semibold text-text-main focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary"
+                      className="w-full h-11 bg-slate-50 border border-border rounded-xl px-3.5 text-xs font-bold text-text-main focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
                     />
                   </div>
                 </div>
 
                 {dateError && (
-                  <p className="text-xs text-urgency font-medium">{dateError}</p>
+                  <p className="text-xs text-rose-500 font-semibold flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5" />
+                    <span>{dateError}</span>
+                  </p>
                 )}
 
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-border flex justify-between items-center text-xs">
-                  <span className="text-text-muted">Durasi Terhitung:</span>
-                  <span className="font-bold text-secondary">{durasiHari} Hari</span>
+                <div className="p-3 rounded-xl bg-slate-50 border border-border/80 flex justify-between items-center text-xs">
+                  <span className="text-text-muted font-medium">Durasi Sewa:</span>
+                  <span className="font-extrabold text-secondary text-sm">
+                    {durasiHari} Hari
+                  </span>
                 </div>
               </div>
 
-              {/* Live Price Estimation */}
-              <div className="pt-2 border-t border-border space-y-1.5 text-xs">
+              {/* Price Calculation Breakdown */}
+              <div className="pt-3 border-t border-border/80 space-y-2 text-xs">
                 <div className="flex justify-between text-text-muted">
                   <span>Sewa ({durasiHari} Hari)</span>
-                  <span className="tnum font-medium text-text-main">{formatRupiah(rincian.sewa)}</span>
+                  <span className="tnum font-bold text-text-main">
+                    {formatRupiah(rincian.sewa)}
+                  </span>
                 </div>
                 <div className="flex justify-between text-text-muted">
                   <span>Proteksi All-Risk</span>
-                  <span className="tnum font-medium text-text-main">{formatRupiah(rincian.proteksi)}</span>
+                  <span className="tnum font-bold text-text-main">
+                    {formatRupiah(rincian.proteksi)}
+                  </span>
                 </div>
                 <div className="flex justify-between text-text-muted">
                   <span>Pajak PPN (11%)</span>
-                  <span className="tnum font-medium text-text-main">{formatRupiah(rincian.pajak)}</span>
+                  <span className="tnum font-bold text-text-main">
+                    {formatRupiah(rincian.pajak)}
+                  </span>
                 </div>
-                <div className="pt-2 border-t border-border flex justify-between items-baseline font-bold">
-                  <span className="text-primary">Estimasi Total</span>
-                  <span className="tnum font-[family-name:var(--font-headline)] text-lg text-secondary">
+
+                <div className="pt-3 border-t border-border/80 flex justify-between items-baseline font-bold">
+                  <span className="text-primary text-sm">Estimasi Total</span>
+                  <span className="tnum font-[family-name:var(--font-headline)] text-xl font-black text-secondary">
                     {formatRupiah(rincian.total)}
                   </span>
                 </div>
               </div>
 
-              {/* Out of stock warning banner */}
+              {/* Out of Stock Warning */}
               {isOutOfStock && (
-                <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-urgency font-medium">
-                  Maaf, seluruh armada {unit.nama} pada mitra ini sedang tersewa untuk jadwal yang dipilih.
+                <div className="p-3 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-600 font-medium">
+                  Maaf, unit {unit.nama} saat ini sedang habis tersewa untuk jadwal yang Anda tentukan.
                 </div>
               )}
 
               {/* Action Buttons */}
-              <div className="pt-2 space-y-2">
+              <div className="pt-2 space-y-2.5">
                 <Button
                   variant="primary"
                   size="lg"
                   fullWidth
                   disabled={isPesanDisabled}
                   onClick={handlePesanSekarang}
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                  className="shadow-md shadow-blue-500/20"
                 >
-                  Pesan Sekarang
+                  Lanjut Pesan Unit
                 </Button>
 
                 <a
@@ -412,11 +502,7 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
                     variant="secondary"
                     size="md"
                     fullWidth
-                    leftIcon={
-                      <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.585 1.961.948 2.801.948 3.178 0 5.767-2.587 5.767-5.766.001-3.182-2.586-5.769-5.772-5.769zm3.364 8.163c-.144.405-.837.774-1.17.822-.312.043-.68.077-2.12-.519-1.841-.762-3.031-2.617-3.123-2.738-.093-.122-.746-.992-.746-1.893 0-.901.47-1.344.636-1.528.167-.184.364-.23.486-.23.122 0 .243.001.348.006.111.005.259-.042.404.307.151.365.516 1.258.561 1.35.046.092.077.2.015.323-.061.123-.092.2-.183.307-.091.107-.193.24-.275.322-.093.092-.19.192-.082.378.107.185.476.786 1.022 1.272.705.628 1.3.822 1.484.914.185.092.293.077.401-.046.108-.123.462-.538.585-.722.123-.184.246-.154.415-.092.17.061 1.077.507 1.262.599.185.092.308.138.354.215.046.077.046.446-.098.851z" />
-                      </svg>
-                    }
+                    leftIcon={<PhoneCall className="w-4 h-4 text-emerald-600" />}
                   >
                     Tanya Dulu via WhatsApp
                   </Button>
@@ -424,13 +510,14 @@ function DetailArmadaContent({ params }: { params: Promise<{ id: string }> }) {
               </div>
             </Card>
 
-            {/* Guarantee note */}
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-border text-xs text-text-muted space-y-1">
+            {/* Guarantee Box */}
+            <div className="p-4 rounded-2xl bg-white border border-border/80 text-xs text-text-muted space-y-1.5 shadow-2xs">
               <p className="font-bold text-primary flex items-center gap-1.5">
-                <span className="text-tertiary-dark">✓</span> Garansi RentalinAja
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <span>Jaminan Kualitas RentalinAja</span>
               </p>
-              <p className="text-[11px] leading-relaxed">
-                Unit dijamin bersih, BBM awal sesuai kesepakatan, dan serah terima tepat waktu di lokasi mitra.
+              <p className="text-[11px] leading-relaxed text-slate-500">
+                Unit selalu dibersihkan sebelum serah terima, kondisi mesin telah dicek teknis, dan dukungan darurat 24 jam.
               </p>
             </div>
           </div>
@@ -446,7 +533,17 @@ export default function DetailArmadaPage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center">Memuat detail armada...</div>}>
+    <Suspense
+      fallback={
+        <div className="max-w-7xl mx-auto px-4 py-16 space-y-8">
+          <Skeleton className="h-6 w-48" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <Skeleton className="lg:col-span-2 aspect-[16/10] rounded-3xl" />
+            <Skeleton className="h-96 rounded-3xl" />
+          </div>
+        </div>
+      }
+    >
       <DetailArmadaContent params={params} />
     </Suspense>
   );

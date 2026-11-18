@@ -3,6 +3,20 @@
 import React, { useState, useEffect, use, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+  ArrowLeft,
+  PhoneCall,
+  CheckCircle2,
+  Clock,
+  ShieldCheck,
+  Calendar,
+  Building2,
+  User,
+  CreditCard,
+  FileText,
+  AlertCircle,
+  ExternalLink,
+} from 'lucide-react';
 import { api } from '@/api';
 import { Pesanan } from '@/types';
 import { RouteGuard } from '@/hooks/useSesi';
@@ -14,7 +28,11 @@ import { Button } from '@/components/ui/Button';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
 
-function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
+function DetailPesananContent({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = use(params);
 
   const [pesanan, setPesanan] = useState<Pesanan | null>(null);
@@ -29,7 +47,8 @@ function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
         const data = await api.pesanan.getById(id);
         setPesanan(data);
       } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : 'Gagal memuat detail pesanan';
+        const msg =
+          err instanceof Error ? err.message : 'Gagal memuat detail pesanan';
         setError(msg);
       } finally {
         setIsLoading(false);
@@ -42,8 +61,8 @@ function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
         <Skeleton className="h-8 w-64" />
-        <Skeleton className="h-48 rounded-2xl w-full" />
-        <Skeleton className="h-48 rounded-2xl w-full" />
+        <Skeleton className="h-48 rounded-3xl w-full" />
+        <Skeleton className="h-48 rounded-3xl w-full" />
       </div>
     );
   }
@@ -64,18 +83,22 @@ function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-6">
-      {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
-        <div>
-          <div className="flex items-center gap-2">
-            <Link href="/pesanan" className="text-xs text-secondary hover:underline">
-              ← Kembali ke Pesanan Saya
-            </Link>
-          </div>
-          <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-extrabold text-primary mt-1">
+      {/* Back Link & Header Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
+        <div className="space-y-1.5">
+          <Link
+            href="/pesanan"
+            className="text-xs font-bold text-secondary hover:underline inline-flex items-center gap-1.5"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Kembali ke Pesanan Saya</span>
+          </Link>
+
+          <h1 className="font-[family-name:var(--font-headline)] text-2xl sm:text-3xl font-black text-primary">
             Pesanan #{pesanan.id}
           </h1>
-          <p className="text-xs text-text-muted mt-0.5">
+
+          <p className="text-xs text-text-muted">
             Dibuat pada {formatTanggalIndo(pesanan.createdAt)}
           </p>
         </div>
@@ -87,48 +110,41 @@ function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
 
       {/* Verification Notice Banner */}
       {pesanan.status === 'menunggu_pembayaran' && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-amber-50 border border-amber-200/90 text-amber-900 space-y-2">
+        <div className="p-5 rounded-3xl bg-amber-50/90 border border-amber-200/90 text-amber-900 space-y-2 shadow-xs">
           <div className="flex items-center gap-2 font-bold text-sm text-amber-800">
-            <svg className="w-5 h-5 fill-current shrink-0" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span>Menunggu Konfirmasi Admin</span>
+            <Clock className="w-5 h-5 text-amber-600 shrink-0" />
+            <span>Menunggu Konfirmasi Pembayaran</span>
           </div>
           <p className="text-xs leading-relaxed text-amber-800/90">
-            Pesanan Anda telah dicatat di sistem. Admin RentalinAja sedang memverifikasi rincian pesanan dan pembayaran. Anda dapat menghubungi admin secara langsung melalui tombol WhatsApp di bawah.
+            Pesanan Anda telah tercatat. Silakan hubungi admin resmi RentalinAja melalui WhatsApp untuk mengirimkan bukti pembayaran atau memverifikasi ketersediaan armada.
           </p>
         </div>
       )}
 
       {pesanan.status === 'terkonfirmasi' && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-1">
+        <div className="p-5 rounded-3xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-1.5 shadow-xs">
           <div className="flex items-center gap-2 font-bold text-sm text-emerald-800">
-            <svg className="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-            </svg>
-            <span>Pesanan Terkonfirmasi</span>
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <span>Pesanan Telah Terkonfirmasi</span>
           </div>
           <p className="text-xs leading-relaxed text-emerald-800/90">
-            Pembayaran telah diverifikasi oleh Admin. Unit kendaraan telah dialokasikan untuk Anda pada jadwal yang ditentukan.
+            Pembayaran telah diverifikasi oleh Admin. Unit armada telah dialokasikan dan siap untuk proses serah terima kunci pada tanggal sewa.
           </p>
         </div>
       )}
 
       {/* Grid: Unit Info & Driver Data */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Unit Info */}
-        <Card level={1} padding="md" className="space-y-4">
-          <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider">
-            Kendaraan & Mitra
+        {/* Unit Info Card */}
+        <Card level={1} padding="md" className="space-y-4 rounded-3xl shadow-xs">
+          <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5 text-secondary" />
+            <span>Kendaraan & Jadwal Sewa</span>
           </h3>
 
           <div className="flex gap-4 items-center">
             {pesanan.unit && (
-              <div className="relative w-24 h-20 rounded-xl overflow-hidden bg-slate-100 shrink-0 border border-border">
+              <div className="relative w-24 h-20 rounded-2xl overflow-hidden bg-slate-100 shrink-0 border border-border/80 shadow-2xs">
                 <Image
                   src={pesanan.unit.gambar}
                   alt={pesanan.unit.nama}
@@ -139,63 +155,72 @@ function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
                 />
               </div>
             )}
-            <div>
+
+            <div className="space-y-1">
               <h4 className="font-bold text-base text-primary">
                 {pesanan.unit?.nama}
               </h4>
-              <p className="text-xs text-text-muted">
-                {pesanan.mitra?.nama} ({pesanan.mitra?.kota})
+              <p className="text-xs text-text-muted flex items-center gap-1">
+                <Building2 className="w-3.5 h-3.5 text-secondary shrink-0" />
+                <span>
+                  {pesanan.mitra?.nama} ({pesanan.mitra?.kota})
+                </span>
               </p>
               <div className="flex gap-2 text-[11px] text-text-muted mt-1">
-                <span>{pesanan.unit?.transmisi}</span>
+                <span className="bg-slate-100 px-2 py-0.5 rounded-md font-semibold text-slate-700">
+                  {pesanan.unit?.transmisi}
+                </span>
                 <span>•</span>
-                <span>{pesanan.unit?.kapasitas} Kursi</span>
+                <span className="bg-slate-100 px-2 py-0.5 rounded-md font-semibold text-slate-700">
+                  {pesanan.unit?.kapasitas} Kursi
+                </span>
               </div>
             </div>
           </div>
 
-          <div className="p-3 rounded-xl bg-slate-50 border border-border text-xs space-y-1.5">
+          <div className="p-3.5 rounded-2xl bg-slate-50 border border-border/80 text-xs space-y-2">
             <div className="flex justify-between">
               <span className="text-text-muted">Tanggal Mulai:</span>
-              <span className="font-semibold text-primary">{formatTanggalIndo(pesanan.tanggalMulai)}</span>
+              <span className="font-bold text-primary">
+                {formatTanggalIndo(pesanan.tanggalMulai)}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-text-muted">Tanggal Selesai:</span>
-              <span className="font-semibold text-primary">{formatTanggalIndo(pesanan.tanggalSelesai)}</span>
+              <span className="font-bold text-primary">
+                {formatTanggalIndo(pesanan.tanggalSelesai)}
+              </span>
             </div>
-            <div className="flex justify-between pt-1.5 border-t border-border">
-              <span className="text-text-muted">Durasi:</span>
-              <span className="font-bold text-secondary">{pesanan.durasiHari} Hari</span>
+            <div className="flex justify-between pt-2 border-t border-border/70">
+              <span className="text-text-muted font-medium">Durasi Sewa:</span>
+              <span className="font-extrabold text-secondary">
+                {pesanan.durasiHari} Hari
+              </span>
             </div>
           </div>
         </Card>
 
-        {/* Data Penyewa */}
-        <Card level={1} padding="md" className="space-y-4">
-          <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider">
-            Data Penyewa & Penerima
+        {/* Penyewa Data Card */}
+        <Card level={1} padding="md" className="space-y-4 rounded-3xl shadow-xs">
+          <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider flex items-center gap-1.5">
+            <User className="w-3.5 h-3.5 text-secondary" />
+            <span>Data Identitas Penyewa</span>
           </h3>
 
           <div className="space-y-3 text-xs">
             <div>
               <span className="text-text-muted block">Nama Pemesan:</span>
-              <span className="font-bold text-primary text-sm">{pesanan.namaPenyewa}</span>
+              <span className="font-bold text-primary text-sm">
+                {pesanan.namaPenyewa}
+              </span>
             </div>
 
             <div>
               <span className="text-text-muted block">Nomor WhatsApp:</span>
-              <span className="font-bold text-primary">{pesanan.nomorWAPenyewa}</span>
+              <span className="font-bold text-primary font-mono">
+                {pesanan.nomorWAPenyewa}
+              </span>
             </div>
-
-            {pesanan.pesanUntukOrangLain && pesanan.pemesanLain && (
-              <div className="p-3 rounded-xl bg-blue-50/50 border border-blue-100 space-y-1 mt-2">
-                <span className="text-[11px] font-bold text-secondary block">
-                  Penerima Unit Berbeda:
-                </span>
-                <p className="font-bold text-primary">{pesanan.pemesanLain.nama}</p>
-                <p className="text-text-muted">{pesanan.pemesanLain.nomorWA}</p>
-              </div>
-            )}
 
             <div>
               <span className="text-text-muted block">Metode Pembayaran:</span>
@@ -203,71 +228,86 @@ function DetailPesananContent({ params }: { params: Promise<{ id: string }> }) {
                 {pesanan.metodePembayaran}
               </span>
             </div>
+
+            {pesanan.pesanUntukOrangLain && pesanan.pemesanLain && (
+              <div className="p-3.5 rounded-2xl bg-blue-50/60 border border-blue-100 space-y-1 mt-2">
+                <span className="text-[11px] font-bold text-secondary block">
+                  Penerima Unit Berbeda (Pengemudi):
+                </span>
+                <p className="font-bold text-primary">
+                  {pesanan.pemesanLain.nama}
+                </p>
+                <p className="text-text-muted font-mono">
+                  {pesanan.pemesanLain.nomorWA}
+                </p>
+              </div>
+            )}
           </div>
         </Card>
       </div>
 
-      {/* Rincian Biaya Pembayaran */}
-      <Card level={1} padding="md" className="space-y-3">
-        <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider">
-          Rincian Pembayaran
+      {/* Rincian Tarif Card */}
+      <Card level={1} padding="md" className="rounded-3xl shadow-xs space-y-4">
+        <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider flex items-center gap-1.5">
+          <CreditCard className="w-3.5 h-3.5 text-secondary" />
+          <span>Rincian Biaya Transaksi</span>
         </h3>
 
-        <div className="space-y-2 text-xs">
+        <div className="space-y-2.5 text-xs">
           <div className="flex justify-between text-text-muted">
-            <span>Sewa Kendaraan</span>
-            <span className="tnum font-medium text-text-main">
+            <span>
+              Tarif Sewa ({pesanan.durasiHari} hari ×{' '}
+              {formatRupiah(pesanan.unit?.hargaPerHari || 0)})
+            </span>
+            <span className="tnum font-bold text-text-main">
               {formatRupiah(pesanan.rincianBiaya.sewa)}
             </span>
           </div>
+
           <div className="flex justify-between text-text-muted">
-            <span>Biaya Proteksi & Asuransi</span>
-            <span className="tnum font-medium text-text-main">
+            <span className="flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Biaya Proteksi & Asuransi</span>
+            </span>
+            <span className="tnum font-bold text-text-main">
               {formatRupiah(pesanan.rincianBiaya.proteksi)}
             </span>
           </div>
+
           <div className="flex justify-between text-text-muted">
-            <span>Pajak (PPN 11%)</span>
-            <span className="tnum font-medium text-text-main">
+            <span>Pajak PPN (11%)</span>
+            <span className="tnum font-bold text-text-main">
               {formatRupiah(pesanan.rincianBiaya.pajak)}
             </span>
           </div>
-          <div className="pt-3 border-t border-border flex justify-between items-baseline font-bold">
-            <span className="text-primary text-sm">Total Pembayaran</span>
-            <span className="tnum font-[family-name:var(--font-headline)] text-xl text-secondary">
+
+          <div className="pt-3.5 border-t border-border/80 flex justify-between items-baseline font-bold">
+            <span className="text-sm text-primary">Total Pembayaran</span>
+            <span className="tnum font-[family-name:var(--font-headline)] text-xl font-black text-secondary">
               {formatRupiah(pesanan.rincianBiaya.total)}
             </span>
           </div>
         </div>
       </Card>
 
-      {/* CTA Button */}
-      <div className="flex flex-col sm:flex-row gap-3 pt-2">
+      {/* WhatsApp Action Button */}
+      <div className="pt-2">
         <a
           href={waLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1"
+          className="block"
         >
           <Button
             variant="primary"
             size="lg"
             fullWidth
-            leftIcon={
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.585 1.961.948 2.801.948 3.178 0 5.767-2.587 5.767-5.766.001-3.182-2.586-5.769-5.772-5.769zm3.364 8.163c-.144.405-.837.774-1.17.822-.312.043-.68.077-2.12-.519-1.841-.762-3.031-2.617-3.123-2.738-.093-.122-.746-.992-.746-1.893 0-.901.47-1.344.636-1.528.167-.184.364-.23.486-.23.122 0 .243.001.348.006.111.005.259-.042.404.307.151.365.516 1.258.561 1.35.046.092.077.2.015.323-.061.123-.092.2-.183.307-.091.107-.193.24-.275.322-.093.092-.19.192-.082.378.107.185.476.786 1.022 1.272.705.628 1.3.822 1.484.914.185.092.293.077.401-.046.108-.123.462-.538.585-.722.123-.184.246-.154.415-.092.17.061 1.077.507 1.262.599.185.092.308.138.354.215.046.077.046.446-.098.851z" />
-              </svg>
-            }
+            leftIcon={<PhoneCall className="w-5 h-5 text-white" />}
+            className="shadow-lg shadow-blue-500/20"
           >
-            Hubungi Admin WhatsApp
+            Hubungi WhatsApp Admin Resmi
           </Button>
         </a>
-
-        <Link href="/pesanan" className="sm:w-auto">
-          <Button variant="secondary" size="lg" fullWidth>
-            Kembali ke Daftar Pesanan
-          </Button>
-        </Link>
       </div>
     </div>
   );
@@ -280,7 +320,14 @@ export default function DetailPesananPage({
 }) {
   return (
     <RouteGuard>
-      <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center">Memuat detail pesanan...</div>}>
+      <Suspense
+        fallback={
+          <div className="max-w-4xl mx-auto px-4 py-16 space-y-6">
+            <Skeleton className="h-8 w-48" />
+            <Skeleton className="h-64 rounded-3xl" />
+          </div>
+        }
+      >
         <DetailPesananContent params={params} />
       </Suspense>
     </RouteGuard>

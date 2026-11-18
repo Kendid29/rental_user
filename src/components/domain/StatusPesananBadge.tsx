@@ -1,4 +1,5 @@
 import React from 'react';
+import { Clock, CheckCircle2, XCircle, Check } from 'lucide-react';
 import { StatusPesanan } from '@/types';
 import { Badge } from '../ui/Badge';
 
@@ -9,7 +10,7 @@ export interface StatusPesananBadgeProps {
 
 export const StatusPesananBadge: React.FC<StatusPesananBadgeProps> = ({
   status,
-  className = '',
+  className,
 }) => {
   switch (status) {
     case 'menunggu_pembayaran':
@@ -17,38 +18,46 @@ export const StatusPesananBadge: React.FC<StatusPesananBadgeProps> = ({
         <Badge
           variant="rating"
           className={className}
-          icon={
-            <svg className="w-3.5 h-3.5 fill-[#FFB800]" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                clipRule="evenodd"
-              />
-            </svg>
-          }
+          icon={<Clock className="w-3.5 h-3.5 text-amber-600" />}
         >
           Menunggu Konfirmasi
         </Badge>
       );
     case 'terkonfirmasi':
       return (
-        <Badge variant="verified" className={className}>
+        <Badge
+          variant="verified"
+          className={className}
+          icon={<CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
+        >
           Terkonfirmasi
         </Badge>
       );
     case 'dibatalkan':
       return (
-        <Badge variant="urgency" className={className}>
+        <Badge
+          variant="urgency"
+          className={className}
+          icon={<XCircle className="w-3.5 h-3.5 text-rose-500" />}
+        >
           Dibatalkan
         </Badge>
       );
     case 'selesai':
       return (
-        <Badge variant="neutral" className={className}>
+        <Badge
+          variant="neutral"
+          className={className}
+          icon={<Check className="w-3.5 h-3.5 text-slate-600" />}
+        >
           Selesai
         </Badge>
       );
     default:
-      return <Badge variant="neutral" className={className}>{status}</Badge>;
+      return (
+        <Badge variant="neutral" className={className}>
+          {status}
+        </Badge>
+      );
   }
 };

@@ -1,22 +1,72 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'motion/react';
+import {
+  Car,
+  Bike,
+  Home,
+  Info,
+  User,
+  LogOut,
+  FileText,
+  Menu,
+  X,
+  Phone,
+  ChevronRight,
+  ShieldCheck,
+} from 'lucide-react';
 import { useSesi } from '@/hooks/useSesi';
 import { Button } from '../ui/Button';
+import { cn } from '@/lib/utils';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const { user, logout } = useSesi();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   const navLinks = [
-    { href: '/', label: 'Beranda' },
-    { href: '/katalog/mobil', label: 'Sewa Mobil' },
-    { href: '/katalog/motor', label: 'Sewa Motor' },
-    { href: '/testimoni', label: 'Testimoni' },
-    { href: '/tentang-kami', label: 'Tentang Kami' },
+    {
+      href: '/',
+      label: 'Beranda',
+      icon: <Home className="w-4 h-4" />,
+    },
+    {
+      href: '/katalog/mobil',
+      label: 'Sewa Mobil',
+      icon: <Car className="w-4 h-4" />,
+    },
+    {
+      href: '/katalog/motor',
+      label: 'Sewa Motor',
+      icon: <Bike className="w-4 h-4" />,
+    },
+    {
+      href: '/testimoni',
+      label: 'Testimoni',
+      icon: <ShieldCheck className="w-4 h-4" />,
+    },
+    {
+      href: '/tentang-kami',
+      label: 'Tentang Kami',
+      icon: <Info className="w-4 h-4" />,
+    },
   ];
 
   const isActive = (href: string) => {
@@ -25,73 +75,105 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-border elevation-1">
+    <header
+      className={cn(
+        'sticky top-0 z-50 transition-all duration-300',
+        scrolled
+          ? 'bg-white/85 backdrop-blur-md border-b border-border/80 shadow-xs py-2.5'
+          : 'bg-white/95 backdrop-blur-xs border-b border-border/60 py-3.5'
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 select-none group">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-[family-name:var(--font-headline)] font-black text-xl shadow-md group-hover:bg-secondary transition-colors">
+        <div className="flex items-center justify-between h-12 sm:h-14">
+          {/* Logo Brand */}
+          <Link
+            href="/"
+            className="flex items-center gap-3 select-none group"
+            aria-label="RentalinAja Beranda"
+          >
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary to-primary-dark flex items-center justify-center text-white font-[family-name:var(--font-headline)] font-black text-xl shadow-md shadow-primary/20 group-hover:from-secondary group-hover:to-secondary-hover transition-all duration-300">
               R
             </div>
+
             <div className="flex flex-col">
-              <span className="font-[family-name:var(--font-headline)] text-xl font-extrabold tracking-tight text-primary">
+              <span className="font-[family-name:var(--font-headline)] text-xl font-extrabold tracking-tight text-primary leading-none">
                 Rentalin<span className="text-secondary">Aja</span>
               </span>
-              <span className="text-[10px] text-text-muted -mt-1 font-medium">
+              <span className="text-[10px] text-text-muted mt-1 font-medium tracking-wide">
                 Rental Terpadu Kota
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive(link.href)
-                    ? 'text-secondary bg-blue-50/80'
-                    : 'text-text-main hover:text-secondary hover:bg-slate-50'
-                  }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-1.5 bg-slate-50/80 p-1.5 rounded-2xl border border-border/60">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200',
+                    active
+                      ? 'text-secondary font-bold'
+                      : 'text-text-main/80 hover:text-primary hover:bg-white/80'
+                  )}
+                >
+                  {active && (
+                    <motion.div
+                      layoutId="activeNavIndicator"
+                      className="absolute inset-0 bg-white rounded-xl shadow-xs border border-border/70"
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.35 }}
+                    />
+                  )}
+
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    {link.icon}
+                    {link.label}
+                  </span>
+                </Link>
+              );
+            })}
           </nav>
 
           {/* User Auth Section */}
           <div className="hidden md:flex items-center gap-3">
             {user ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <Link
                   href="/pesanan"
-                  className={`text-sm font-semibold px-3 py-1.5 rounded-lg transition-colors ${pathname.startsWith('/pesanan')
-                      ? 'text-secondary bg-blue-50'
-                      : 'text-text-main hover:text-secondary'
-                    }`}
+                  className={cn(
+                    'flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3.5 py-2 rounded-xl transition-all',
+                    pathname.startsWith('/pesanan')
+                      ? 'text-secondary bg-blue-50/80 border border-blue-200/50'
+                      : 'text-text-main hover:text-secondary hover:bg-slate-50'
+                  )}
                 >
-                  Pesanan Saya
+                  <FileText className="w-4 h-4 text-secondary" />
+                  <span>Pesanan Saya</span>
                 </Link>
 
-                <div className="h-4 w-px bg-border" />
+                <div className="h-5 w-px bg-border/80" />
 
                 <Link
                   href="/profil"
-                  className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-slate-50 transition-colors"
+                  className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-border/60 transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-full bg-blue-100 text-secondary font-bold text-xs flex items-center justify-center border border-blue-200">
+                  <div className="w-7 h-7 rounded-lg bg-blue-100 text-secondary font-extrabold text-xs flex items-center justify-center border border-blue-200">
                     {user.nama.charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-sm font-bold text-primary max-w-[120px] truncate">
+                  <span className="text-xs font-bold text-primary max-w-[110px] truncate">
                     {user.nama}
                   </span>
                 </Link>
 
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="sm"
                   onClick={() => logout()}
-                  className="text-xs text-text-muted hover:text-urgency hover:border-urgency"
+                  className="text-xs text-text-muted hover:text-urgency hover:bg-rose-50"
+                  leftIcon={<LogOut className="w-3.5 h-3.5" />}
                 >
                   Keluar
                 </Button>
@@ -99,12 +181,17 @@ export const Navbar: React.FC = () => {
             ) : (
               <div className="flex items-center gap-2">
                 <Link href="/masuk">
-                  <Button variant="secondary" size="sm">
+                  <Button variant="ghost" size="sm">
                     Masuk
                   </Button>
                 </Link>
+
                 <Link href="/daftar">
-                  <Button variant="primary" size="sm">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    rightIcon={<ChevronRight className="w-3.5 h-3.5" />}
+                  >
                     Daftar
                   </Button>
                 </Link>
@@ -112,90 +199,112 @@ export const Navbar: React.FC = () => {
             )}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Trigger */}
           <div className="md:hidden flex items-center">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-text-main hover:bg-slate-100 focus:outline-none"
+              className="p-2 rounded-xl text-primary hover:bg-slate-100 transition-colors focus:outline-none"
+              aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Dropdown */}
+      {/* Mobile Drawer Menu */}
+      <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border space-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2 rounded-lg text-base font-semibold ${isActive(link.href)
-                    ? 'text-secondary bg-blue-50'
-                    : 'text-text-main hover:bg-slate-50'
-                  }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden border-t border-border/80 bg-white/95 backdrop-blur-md px-4 pt-3 pb-6"
+          >
+            <div className="space-y-1.5">
+              {navLinks.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      'flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all',
+                      active
+                        ? 'bg-blue-50 text-secondary'
+                        : 'text-text-main hover:bg-slate-50'
+                    )}
+                  >
+                    <span className="flex items-center gap-2.5">
+                      {link.icon}
+                      {link.label}
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-text-muted" />
+                  </Link>
+                );
+              })}
+            </div>
 
-            <div className="pt-3 border-t border-border space-y-2">
+            <div className="pt-4 mt-3 border-t border-border/70 space-y-2">
               {user ? (
                 <>
                   <Link
                     href="/pesanan"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 text-sm font-semibold text-text-main"
+                    className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-text-main hover:bg-slate-50"
                   >
-                    Pesanan Saya
+                    <span className="flex items-center gap-2.5">
+                      <FileText className="w-4 h-4 text-secondary" />
+                      Pesanan Saya
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-text-muted" />
                   </Link>
+
                   <Link
                     href="/profil"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 text-sm font-semibold text-text-main"
+                    className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-text-main hover:bg-slate-50"
                   >
-                    Profil ({user.nama})
+                    <span className="flex items-center gap-2.5">
+                      <User className="w-4 h-4 text-primary" />
+                      Profil Saya ({user.nama})
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-text-muted" />
                   </Link>
-                  <div className="px-3 pt-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      fullWidth
-                      onClick={() => {
-                        logout();
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      Keluar
-                    </Button>
-                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="md"
+                    fullWidth
+                    onClick={() => logout()}
+                    className="mt-3 text-urgency border-rose-200 hover:bg-rose-50"
+                    leftIcon={<LogOut className="w-4 h-4" />}
+                  >
+                    Keluar Akun
+                  </Button>
                 </>
               ) : (
-                <div className="grid grid-cols-2 gap-2 px-3 pt-2">
-                  <Link href="/masuk" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="secondary" size="sm" fullWidth>
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                  <Link href="/masuk">
+                    <Button variant="secondary" size="md" fullWidth>
                       Masuk
                     </Button>
                   </Link>
-                  <Link href="/daftar" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="primary" size="sm" fullWidth>
+                  <Link href="/daftar">
+                    <Button variant="primary" size="md" fullWidth>
                       Daftar
                     </Button>
                   </Link>
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </header>
   );
 };

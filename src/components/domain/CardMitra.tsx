@@ -1,8 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
+import {
+  Building2,
+  MapPin,
+  Car,
+  Star,
+  ShieldCheck,
+  ArrowRight,
+} from 'lucide-react';
 import { MitraWithUnits } from '@/types';
 import { Badge } from '../ui/Badge';
 import { CardUnit } from './CardUnit';
+import { cn } from '@/lib/utils';
 
 export interface CardMitraProps {
   mitra: MitraWithUnits;
@@ -11,47 +20,54 @@ export interface CardMitraProps {
 
 export const CardMitra: React.FC<CardMitraProps> = ({
   mitra,
-  className = '',
+  className,
 }) => {
   return (
     <div
-      className={`bg-white rounded-3xl border border-border elevation-1 overflow-hidden hover:elevation-2 transition-all ${className}`}
+      className={cn(
+        'bg-white rounded-3xl border border-border/80 shadow-xs overflow-hidden',
+        'hover:shadow-md hover:border-secondary/30 transition-all duration-200',
+        className
+      )}
     >
       {/* Mitra Header Bar */}
-      <div className="p-4 sm:p-6 border-b border-border bg-slate-50/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-5 sm:p-6 border-b border-border/80 bg-slate-50/70 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <h3 className="text-base sm:text-lg font-bold text-primary">
-              {mitra.nama}
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <h3 className="text-base sm:text-lg font-bold text-primary flex items-center gap-2">
+              <Building2 className="w-5 h-5 text-secondary" />
+              <span>{mitra.nama}</span>
             </h3>
+
             {mitra.isSuperPartner && (
               <Badge variant="superPartner" size="sm">
                 Super Partner
               </Badge>
             )}
+
             <Badge variant="rating" size="sm">
               {mitra.rating} ({mitra.jumlahUlasan} ulasan)
             </Badge>
           </div>
 
-          <p className="text-xs text-text-muted flex items-center gap-1.5 mb-2">
-            <svg className="w-3.5 h-3.5 text-secondary shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-            </svg>
-            <span>{mitra.kota}</span>
+          <div className="text-xs text-text-muted flex items-center gap-2 mb-2.5">
+            <span className="flex items-center gap-1 font-medium">
+              <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
+              {mitra.kota}
+            </span>
             <span>•</span>
-            <span className="font-semibold text-emerald-700">
+            <span className="font-bold text-emerald-700 flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               {mitra.unitTersedia} Unit Tersedia
             </span>
-          </p>
+          </div>
 
-          {/* Layanan Badges */}
+          {/* Service Tags */}
           <div className="flex flex-wrap gap-1.5">
             {mitra.layanan.map((layanan, idx) => (
               <span
                 key={idx}
-                className="text-[11px] font-medium text-slate-600 bg-white border border-slate-200/90 px-2 py-0.5 rounded-full"
+                className="text-[11px] font-semibold text-slate-600 bg-white border border-border/80 px-2.5 py-0.5 rounded-lg"
               >
                 {layanan}
               </span>
@@ -59,25 +75,25 @@ export const CardMitra: React.FC<CardMitraProps> = ({
           </div>
         </div>
 
-        {/* Action Link */}
+        {/* View All Units Action */}
         <div className="shrink-0">
           <Link
             href={`/katalog/mobil?kota=${encodeURIComponent(mitra.kota)}`}
-            className="text-xs font-bold text-secondary hover:underline inline-flex items-center gap-1"
+            className="text-xs font-bold text-secondary hover:text-secondary-hover inline-flex items-center gap-1.5 bg-blue-50/80 px-3 py-1.5 rounded-xl border border-blue-200/50 hover:bg-blue-100/60 transition-colors"
           >
-            Lihat Semua Unit
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
+            <span>Lihat Semua Armada</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
 
-      {/* Featured Units Grid (Max 2 Units per Mitra) */}
-      <div className="p-4 sm:p-6">
-        <h4 className="text-xs font-bold text-text-muted uppercase tracking-wider mb-3">
-          Armada Unggulan
+      {/* Featured Units Grid */}
+      <div className="p-5 sm:p-6">
+        <h4 className="text-xs font-bold text-text-muted uppercase tracking-wider mb-3.5 flex items-center gap-1.5">
+          <Car className="w-4 h-4 text-secondary" />
+          <span>Armada Unggulan</span>
         </h4>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {mitra.units.map((unit) => (
             <CardUnit key={unit.id} unit={unit} />
