@@ -112,10 +112,10 @@ function OrdersListContent() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-6 sm:space-y-8 min-w-0 overflow-x-hidden">
       {/* 1. Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
-        <div className="space-y-1">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6 min-w-0">
+        <div className="space-y-1 min-w-0">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-secondary text-xs font-bold mb-1">
             <FileText className="w-3.5 h-3.5" />
             <span>Riwayat Transaksi Rental</span>
@@ -130,12 +130,13 @@ function OrdersListContent() {
           </p>
         </div>
 
-        <Link href="/fleet" className="shrink-0">
+        <Link href="/fleet" className="shrink-0 w-full sm:w-auto">
           <Button
             variant="primary"
             size="md"
+            fullWidth
             rightIcon={<Plus className="w-4 h-4" />}
-            className="rounded-2xl shadow-sm"
+            className="rounded-2xl shadow-sm sm:w-auto justify-center"
           >
             Sewa Unit Baru
           </Button>
@@ -160,22 +161,22 @@ function OrdersListContent() {
 
       {/* 4. Loading Skeletons */}
       {isLoading && (
-        <div className="space-y-4">
+        <div className="space-y-4 w-full">
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="border border-border/80 rounded-3xl p-6 bg-white space-y-4 shadow-2xs"
+              className="border border-border/80 rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-white space-y-4 shadow-2xs w-full"
             >
               <div className="flex justify-between items-center">
-                <Skeleton className="h-5 w-32 rounded-lg" />
-                <Skeleton className="h-6 w-28 rounded-full" />
+                <Skeleton className="h-5 w-28 sm:w-32 rounded-lg" />
+                <Skeleton className="h-6 w-24 sm:w-28 rounded-full" />
               </div>
-              <div className="flex gap-4 items-center">
-                <Skeleton className="w-28 h-24 rounded-2xl shrink-0" />
+              <div className="flex gap-3 sm:gap-4 items-center">
+                <Skeleton className="w-20 h-20 sm:w-28 sm:h-24 rounded-2xl shrink-0" />
                 <div className="space-y-2 flex-1">
-                  <Skeleton className="h-6 w-48 rounded-lg" />
-                  <Skeleton className="h-4 w-32 rounded-lg" />
-                  <Skeleton className="h-4 w-56 rounded-lg" />
+                  <Skeleton className="h-5 sm:h-6 w-40 sm:w-48 rounded-lg" />
+                  <Skeleton className="h-3.5 sm:h-4 w-28 sm:w-32 rounded-lg" />
+                  <Skeleton className="h-3.5 sm:h-4 w-44 sm:w-56 rounded-lg" />
                 </div>
               </div>
             </div>
@@ -194,7 +195,7 @@ function OrdersListContent() {
 
       {/* 6. Empty State - No match for search */}
       {!isLoading && !error && filteredPesanans.length === 0 && searchQuery && (
-        <div className="p-10 rounded-3xl bg-white border border-border/80 text-center space-y-4 shadow-2xs">
+        <div className="p-8 sm:p-10 rounded-2xl sm:rounded-3xl bg-white border border-border/80 text-center space-y-4 shadow-2xs w-full">
           <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
             <SearchX className="w-6 h-6" />
           </div>
@@ -233,7 +234,7 @@ function OrdersListContent() {
 
       {/* 8. Order Cards List */}
       {!isLoading && !error && filteredPesanans.length > 0 && (
-        <div className="space-y-5">
+        <div className="space-y-4 sm:space-y-5 w-full min-w-0">
           {paginatedPesanans.map((pesanan) => (
             <OrderCard
               key={pesanan.id}

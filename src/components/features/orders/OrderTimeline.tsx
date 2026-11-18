@@ -26,25 +26,19 @@ export function OrderTimeline({
 }: OrderTimelineProps) {
   if (status === 'dibatalkan') {
     return (
-      <div className="p-5 rounded-3xl bg-rose-50 border border-rose-200 text-rose-900 flex items-center gap-3">
-        <XCircle className="w-6 h-6 text-rose-600 shrink-0" />
-        <div>
+      <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-rose-50 border border-rose-200 text-rose-900 flex items-center gap-3 w-full min-w-0">
+        <XCircle className="w-5 h-5 sm:w-6 sm:h-6 text-rose-600 shrink-0" />
+        <div className="min-w-0">
           <h4 className="font-bold text-sm text-rose-800">
             Pesanan Ini Telah Dibatalkan
           </h4>
-          <p className="text-xs text-rose-700 mt-0.5">
+          <p className="text-xs text-rose-700 mt-0.5 leading-relaxed">
             Transaksi sewa ini dibatalkan dan unit armada telah dikembalikan ke katalog publik.
           </p>
         </div>
       </div>
     );
   }
-
-  // Steps definition:
-  // Step 1: Pesanan Dibuat (always completed)
-  // Step 2: Pembayaran & Konfirmasi (completed if terkonfirmasi or selesai)
-  // Step 3: Pengambilan Armada (current if terkonfirmasi, completed if selesai)
-  // Step 4: Selesai (completed if selesai)
 
   const steps = [
     {
@@ -81,23 +75,23 @@ export function OrderTimeline({
   ];
 
   return (
-    <div className="bg-white rounded-3xl border border-border/80 shadow-xs p-5 sm:p-6 space-y-4">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border border-border/80 shadow-xs p-4 sm:p-6 space-y-4 w-full min-w-0">
       <div className="flex items-center justify-between border-b border-border/70 pb-3">
         <h3 className="font-bold text-sm text-primary">
           Status Perjalanan Pesanan
         </h3>
-        <span className="text-xs text-text-muted">
+        <span className="text-[11px] sm:text-xs text-text-muted">
           Tahapan Sewa Terkini
         </span>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-1">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-1">
         {steps.map((step, idx) => (
-          <div key={idx} className="relative flex flex-col space-y-2">
-            <div className="flex items-center gap-2.5">
+          <div key={idx} className="relative flex flex-col space-y-1.5 min-w-0">
+            <div className="flex items-center gap-2">
               <div
                 className={cn(
-                  'w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold transition-all shrink-0',
+                  'w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center text-xs font-bold transition-all shrink-0',
                   step.isCompleted
                     ? 'bg-emerald-500 text-white shadow-xs'
                     : step.isCurrent
@@ -122,10 +116,10 @@ export function OrderTimeline({
               </span>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p
                 className={cn(
-                  'text-xs font-bold',
+                  'text-xs font-bold truncate',
                   step.isCompleted || step.isCurrent
                     ? 'text-primary'
                     : 'text-slate-400'
@@ -133,7 +127,7 @@ export function OrderTimeline({
               >
                 {step.title}
               </p>
-              <p className="text-[11px] text-text-muted leading-tight mt-0.5">
+              <p className="text-[10px] sm:text-[11px] text-text-muted leading-tight mt-0.5 line-clamp-2">
                 {step.desc}
               </p>
             </div>
