@@ -12,6 +12,8 @@ import {
 } from 'lucide-react';
 import { JenisKendaraan } from '@/types';
 import { Button } from '@/components/ui/Button';
+import { Select } from '@/components/ui/Select';
+import { DatePicker } from '@/components/ui/DatePicker';
 import { cn } from '@/lib/utils';
 
 export interface HomeHeroProps {
@@ -36,10 +38,12 @@ export function HomeHero({
   onSearch,
 }: HomeHeroProps) {
   return (
-    <section className="relative bg-gradient-to-b from-primary-dark via-primary to-primary text-white pt-12 pb-24 sm:pt-20 sm:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Ambient Glows */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative bg-gradient-to-b from-primary-dark via-primary to-primary text-white pt-12 pb-28 sm:pt-20 sm:pb-36 px-4 sm:px-6 lg:px-8">
+      {/* Ambient Glows Container with overflow-hidden */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
+      </div>
 
       <div className="max-w-5xl mx-auto relative z-10 text-center space-y-6 sm:space-y-8">
         {/* Top Assurance Badge */}
@@ -133,54 +137,34 @@ export function HomeHero({
             className="bg-white rounded-3xl p-4 sm:p-5 shadow-2xl border border-white/30 text-text-main text-left grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end"
           >
             {/* Kota */}
-            <div>
-              <label className="text-xs font-bold text-primary block mb-1.5 flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-secondary" />
-                <span>Kota Layanan</span>
-              </label>
-              <select
-                value={formKota}
-                onChange={(e) => setFormKota(e.target.value)}
-                className="w-full h-11.5 bg-slate-50 hover:bg-slate-100/70 border border-border rounded-xl px-3.5 text-xs sm:text-sm font-bold text-text-main focus:outline-none focus:ring-3 focus:ring-secondary/15 focus:border-secondary transition-all cursor-pointer"
-              >
-                {(cityOptions.length > 0 ? cityOptions : [formKota]).map((kota) => (
-                  <option key={kota} value={kota}>
-                    {kota}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <Select
+              label="Kota Layanan"
+              leftIcon={<MapPin className="w-4 h-4 text-secondary" />}
+              value={formKota}
+              onChange={setFormKota}
+              options={cityOptions.length > 0 ? cityOptions : [formKota]}
+            />
 
             {/* Kategori Kendaraan */}
-            <div>
-              <label className="text-xs font-bold text-primary block mb-1.5 flex items-center gap-1.5">
-                <Car className="w-4 h-4 text-secondary" />
-                <span>Kategori Kendaraan</span>
-              </label>
-              <select
-                value={formJenis}
-                onChange={(e) => setFormJenis(e.target.value as JenisKendaraan | 'semua')}
-                className="w-full h-11.5 bg-slate-50 hover:bg-slate-100/70 border border-border rounded-xl px-3.5 text-xs sm:text-sm font-bold text-text-main focus:outline-none focus:ring-3 focus:ring-secondary/15 focus:border-secondary transition-all cursor-pointer"
-              >
-                <option value="semua">Semua (Mobil & Motor)</option>
-                <option value="mobil">Mobil</option>
-                <option value="motor">Motor</option>
-              </select>
-            </div>
+            <Select
+              label="Kategori Kendaraan"
+              leftIcon={<Car className="w-4 h-4 text-secondary" />}
+              value={formJenis}
+              onChange={(val) => setFormJenis(val as JenisKendaraan | 'semua')}
+              options={[
+                { value: 'semua', label: 'Semua (Mobil & Motor)' },
+                { value: 'mobil', label: 'Mobil' },
+                { value: 'motor', label: 'Motor' },
+              ]}
+            />
 
             {/* Tanggal Mulai */}
-            <div>
-              <label className="text-xs font-bold text-primary block mb-1.5 flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-secondary" />
-                <span>Tanggal Mulai</span>
-              </label>
-              <input
-                type="date"
-                value={formTanggal}
-                onChange={(e) => setFormTanggal(e.target.value)}
-                className="w-full h-11.5 bg-slate-50 hover:bg-slate-100/70 border border-border rounded-xl px-3.5 text-xs sm:text-sm font-bold text-text-main focus:outline-none focus:ring-3 focus:ring-secondary/15 focus:border-secondary transition-all cursor-pointer"
-              />
-            </div>
+            <DatePicker
+              label="Tanggal Mulai"
+              value={formTanggal}
+              onChange={setFormTanggal}
+              min={new Date().toISOString().split('T')[0]}
+            />
 
             {/* Submit CTA */}
             <div>

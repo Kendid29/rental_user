@@ -14,6 +14,7 @@ import { formatRupiah, hitungRincianBiaya } from '@/lib/pricing';
 import { buildWaTanyaUnitLink } from '@/lib/whatsapp';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
+import { DatePicker } from '@/components/ui/DatePicker';
 
 export interface FleetBookingCardProps {
   unit: Unit;
@@ -72,33 +73,19 @@ export function FleetBookingCard({
 
         {/* Rental Schedule Selectors */}
         <div className="space-y-3.5 pt-4 border-t border-border/80">
-          <div>
-            <label className="text-xs font-bold text-primary block mb-1.5 flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-secondary" />
-              <span>Mulai Sewa</span>
-            </label>
-            <input
-              type="date"
-              value={tanggalMulai}
-              min={new Date().toISOString().split('T')[0]}
-              onChange={(e) => onTanggalMulaiChange(e.target.value)}
-              className="w-full bg-slate-50 border border-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-primary focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all cursor-pointer"
-            />
-          </div>
+          <DatePicker
+            label="Mulai Sewa"
+            value={tanggalMulai}
+            min={new Date().toISOString().split('T')[0]}
+            onChange={onTanggalMulaiChange}
+          />
 
-          <div>
-            <label className="text-xs font-bold text-primary block mb-1.5 flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-secondary" />
-              <span>Selesai Sewa</span>
-            </label>
-            <input
-              type="date"
-              value={tanggalSelesai}
-              min={tanggalMulai || new Date().toISOString().split('T')[0]}
-              onChange={(e) => onTanggalSelesaiChange(e.target.value)}
-              className="w-full bg-slate-50 border border-border rounded-xl px-3.5 py-2.5 text-xs font-bold text-primary focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all cursor-pointer"
-            />
-          </div>
+          <DatePicker
+            label="Selesai Sewa"
+            value={tanggalSelesai}
+            min={tanggalMulai || new Date().toISOString().split('T')[0]}
+            onChange={onTanggalSelesaiChange}
+          />
 
           {dateError && (
             <p className="text-xs text-rose-600 flex items-center gap-1 font-medium">

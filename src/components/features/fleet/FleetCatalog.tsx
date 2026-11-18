@@ -24,6 +24,7 @@ import { ErrorState } from '@/components/ui/ErrorState';
 import { Pagination } from '@/components/ui/Pagination';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { Select } from '@/components/ui/Select';
 import { cn } from '@/lib/utils';
 
 export interface FleetCatalogProps {
@@ -170,8 +171,7 @@ export const FleetCatalog: React.FC<FleetCatalogProps> = ({
   }, [fetchUnits]);
 
   // Handlers
-  const handleKotaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const val = e.target.value;
+  const handleKotaChange = (val: string) => {
     setKota(val);
     setCurrentPage(1);
     updateUrl({ kota: val, page: 1 });
@@ -189,8 +189,8 @@ export const FleetCatalog: React.FC<FleetCatalogProps> = ({
     updateUrl({ kapasitas: val, page: 1 });
   };
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const [s, o] = e.target.value.split(':');
+  const handleSortChange = (val: string) => {
+    const [s, o] = val.split(':');
     setSort(s);
     setOrder(o as 'asc' | 'desc');
     setCurrentPage(1);
@@ -273,17 +273,17 @@ export const FleetCatalog: React.FC<FleetCatalogProps> = ({
           </Button>
 
           {/* Sort Selector */}
-          <div className="relative flex-1 md:flex-none">
-            <select
+          <div className="flex-1 md:flex-none min-w-[210px]">
+            <Select
+              size="sm"
               value={`${sort}:${order}`}
               onChange={handleSortChange}
-              className="w-full appearance-none bg-slate-50 hover:bg-slate-100 border border-border rounded-xl pl-3 pr-8 py-2.5 text-xs font-bold text-primary focus:outline-none focus:border-secondary cursor-pointer transition-colors shadow-2xs"
-            >
-              <option value="harga:asc">Harga: Terendah ke Tertinggi</option>
-              <option value="harga:desc">Harga: Tertinggi ke Terendah</option>
-              <option value="rating:desc">Rating Tertinggi</option>
-            </select>
-            <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
+              options={[
+                { value: 'harga:asc', label: 'Harga: Terendah ke Tertinggi' },
+                { value: 'harga:desc', label: 'Harga: Tertinggi ke Terendah' },
+                { value: 'rating:desc', label: 'Rating Tertinggi' },
+              ]}
+            />
           </div>
 
           {/* Reset Action */}
@@ -321,25 +321,19 @@ export const FleetCatalog: React.FC<FleetCatalogProps> = ({
           </div>
 
           {/* City Filter */}
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <label className="text-xs font-bold text-text-muted uppercase tracking-wider block">
               Kota Layanan
             </label>
-            <div className="relative">
-              <select
-                value={kota}
-                onChange={handleKotaChange}
-                className="w-full appearance-none bg-slate-50 border border-border rounded-xl pl-3 pr-8 py-2 text-xs font-medium text-primary focus:outline-none focus:border-secondary cursor-pointer"
-              >
-                <option value="">Semua Kota</option>
-                {cityOptions.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
-            </div>
+            <Select
+              size="sm"
+              value={kota}
+              onChange={handleKotaChange}
+              options={[
+                { value: '', label: 'Semua Kota' },
+                ...cityOptions.map((c) => ({ value: c, label: c })),
+              ]}
+            />
           </div>
 
           {/* Transmission Filter */}

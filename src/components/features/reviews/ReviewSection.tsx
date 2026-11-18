@@ -20,6 +20,7 @@ import {
 import { ReviewCard } from './ReviewCard';
 import { testimoniList, testimoniSectionContent } from '@/content/testimoni';
 import { Testimoni } from '@/types';
+import { Select } from '@/components/ui/Select';
 
 export interface ReviewSectionProps {
   className?: string;
@@ -297,28 +298,22 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({
 
             {/* Filter Urutan Rating */}
             <div className="flex items-center gap-2.5 justify-between sm:justify-start">
-              <label
-                htmlFor="sort-rating"
-                className="text-xs font-bold text-text-muted uppercase tracking-wider shrink-0 flex items-center gap-1.5"
-              >
+              <span className="text-xs font-bold text-text-muted uppercase tracking-wider shrink-0 flex items-center gap-1.5">
                 <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                 Urutkan:
-              </label>
-              <div className="relative">
-                <select
-                  id="sort-rating"
+              </span>
+              <div className="w-44">
+                <Select
+                  size="sm"
                   value={sortRating}
-                  onChange={(e) =>
-                    handleSortRatingChange(e.target.value as 'tertinggi' | 'terendah')
+                  onChange={(val) =>
+                    handleSortRatingChange(val as 'tertinggi' | 'terendah')
                   }
-                  className="appearance-none bg-slate-50 hover:bg-slate-100 border border-border rounded-xl pl-3 pr-8 py-1.5 text-xs font-bold text-primary focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary cursor-pointer transition-colors shadow-2xs"
-                >
-                  <option value="tertinggi">Rating Tertinggi</option>
-                  <option value="terendah">Rating Terendah</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-500">
-                  <ChevronRight className="w-3.5 h-3.5 rotate-90" />
-                </div>
+                  options={[
+                    { value: 'tertinggi', label: 'Rating Tertinggi' },
+                    { value: 'terendah', label: 'Rating Terendah' },
+                  ]}
+                />
               </div>
             </div>
           </div>
