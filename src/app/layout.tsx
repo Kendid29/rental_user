@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import React from 'react';
 import './globals.css';
 import { SesiProvider } from '@/hooks/useSesi';
+import { ToastProvider } from '@/components/providers/ToastProvider';
 
 export const metadata: Metadata = {
   title: 'RentalinAja - Marketplace Rental Mobil & Motor Terpadu',
@@ -16,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full antialiased scroll-smooth">
       <body className="min-h-full flex flex-col bg-canvas text-text-main">
-        <SesiProvider>{children}</SesiProvider>
+        <SesiProvider>
+          {children}
+          <ToastProvider />
+        </SesiProvider>
       </body>
     </html>
   );

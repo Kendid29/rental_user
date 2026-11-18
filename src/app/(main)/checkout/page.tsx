@@ -16,6 +16,7 @@ import {
 import { Card } from '@/components/ui/Card';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
+import toast from 'react-hot-toast';
 
 function CheckoutForm() {
   const router = useRouter();
@@ -145,6 +146,8 @@ function CheckoutForm() {
         window.open(res.waAdminLink, '_blank');
       }
 
+      toast.success('Pesanan berhasil dibuat! Menuju rincian pemesanan...');
+
       // Redirect ke riwayat detail pesanan
       router.push(`/orders/${res.pesanan.id}`);
     } catch (err: unknown) {
@@ -153,6 +156,7 @@ function CheckoutForm() {
           ? err.message
           : 'Gagal membuat pesanan. Silakan periksa formulir dan coba lagi.';
       setSubmitError(msg);
+      toast.error(msg);
       setIsSubmitting(false);
     }
   };

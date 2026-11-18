@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState, useCallback } fr
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { User, LoginRequest, RegisterRequest } from '@/types';
 import { api } from '@/api';
+import toast from 'react-hot-toast';
 
 interface SesiContextType {
   user: User | null;
@@ -78,6 +79,9 @@ export function SesiProvider({ children }: { children: React.ReactNode }) {
     try {
       await api.auth.logout();
       setUser(null);
+      toast.success('Berhasil keluar dari akun.');
+    } catch {
+      toast.error('Gagal keluar dari akun.');
     } finally {
       setIsLoading(false);
     }

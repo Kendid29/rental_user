@@ -18,6 +18,7 @@ import { RouteGuard } from '@/hooks/useSesi';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import toast from 'react-hot-toast';
 
 function SecurityContent() {
   const router = useRouter();
@@ -72,6 +73,7 @@ function SecurityContent() {
       });
 
       setSuccessMessage('Kata sandi berhasil diperbarui.');
+      toast.success('Kata sandi berhasil diperbarui!');
       setKataSandiLama('');
       setKataSandiBaru('');
       setKonfirmasiKataSandi('');
@@ -83,6 +85,7 @@ function SecurityContent() {
       const msg =
         err instanceof Error ? err.message : 'Gagal memperbarui kata sandi';
       setErrorMessage(msg);
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }

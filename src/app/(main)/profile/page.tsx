@@ -18,6 +18,7 @@ import { normalisasiNomorWA } from '@/lib/pricing';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import toast from 'react-hot-toast';
 
 function ProfileContent() {
   const { user, refreshSesi } = useSesi();
@@ -61,10 +62,12 @@ function ProfileContent() {
       });
       await refreshSesi();
       setSuccessMessage('Data profil berhasil diperbarui.');
+      toast.success('Profil berhasil diperbarui!');
     } catch (err: unknown) {
       const msg =
         err instanceof Error ? err.message : 'Gagal memperbarui profil';
       setErrorMessage(msg);
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }

@@ -19,6 +19,7 @@ import { useSesi, getSafeRedirectUrl } from '@/hooks/useSesi';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
+import toast from 'react-hot-toast';
 
 export function LoginForm() {
   const router = useRouter();
@@ -62,7 +63,8 @@ export function LoginForm() {
 
     setIsLoading(true);
     try {
-      await login({ email, kataSandi });
+      const user = await login({ email, kataSandi });
+      toast.success(`Selamat datang kembali, ${user.nama}!`);
       router.push(redirectUrl);
     } catch (err: unknown) {
       const msg =
@@ -70,6 +72,7 @@ export function LoginForm() {
           ? err.message
           : 'Terjadi kesalahan saat masuk. Periksa kembali email dan kata sandi.';
       setErrorMessage(msg);
+      toast.error(msg);
     } finally {
       setIsLoading(false);
     }
@@ -80,6 +83,7 @@ export function LoginForm() {
     setKataSandi('rahasia123');
     setValidationErrors({});
     setDemoFilledNotice(true);
+    toast.success('Kredensial demo Budi Santoso terisi!', { id: 'demo-filled' });
     setTimeout(() => {
       setDemoFilledNotice(false);
     }, 2500);

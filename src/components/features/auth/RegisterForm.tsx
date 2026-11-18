@@ -18,6 +18,7 @@ import { useSesi, getSafeRedirectUrl } from '@/hooks/useSesi';
 import { normalisasiNomorWA } from '@/lib/pricing';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import toast from 'react-hot-toast';
 
 export function RegisterForm() {
   const router = useRouter();
@@ -88,13 +89,14 @@ export function RegisterForm() {
 
     setIsLoading(true);
     try {
-      await register({
+      const user = await register({
         nama: nama.trim(),
         email: email.trim(),
         nomorWA: normalisasiNomorWA(nomorWA),
         kataSandi,
       });
 
+      toast.success(`Pendaftaran berhasil! Selamat datang, ${user.nama}.`);
       router.push(redirectUrl);
     } catch (err: unknown) {
       const msg =
@@ -102,6 +104,7 @@ export function RegisterForm() {
           ? err.message
           : 'Pendaftaran gagal. Silakan coba kembali.';
       setErrorMessage(msg);
+      toast.error(msg);
     } finally {
       setIsLoading(false);
     }

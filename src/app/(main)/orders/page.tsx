@@ -17,6 +17,7 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { Pagination } from '@/components/ui/Pagination';
+import toast from 'react-hot-toast';
 
 function OrdersListContent() {
   const router = useRouter();
@@ -60,9 +61,11 @@ function OrdersListContent() {
   ) => {
     try {
       _updatePesananStatus(id, newStatus);
+      toast.success(`Status ${id} diubah ke: ${newStatus.replace('_', ' ').toUpperCase()}`);
       fetchPesanans();
     } catch (e) {
       console.error('Failed to simulate status:', e);
+      toast.error('Gagal memperbarui status');
     }
   };
 
