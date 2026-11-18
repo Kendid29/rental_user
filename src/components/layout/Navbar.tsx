@@ -48,22 +48,22 @@ export const Navbar: React.FC = () => {
       icon: <Home className="w-4 h-4" />,
     },
     {
-      href: '/katalog/mobil',
+      href: '/fleet/cars',
       label: 'Sewa Mobil',
       icon: <Car className="w-4 h-4" />,
     },
     {
-      href: '/katalog/motor',
+      href: '/fleet/bikes',
       label: 'Sewa Motor',
       icon: <Bike className="w-4 h-4" />,
     },
     {
-      href: '/testimoni',
+      href: '/reviews',
       label: 'Testimoni',
       icon: <ShieldCheck className="w-4 h-4" />,
     },
     {
-      href: '/tentang-kami',
+      href: '/about',
       label: 'Tentang Kami',
       icon: <Info className="w-4 h-4" />,
     },
@@ -142,10 +142,10 @@ export const Navbar: React.FC = () => {
             {user ? (
               <div className="flex items-center gap-2.5">
                 <Link
-                  href="/pesanan"
+                  href="/orders"
                   className={cn(
                     'flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3.5 py-2 rounded-xl transition-all',
-                    pathname.startsWith('/pesanan')
+                    pathname.startsWith('/orders')
                       ? 'text-secondary bg-blue-50/80 border border-blue-200/50'
                       : 'text-text-main hover:text-secondary hover:bg-slate-50'
                   )}
@@ -157,7 +157,7 @@ export const Navbar: React.FC = () => {
                 <div className="h-5 w-px bg-border/80" />
 
                 <Link
-                  href="/profil"
+                  href="/profile"
                   className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-border/60 transition-colors"
                 >
                   <div className="w-7 h-7 rounded-lg bg-blue-100 text-secondary font-extrabold text-xs flex items-center justify-center border border-blue-200">
@@ -180,13 +180,13 @@ export const Navbar: React.FC = () => {
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <Link href="/masuk">
+                <Link href="/login">
                   <Button variant="ghost" size="sm">
                     Masuk
                   </Button>
                 </Link>
 
-                <Link href="/daftar">
+                <Link href="/register">
                   <Button
                     variant="primary"
                     size="sm"
@@ -255,7 +255,7 @@ export const Navbar: React.FC = () => {
               {user ? (
                 <>
                   <Link
-                    href="/pesanan"
+                    href="/orders"
                     className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-text-main hover:bg-slate-50"
                   >
                     <span className="flex items-center gap-2.5">
@@ -266,7 +266,7 @@ export const Navbar: React.FC = () => {
                   </Link>
 
                   <Link
-                    href="/profil"
+                    href="/profile"
                     className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold text-text-main hover:bg-slate-50"
                   >
                     <span className="flex items-center gap-2.5">
@@ -289,12 +289,12 @@ export const Navbar: React.FC = () => {
                 </>
               ) : (
                 <div className="grid grid-cols-2 gap-2 pt-1">
-                  <Link href="/masuk">
+                  <Link href="/login">
                     <Button variant="secondary" size="md" fullWidth>
                       Masuk
                     </Button>
                   </Link>
-                  <Link href="/daftar">
+                  <Link href="/register">
                     <Button variant="primary" size="md" fullWidth>
                       Daftar
                     </Button>

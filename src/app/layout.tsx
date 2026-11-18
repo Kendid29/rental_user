@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import React, { Suspense } from 'react';
+import React from 'react';
 import './globals.css';
 import { SesiProvider } from '@/hooks/useSesi';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'RentalinAja - Marketplace Rental Mobil & Motor Terpadu',
@@ -18,13 +16,7 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full antialiased scroll-smooth">
       <body className="min-h-full flex flex-col bg-canvas text-text-main">
-        <SesiProvider>
-          <Suspense fallback={<div className="h-16 sm:h-20 bg-white border-b border-border" />}>
-            <Navbar />
-          </Suspense>
-          <main className="flex-1 flex flex-col">{children}</main>
-          <Footer />
-        </SesiProvider>
+        <SesiProvider>{children}</SesiProvider>
       </body>
     </html>
   );

@@ -93,22 +93,22 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
-                <Link href="/katalog/mobil" className="hover:text-white transition-colors">
+                <Link href="/fleet/cars" className="hover:text-white transition-colors">
                   Sewa Mobil Lepas Kunci
                 </Link>
               </li>
               <li>
-                <Link href="/katalog/mobil" className="hover:text-white transition-colors">
+                <Link href="/fleet/cars" className="hover:text-white transition-colors">
                   Sewa Mobil dengan Sopir
                 </Link>
               </li>
               <li>
-                <Link href="/katalog/motor" className="hover:text-white transition-colors">
+                <Link href="/fleet/bikes" className="hover:text-white transition-colors">
                   Sewa Motor Matic
                 </Link>
               </li>
               <li>
-                <Link href="/katalog/motor" className="hover:text-white transition-colors">
+                <Link href="/fleet/bikes" className="hover:text-white transition-colors">
                   Sewa Motor Tour & Adventure
                 </Link>
               </li>
@@ -122,22 +122,22 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
-                <Link href="/katalog/mobil?kota=Yogyakarta" className="hover:text-white transition-colors">
+                <Link href="/fleet/cars?kota=Yogyakarta" className="hover:text-white transition-colors">
                   Rental Mobil Yogyakarta
                 </Link>
               </li>
               <li>
-                <Link href="/katalog/mobil?kota=Bandung" className="hover:text-white transition-colors">
+                <Link href="/fleet/cars?kota=Bandung" className="hover:text-white transition-colors">
                   Rental Mobil Bandung
                 </Link>
               </li>
               <li>
-                <Link href="/katalog/mobil?kota=Malang" className="hover:text-white transition-colors">
+                <Link href="/fleet/cars?kota=Malang" className="hover:text-white transition-colors">
                   Rental Mobil Malang
                 </Link>
               </li>
               <li>
-                <Link href="/katalog/motor?kota=Denpasar" className="hover:text-white transition-colors">
+                <Link href="/fleet/bikes?kota=Denpasar" className="hover:text-white transition-colors">
                   Rental Motor Denpasar (Bali)
                 </Link>
               </li>
@@ -151,17 +151,17 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
-                <Link href="/tentang-kami" className="hover:text-white transition-colors">
+                <Link href="/about" className="hover:text-white transition-colors">
                   Tentang Kami
                 </Link>
               </li>
               <li>
-                <Link href="/testimoni" className="hover:text-white transition-colors">
+                <Link href="/reviews" className="hover:text-white transition-colors">
                   Ulasan Pelanggan
                 </Link>
               </li>
               <li>
-                <Link href="/pesanan" className="hover:text-white transition-colors">
+                <Link href="/orders" className="hover:text-white transition-colors">
                   Lacak Pesanan
                 </Link>
               </li>
@@ -184,10 +184,10 @@ export const Footer: React.FC = () => {
         <div className="pt-10 mt-12 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© 2026 RentalinAja. Seluruh hak cipta dilindungi undang-undang.</p>
           <div className="flex items-center gap-6">
-            <Link href="/tentang-kami" className="hover:text-slate-300 transition-colors">
+            <Link href="/about" className="hover:text-slate-300 transition-colors">
               Syarat & Ketentuan
             </Link>
-            <Link href="/tentang-kami" className="hover:text-slate-300 transition-colors">
+            <Link href="/about" className="hover:text-slate-300 transition-colors">
               Kebijakan Privasi
             </Link>
           </div>

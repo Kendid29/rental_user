@@ -129,7 +129,7 @@ function RouteGuardInner({ children }: { children: React.ReactNode }) {
     if (!isLoading && !user) {
       const currentQuery = searchParams.toString();
       const fullPath = currentQuery ? `${pathname}?${currentQuery}` : pathname;
-      router.replace(`/masuk?redirect=${encodeURIComponent(fullPath)}`);
+      router.replace(`/login?redirect=${encodeURIComponent(fullPath)}`);
     }
   }, [user, isLoading, router, pathname, searchParams]);
 
